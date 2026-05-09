@@ -264,9 +264,7 @@ const solutions: Solution[] = [
 ];
 
 // 3D Flip Card Component
-function FlipCard({ sol, index }: { sol: Solution; index: number }) {
-  const [flipped, setFlipped] = useState(false);
-
+function FlipCard({ sol, index, flipped, onFlip }: { sol: Solution; index: number; flipped: boolean; onFlip: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -274,7 +272,7 @@ function FlipCard({ sol, index }: { sol: Solution; index: number }) {
       viewport={{ once: true }}
       transition={{ delay: index * 0.08 }}
       style={{ perspective: "1000px", height: "340px", cursor: "pointer" }}
-      onClick={() => setFlipped(!flipped)}
+      onClick={onFlip}
     >
       <motion.div
         animate={{ rotateY: flipped ? 180 : 0 }}
@@ -398,6 +396,7 @@ const connectionTypes = [
 ];
 
 export default function Connectivity() {
+  const [activeCard, setActiveCard] = useState<number | null>(null);
   const [formData, setFormData] = useState({
     businessName: "",
     postcode: "",
@@ -460,7 +459,13 @@ export default function Connectivity() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((sol, i) => (
-              <FlipCard key={sol.title} sol={sol} index={i} />
+              <FlipCard
+                key={sol.title}
+                sol={sol}
+                index={i}
+                flipped={activeCard === i}
+                onFlip={() => setActiveCard(activeCard === i ? null : i)}
+              />
             ))}
           </div>
         </div>
