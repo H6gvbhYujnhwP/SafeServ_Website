@@ -386,7 +386,7 @@ export default function Digital() {
             {[
               { value: "100%", label: "Bespoke builds", sub: "No templates" },
               { value: "48hrs", label: "Average go-live", sub: "From brief to live" },
-              { value: "\u00a30", label: "Platform fees", sub: "You own the code" },
+              { value: "UK", label: "Based & supported", sub: "No offshore handoffs" },
               { value: "\u221e", label: "Scalability", sub: "Grows with you" },
             ].map((stat, i) => (
               <div key={i} className="text-center">
