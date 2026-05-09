@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <img
-              src="/manus-storage/Safeserv_Logo_3cfdca1b.png"
+              src="/manus-storage/Safeserv_Logo_cb294e9c.png"
               alt="SafeServ"
               className="h-10 object-contain mb-4"
               style={{ filter: 'brightness(0) invert(1)' }}

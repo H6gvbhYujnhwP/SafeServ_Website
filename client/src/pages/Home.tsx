@@ -1,206 +1,365 @@
 import { Link } from "wouter";
-import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 import {
-  Phone, Wifi, Monitor, Brain, Globe, ChevronRight,
-  Shield, Clock, Zap, Users, CheckCircle, ArrowRight
+  Phone, Wifi, Monitor, Brain, Globe, ArrowRight,
+  CheckCircle, Shield, Clock, Users, Star, ChevronRight
 } from "lucide-react";
 
-/* ─── OPTION 2: CRISP WHITE & TEAL ───
-   BG: #FFFFFF / #F9FAFB / #F0FDFB
-   Primary: #2B4A5C  Teal: #2DD4BF  Teal Dark: #0D9488
-   Text: #111827 / #6B7280  Border: #E5E7EB
-*/
+/* OPTION 2: CRISP WHITE & TEAL — Home Page */
+/* Hero: /manus-storage/hero_main_e010fb0a.jpg */
+
+// Animated counter hook
+function useCounter(end: number, duration = 2000) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!inView) return;
+    let startTime: number;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }, [inView, end, duration]);
+
+  return { count, ref };
+}
 
 const services = [
-  { icon: Phone, title: "VoIP Telephony", desc: "D44, E50 & F60 IP phones. HD audio, 4 SIP accounts, PoE support. No lock-in contracts.", color: "#2DD4BF", href: "/telephony" },
-  { icon: Monitor, title: "IT Support", desc: "Powered by Sweetbyte. The UK's first MOA (Managing Operating Agents) service included as standard.", color: "#0D9488", href: "/it-support" },
-  { icon: Wifi, title: "Connectivity", desc: "Leased lines, FTTP, broadband, and SoGEA. Delivered via DWS, NTA, and Gamma networks.", color: "#2DD4BF", href: "/connectivity" },
-  { icon: Brain, title: "AI Solutions", desc: "SafeServ Translate+ call transcription, AI voice receptionists, and automation tools via TheGreenAgents.", color: "#0D9488", href: "/ai-solutions" },
-  { icon: Globe, title: "Digital & Web", desc: "7-page professional websites in 48hrs from £799 via ClearerPaths. Apps and digital marketing too.", color: "#2DD4BF", href: "/digital" },
-  { icon: Shield, title: "Cyber Security", desc: "Endpoint protection, threat monitoring, and security audits. Powered by Sweetbyte's cyber team.", color: "#0D9488", href: "/it-support" },
-];
-
-const stats = [
-  { num: "500+", label: "Clients Served" },
-  { num: "24/7", label: "Support Available" },
-  { num: "0", label: "Lock-In Contracts" },
-  { num: "5★", label: "Service Rating" },
+  {
+    icon: Phone,
+    title: "VoIP Telephony",
+    desc: "HD voice phones with no lock-in. D44, E50 & F60 IP phones with PoE, Bluetooth, and 5-way conferencing.",
+    href: "/telephony",
+    color: "#2DD4BF",
+    bg: "#F0FDFB",
+  },
+  {
+    icon: Monitor,
+    title: "IT Support",
+    desc: "Managed IT services via our Sweetbyte partnership. Proactive monitoring, helpdesk, and on-site support.",
+    href: "/it-support",
+    color: "#0D9488",
+    bg: "#F0FDFB",
+  },
+  {
+    icon: Wifi,
+    title: "Connectivity",
+    desc: "Ultrafast broadband, leased lines, and 4G/5G backup. Delivered by DWS, NTA, and Gamma networks.",
+    href: "/connectivity",
+    color: "#2DD4BF",
+    bg: "#F0FDFB",
+  },
+  {
+    icon: Brain,
+    title: "AI Solutions",
+    desc: "SafeServ Translate+ for live call transcription. TheGreenAgents AI workforce tools for modern teams.",
+    href: "/ai-solutions",
+    color: "#0D9488",
+    bg: "#F0FDFB",
+  },
+  {
+    icon: Globe,
+    title: "Digital & Web",
+    desc: "Professional websites from £799 in 48 hours via ClearerPaths. Apps, SEO, and social media management.",
+    href: "/digital",
+    color: "#2DD4BF",
+    bg: "#F0FDFB",
+  },
 ];
 
 const phones = [
-  { name: "D44", tag: "ENTRY LEVEL", img: "/manus-storage/VoIPPhoneD44-1_6f4c3e2a.png", features: ["4.3\" Colour LCD", "10 BLF Keys", "HD Audio", "PoE Support"], href: "/telephony" },
-  { name: "E50", tag: "MOST POPULAR", img: "/manus-storage/VoIPPhoneE50_7b2d1f3c.png", features: ["4.3\" Colour LCD", "36 BLF Keys", "5-Way Conference", "Bluetooth & EHS"], href: "/telephony" },
-  { name: "F60", tag: "FLAGSHIP", img: "/manus-storage/VoIPPhoneF60Safeservbrochure_9e5a2b1d.png", features: ["7\" Touchscreen", "20 SIP Accounts", "Video Calling", "Built-in Wi-Fi"], href: "/telephony" },
+  {
+    name: "D44",
+    tag: "ENTRY LEVEL",
+    img: "/manus-storage/VoIPPhoneD44-1_29767178.png",
+    features: ["4.3\" Colour LCD", "10 BLF Keys", "HD Audio", "PoE Support"],
+    href: "/telephony",
+  },
+  {
+    name: "E50",
+    tag: "MOST POPULAR",
+    img: "/manus-storage/VoIPPhoneE50_5be54825.png",
+    features: ["4.3\" Colour LCD", "36 BLF Keys", "5-Way Conference", "Bluetooth & EHS"],
+    href: "/telephony",
+  },
+  {
+    name: "F60",
+    tag: "FLAGSHIP",
+    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_35572fac.png",
+    features: ["7\" Touchscreen", "20 SIP Accounts", "Video Calling", "Built-in Wi-Fi"],
+    href: "/telephony",
+  },
 ];
 
-const whyUs = [
-  { icon: Shield, title: "No Lock-In Contracts", desc: "Stay because you love the service, not because you're trapped. Every SafeServ agreement is flexible." },
-  { icon: Clock, title: "24/7 UK Support", desc: "Real people, based in the UK, available around the clock. No offshore call centres." },
-  { icon: Zap, title: "One Point of Contact", desc: "One number, one team, all your tech sorted. VoIP, IT, connectivity, AI — all under one roof." },
-  { icon: Users, title: "Partner Ecosystem", desc: "Best-in-class partners: Sweetbyte for IT, TheGreenAgents for AI, ClearerPaths for web." },
+const partners = [
+  { name: "Sweetbyte", role: "IT Support Partner", color: "#2DD4BF" },
+  { name: "TheGreenAgents", role: "AI Workforce Tools", color: "#0D9488" },
+  { name: "ClearerPaths", role: "Web & Digital", color: "#2DD4BF" },
+  { name: "DWS", role: "Connectivity", color: "#0D9488" },
+  { name: "Gamma", role: "Voice & Data", color: "#2DD4BF" },
+];
+
+// Floating particle component
+function FloatingParticle({ x, y, size, delay, duration }: { x: number; y: number; size: number; delay: number; duration: number }) {
+  return (
+    <motion.div
+      style={{
+        position: "absolute",
+        left: `${x}%`,
+        top: `${y}%`,
+        width: size,
+        height: size,
+        borderRadius: "50%",
+        background: "rgba(45, 212, 191, 0.35)",
+        pointerEvents: "none",
+      }}
+      animate={{
+        y: [0, -30, 0],
+        opacity: [0.3, 0.8, 0.3],
+        scale: [1, 1.3, 1],
+      }}
+      transition={{
+        duration,
+        delay,
+        repeat: Infinity,
+        repeatType: "loop",
+      }}
+    />
+  );
+}
+
+const particles = [
+  { x: 10, y: 20, size: 8, delay: 0, duration: 4 },
+  { x: 25, y: 60, size: 5, delay: 0.8, duration: 5 },
+  { x: 45, y: 35, size: 10, delay: 1.5, duration: 3.5 },
+  { x: 65, y: 70, size: 6, delay: 0.3, duration: 4.5 },
+  { x: 80, y: 25, size: 9, delay: 1.2, duration: 3.8 },
+  { x: 90, y: 55, size: 5, delay: 0.6, duration: 5.2 },
+  { x: 15, y: 80, size: 7, delay: 2.0, duration: 4.2 },
+  { x: 55, y: 15, size: 6, delay: 1.8, duration: 3.2 },
 ];
 
 export default function Home() {
+  const stat1 = useCounter(500);
+  const stat2 = useCounter(99);
+  const stat3 = useCounter(48);
+  const stat4 = useCounter(5);
+
   return (
-    <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
-      <Navbar />
+    <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
 
       {/* ── HERO ── */}
       <section
         style={{
-          background: 'linear-gradient(135deg, #F0FDFB 0%, #E6F7F5 40%, #EFF9F8 70%, #F8FFFE 100%)',
-          paddingTop: '80px',
-          position: 'relative',
-          overflow: 'hidden',
+          position: "relative",
+          minHeight: "92vh",
+          display: "flex",
+          alignItems: "center",
+          overflow: "hidden",
+          backgroundImage: `url('/manus-storage/hero_main_e010fb0a.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
-        {/* Decorative teal blob */}
-        <div style={{
-          position: 'absolute', top: '-80px', right: '-80px',
-          width: '500px', height: '500px',
-          background: 'radial-gradient(circle, rgba(45,212,191,0.12) 0%, transparent 70%)',
-          borderRadius: '50%', pointerEvents: 'none',
-        }} />
-        <div style={{
-          position: 'absolute', bottom: '-60px', left: '10%',
-          width: '300px', height: '300px',
-          background: 'radial-gradient(circle, rgba(45,212,191,0.07) 0%, transparent 70%)',
-          borderRadius: '50%', pointerEvents: 'none',
-        }} />
+        {/* Light overlay so text is readable */}
+        <div style={{ position: "absolute", inset: 0, background: "rgba(255,255,255,0.72)" }} />
 
-        <div className="container" style={{ paddingTop: '72px', paddingBottom: '80px' }}>
+        {/* Floating particles */}
+        {particles.map((p, i) => (
+          <FloatingParticle key={i} {...p} />
+        ))}
+
+        <div className="container" style={{ position: "relative", zIndex: 10 }}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Copy */}
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
             >
-              <div
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
                 className="inline-flex items-center gap-2 mb-6"
                 style={{
-                  background: 'rgba(45,212,191,0.12)',
-                  border: '1px solid rgba(45,212,191,0.3)',
-                  borderRadius: '100px',
-                  padding: '6px 14px',
-                  color: '#0D9488',
-                  fontSize: '0.7rem',
+                  background: "rgba(45,212,191,0.15)",
+                  border: "1px solid rgba(45,212,191,0.4)",
+                  borderRadius: "100px",
+                  padding: "6px 16px",
+                  color: "#0D9488",
+                  fontSize: "0.7rem",
                   fontWeight: 700,
-                  letterSpacing: '0.1em',
-                  fontFamily: 'Space Grotesk, sans-serif',
+                  letterSpacing: "0.12em",
+                  fontFamily: "Space Grotesk, sans-serif",
                 }}
               >
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#2DD4BF', display: 'inline-block' }} />
+                <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#2DD4BF", display: "inline-block" }} />
                 UK'S COMPLETE TECHNOLOGY PARTNER
-              </div>
+              </motion.div>
 
-              <h1
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
                 style={{
-                  fontFamily: 'Space Grotesk, DM Sans, sans-serif',
-                  fontSize: 'clamp(2.8rem, 5vw, 4.2rem)',
-                  fontWeight: 700,
-                  lineHeight: 1.08,
-                  color: '#111827',
-                  marginBottom: '20px',
+                  fontFamily: "Space Grotesk, sans-serif",
+                  fontSize: "clamp(3rem, 6vw, 5rem)",
+                  fontWeight: 800,
+                  color: "#111827",
+                  lineHeight: 1.05,
+                  marginBottom: "24px",
+                  letterSpacing: "-0.02em",
                 }}
               >
                 Reliable.<br />
-                <span style={{ color: '#0D9488' }}>Secure.</span><br />
+                <span style={{ color: "#0D9488" }}>Secure.</span><br />
                 Connected.
-              </h1>
+              </motion.h1>
 
-              <p style={{ fontSize: '1.05rem', color: '#6B7280', lineHeight: 1.7, maxWidth: '480px', marginBottom: '32px' }}>
-                SafeServ brings together the UK's best technology services — VoIP, IT support, connectivity, AI, and digital — under one roof. No lock-in contracts. Just exceptional service.
-              </p>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.5 }}
+                style={{
+                  fontSize: "1.1rem",
+                  color: "#4B5563",
+                  lineHeight: 1.75,
+                  maxWidth: "480px",
+                  marginBottom: "36px",
+                }}
+              >
+                SafeServ brings together the UK's best technology services — VoIP, IT support, connectivity, AI, and digital — all under one roof. <strong style={{ color: "#0D9488" }}>No lock-in contracts.</strong> Just exceptional service.
+              </motion.p>
 
-              <div className="flex flex-wrap gap-3">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+                className="flex flex-wrap gap-4"
+              >
                 <Link href="/contact">
-                  <button
-                    className="flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-105"
+                  <motion.button
+                    whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.5)" }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex items-center gap-2 font-semibold"
                     style={{
-                      backgroundColor: '#2DD4BF',
-                      color: '#0D2A25',
-                      padding: '14px 28px',
-                      borderRadius: '8px',
-                      fontSize: '0.95rem',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      boxShadow: '0 4px 16px rgba(45,212,191,0.4)',
-                      border: 'none',
+                      backgroundColor: "#2DD4BF",
+                      color: "#0D2A25",
+                      padding: "15px 32px",
+                      borderRadius: "8px",
+                      fontSize: "0.95rem",
+                      fontFamily: "Space Grotesk, sans-serif",
+                      boxShadow: "0 4px 20px rgba(45,212,191,0.4)",
+                      border: "none",
                     }}
                   >
                     Get a Free Quote <ArrowRight size={16} />
-                  </button>
+                  </motion.button>
                 </Link>
                 <a href="tel:01245850140">
-                  <button
-                    className="flex items-center gap-2 font-semibold transition-all duration-200"
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="flex items-center gap-2 font-semibold"
                     style={{
-                      backgroundColor: 'transparent',
-                      color: '#2B4A5C',
-                      padding: '14px 28px',
-                      borderRadius: '8px',
-                      fontSize: '0.95rem',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      border: '1.5px solid #D1D5DB',
+                      backgroundColor: "transparent",
+                      color: "#2B4A5C",
+                      padding: "15px 32px",
+                      borderRadius: "8px",
+                      fontSize: "0.95rem",
+                      fontFamily: "Space Grotesk, sans-serif",
+                      border: "2px solid #2B4A5C",
                     }}
                   >
-                    <Phone size={16} style={{ color: '#0D9488' }} />
-                    01245 850140
-                  </button>
+                    <Phone size={16} /> 01245 850140
+                  </motion.button>
                 </a>
-              </div>
+              </motion.div>
 
               {/* Trust badges */}
-              <div className="flex flex-wrap items-center gap-5 mt-8">
-                {['No Lock-In', 'UK Based', '24/7 Support', 'Free Quote'].map((badge) => (
-                  <div key={badge} className="flex items-center gap-2" style={{ color: '#6B7280', fontSize: '0.82rem' }}>
-                    <CheckCircle size={14} style={{ color: '#2DD4BF' }} />
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.0, duration: 0.6 }}
+                className="flex flex-wrap gap-6 mt-8"
+              >
+                {["No Lock-In", "UK Based", "24/7 Support", "Free Quote"].map((badge) => (
+                  <div key={badge} className="flex items-center gap-2" style={{ fontSize: "0.8rem", color: "#6B7280", fontFamily: "Space Grotesk, sans-serif" }}>
+                    <CheckCircle size={14} style={{ color: "#2DD4BF" }} />
                     {badge}
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
-            {/* Hero right — phone image */}
+            {/* Right: F60 phone floating */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="hidden lg:flex items-center justify-center"
+              initial={{ opacity: 0, x: 60, y: 20 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 1.0, delay: 0.4 }}
+              className="hidden lg:flex justify-center items-center"
+              style={{ position: "relative" }}
             >
-              <div style={{ position: 'relative' }}>
+              <motion.div
+                animate={{ y: [0, -16, 0] }}
+                transition={{ duration: 4, repeat: Infinity, repeatType: "loop" }}
+                style={{ position: "relative" }}
+              >
+                {/* Glow ring behind phone */}
                 <div style={{
-                  position: 'absolute', inset: '-20px',
-                  background: 'radial-gradient(circle, rgba(45,212,191,0.15) 0%, transparent 70%)',
-                  borderRadius: '50%',
+                  position: "absolute",
+                  inset: -40,
+                  background: "radial-gradient(circle, rgba(45,212,191,0.2) 0%, transparent 70%)",
+                  borderRadius: "50%",
                 }} />
                 <img
-                  src="/manus-storage/VoIPPhoneF60Safeservbrochure_9e5a2b1d.png"
-                  alt="SafeServ F60 IP Phone"
-                  style={{ width: '420px', maxWidth: '100%', objectFit: 'contain', position: 'relative', zIndex: 1 }}
+                  src="/manus-storage/VoIPPhoneF60Safeservbrochure_35572fac.png"
+                  alt="SafeServ F60 Flagship IP Phone"
+                  style={{ maxHeight: "420px", objectFit: "contain", position: "relative", zIndex: 2, filter: "drop-shadow(0 20px 40px rgba(45,212,191,0.25))" }}
                 />
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
+
+        {/* Bottom wave */}
+        <div style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}>
+          <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+            <path d="M0,40 C360,0 1080,80 1440,20 L1440,60 L0,60 Z" fill="#FFFFFF" />
+          </svg>
+        </div>
       </section>
 
-      {/* ── STATS BAR ── */}
-      <section style={{ backgroundColor: '#2B4A5C' }}>
-        <div className="container py-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((s, i) => (
+      {/* ── ANIMATED STATS BAR ── */}
+      <section style={{ backgroundColor: "#FFFFFF", paddingTop: "60px", paddingBottom: "60px" }}>
+        <div className="container">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { ref: stat1.ref, count: stat1.count, suffix: "+", label: "Clients Served", icon: Users },
+              { ref: stat2.ref, count: stat2.count, suffix: "%", label: "Uptime SLA", icon: Shield },
+              { ref: stat3.ref, count: stat3.count, suffix: "hr", label: "Website Delivery", icon: Clock },
+              { ref: stat4.ref, count: stat4.count, suffix: " Services", label: "Under One Roof", icon: Star },
+            ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                style={{ padding: "24px" }}
               >
-                <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '2rem', fontWeight: 700, color: '#2DD4BF' }}>{s.num}</div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.06em', marginTop: '4px' }}>{s.label.toUpperCase()}</div>
+                <stat.icon size={28} style={{ color: "#2DD4BF", margin: "0 auto 12px" }} />
+                <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "2.5rem", fontWeight: 800, color: "#111827", lineHeight: 1 }}>
+                  <span ref={stat.ref}>{stat.count}</span>{stat.suffix}
+                </div>
+                <div style={{ fontSize: "0.8rem", color: "#6B7280", marginTop: "6px", fontFamily: "Space Grotesk, sans-serif" }}>{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -208,125 +367,172 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES GRID ── */}
-      <section className="py-24" style={{ backgroundColor: '#F9FAFB' }}>
+      <section style={{ backgroundColor: "#F9FAFB", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="text-center mb-14"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>WHAT WE DO</p>
-            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
-              Everything your<br />
-              <span style={{ color: '#0D9488' }}>business needs.</span>
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488", fontFamily: "Space Grotesk, sans-serif" }}>
+              EVERYTHING YOUR BUSINESS NEEDS
+            </div>
+            <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#111827", marginBottom: "16px" }}>
+              One Partner. Five Pillars.
             </h2>
+            <p style={{ color: "#6B7280", maxWidth: "520px", margin: "0 auto", lineHeight: 1.7 }}>
+              From your phone system to your website — SafeServ handles every layer of your business technology.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((svc, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
+                key={svc.title}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
               >
                 <Link href={svc.href}>
-                  <div
-                    className="group p-8 rounded-xl h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  <motion.div
+                    whileHover={{ y: -6, boxShadow: `0 16px 40px rgba(45,212,191,0.18)` }}
+                    transition={{ duration: 0.25 }}
                     style={{
-                      backgroundColor: '#FFFFFF',
-                      border: '1px solid #E5E7EB',
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = `${svc.color}60`;
-                      (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 30px ${svc.color}20`;
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = '#E5E7EB';
-                      (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                      backgroundColor: "#FFFFFF",
+                      borderRadius: "16px",
+                      padding: "32px",
+                      border: "1px solid #E5E7EB",
+                      cursor: "pointer",
+                      height: "100%",
                     }}
                   >
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: `${svc.color}15` }}>
-                      <svc.icon size={22} style={{ color: svc.color }} />
+                    <div style={{ width: 52, height: 52, borderRadius: "12px", backgroundColor: svc.bg, display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px", border: `1px solid ${svc.color}30` }}>
+                      <svc.icon size={24} style={{ color: svc.color }} />
                     </div>
-                    <h3 className="text-lg font-semibold mb-3" style={{ color: '#111827', fontFamily: 'Space Grotesk, sans-serif' }}>
-                      {svc.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#6B7280' }}>{svc.desc}</p>
-                    <div className="flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3" style={{ color: svc.color }}>
+                    <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "#111827", marginBottom: "10px" }}>{svc.title}</h3>
+                    <p style={{ fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.65, marginBottom: "20px" }}>{svc.desc}</p>
+                    <div className="flex items-center gap-1" style={{ color: svc.color, fontSize: "0.82rem", fontWeight: 600, fontFamily: "Space Grotesk, sans-serif" }}>
                       Learn more <ChevronRight size={14} />
                     </div>
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.div>
             ))}
+
+            {/* No lock-in card */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              style={{
+                background: "linear-gradient(135deg, #2B4A5C 0%, #1A3352 100%)",
+                borderRadius: "16px",
+                padding: "32px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <Shield size={32} style={{ color: "#2DD4BF", marginBottom: "16px" }} />
+              <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.25rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "12px" }}>No Lock-In Contracts</h3>
+              <p style={{ fontSize: "0.875rem", color: "rgba(255,255,255,0.75)", lineHeight: 1.65, marginBottom: "20px" }}>
+                We earn your business every month. Stay because the service is excellent — not because you're trapped.
+              </p>
+              <Link href="/about">
+                <div className="flex items-center gap-1" style={{ color: "#2DD4BF", fontSize: "0.82rem", fontWeight: 600, fontFamily: "Space Grotesk, sans-serif" }}>
+                  Our philosophy <ChevronRight size={14} />
+                </div>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ── PHONE SHOWCASE ── */}
-      <section className="py-24" style={{ backgroundColor: '#FFFFFF' }}>
-        <div className="container">
+      <section
+        style={{
+          position: "relative",
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          backgroundImage: `url('/manus-storage/voip_section_5cc9dbec.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ position: "absolute", inset: 0, background: "rgba(255,255,255,0.88)" }} />
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="text-center mb-14"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>VOIP RANGE</p>
-            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
-              Phones built for<br />
-              <span style={{ color: '#0D9488' }}>modern business.</span>
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488", fontFamily: "Space Grotesk, sans-serif" }}>
+              VOIP TELEPHONY
+            </div>
+            <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#111827", marginBottom: "16px" }}>
+              HD Voice for Every Desk.
             </h2>
+            <p style={{ color: "#6B7280", maxWidth: "480px", margin: "0 auto", lineHeight: 1.7 }}>
+              Three phones. One range. All with HD audio, PoE, and enterprise features — with no lock-in.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {phones.map((phone, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
+                key={phone.name}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
+                transition={{ duration: 0.6, delay: i * 0.15 }}
               >
                 <Link href={phone.href}>
-                  <div
-                    className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                  <motion.div
+                    whileHover={{ y: -8, boxShadow: "0 20px 50px rgba(45,212,191,0.2)" }}
+                    transition={{ duration: 0.3 }}
                     style={{
-                      backgroundColor: '#F0FDFB',
-                      border: '1px solid rgba(45,212,191,0.25)',
+                      backgroundColor: "#FFFFFF",
+                      borderRadius: "20px",
+                      padding: "32px 24px",
+                      textAlign: "center",
+                      border: "1px solid #E5E7EB",
+                      cursor: "pointer",
                     }}
                   >
-                    {phone.tag === 'MOST POPULAR' && (
-                      <div style={{ backgroundColor: '#2DD4BF', color: '#0D2A25', textAlign: 'center', padding: '6px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'Space Grotesk, sans-serif' }}>
-                        ★ MOST POPULAR
-                      </div>
-                    )}
-                    <div style={{ padding: '32px 24px 16px', textAlign: 'center', background: 'linear-gradient(180deg, #F0FDFB 0%, #E6F7F5 100%)' }}>
+                    <div className="inline-block mb-4 px-3 py-1 text-xs font-bold tracking-widest rounded" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488", fontFamily: "Space Grotesk, sans-serif" }}>
+                      {phone.tag}
+                    </div>
+                    <motion.div
+                      animate={{ y: [0, -8, 0] }}
+                      transition={{ duration: 3 + i * 0.5, repeat: Infinity, repeatType: "loop" }}
+                      style={{ marginBottom: "20px" }}
+                    >
                       <img
                         src={phone.img}
-                        alt={`SafeServ ${phone.name}`}
-                        style={{ height: '180px', objectFit: 'contain', margin: '0 auto' }}
+                        alt={`SafeServ ${phone.name} IP Phone`}
+                        style={{ height: "180px", objectFit: "contain", margin: "0 auto", filter: "drop-shadow(0 8px 20px rgba(45,212,191,0.2))" }}
                       />
+                    </motion.div>
+                    <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.5rem", fontWeight: 700, color: "#111827", marginBottom: "16px" }}>
+                      {phone.name} <span style={{ color: "#0D9488" }}>IP Phone</span>
+                    </h3>
+                    <ul className="space-y-2 text-left">
+                      {phone.features.map((f, j) => (
+                        <li key={j} className="flex items-center gap-2" style={{ fontSize: "0.82rem", color: "#4B5563" }}>
+                          <CheckCircle size={13} style={{ color: "#2DD4BF", flexShrink: 0 }} />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="flex items-center justify-center gap-1 mt-5" style={{ color: "#0D9488", fontSize: "0.82rem", fontWeight: 600, fontFamily: "Space Grotesk, sans-serif" }}>
+                      View full specs <ChevronRight size={14} />
                     </div>
-                    <div style={{ padding: '20px 24px 28px' }}>
-                      <div style={{ fontSize: '0.65rem', color: '#0D9488', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '4px', fontFamily: 'Space Grotesk, sans-serif' }}>{phone.tag}</div>
-                      <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.4rem', fontWeight: 700, color: '#111827', marginBottom: '12px' }}>{phone.name} IP Phone</div>
-                      <ul className="space-y-1">
-                        {phone.features.map((f, j) => (
-                          <li key={j} className="flex items-center gap-2" style={{ fontSize: '0.8rem', color: '#6B7280' }}>
-                            <CheckCircle size={12} style={{ color: '#2DD4BF', flexShrink: 0 }} />
-                            {f}
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="flex items-center gap-2 mt-4 text-sm font-semibold group-hover:gap-3 transition-all" style={{ color: '#0D9488' }}>
-                        View specs <ChevronRight size={14} />
-                      </div>
-                    </div>
-                  </div>
+                  </motion.div>
                 </Link>
               </motion.div>
             ))}
@@ -334,172 +540,217 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY SAFESERV ── */}
-      <section className="py-24" style={{ backgroundColor: '#F0FDFB' }}>
-        <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>WHY SAFESERV</p>
-            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
-              The SafeServ<br />
-              <span style={{ color: '#0D9488' }}>difference.</span>
-            </h2>
-          </motion.div>
+      {/* ── AI SECTION ── */}
+      <section
+        style={{
+          position: "relative",
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          backgroundImage: `url('/manus-storage/ai_section_7dcdbe5e.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ position: "absolute", inset: 0, background: "rgba(255,255,255,0.85)" }} />
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488", fontFamily: "Space Grotesk, sans-serif" }}>
+                AI SOLUTIONS
+              </div>
+              <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#111827", lineHeight: 1.2, marginBottom: "16px" }}>
+                SafeServ <span style={{ color: "#0D9488" }}>Translate+</span><br />Live Call Transcription.
+              </h2>
+              <p style={{ color: "#4B5563", lineHeight: 1.75, marginBottom: "24px" }}>
+                Every call, transcribed in real time. Never miss a detail — compliance, training, and customer insight all in one AI-powered platform.
+              </p>
+              <ul className="space-y-3 mb-8">
+                {["Real-time transcription during live calls", "Automatic call summaries and action points", "Compliance-ready call archiving", "Integrates with your existing phone system"].map((item, i) => (
+                  <motion.li
+                    key={i}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-3"
+                    style={{ fontSize: "0.9rem", color: "#374151" }}
+                  >
+                    <CheckCircle size={16} style={{ color: "#2DD4BF", flexShrink: 0, marginTop: 2 }} />
+                    {item}
+                  </motion.li>
+                ))}
+              </ul>
+              <Link href="/ai-solutions">
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.4)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 font-semibold"
+                  style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", boxShadow: "0 4px 16px rgba(45,212,191,0.35)" }}
+                >
+                  Explore AI Solutions <ArrowRight size={16} />
+                </motion.button>
+              </Link>
+            </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyUs.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: 'rgba(45,212,191,0.12)', border: '1px solid rgba(45,212,191,0.25)' }}>
-                  <item.icon size={24} style={{ color: '#0D9488' }} />
+            {/* Animated transcript mockup */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <div style={{ backgroundColor: "#FFFFFF", borderRadius: "20px", padding: "28px", border: "1px solid #E5E7EB", boxShadow: "0 16px 48px rgba(45,212,191,0.12)" }}>
+                <div className="flex items-center gap-3 mb-5">
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#EF4444" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#F59E0B" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#10B981" }} />
+                  <span style={{ fontSize: "0.75rem", color: "#9CA3AF", marginLeft: "8px", fontFamily: "Space Grotesk, sans-serif" }}>SafeServ Translate+ — Live</span>
+                  <motion.div
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    style={{ marginLeft: "auto", width: 8, height: 8, borderRadius: "50%", backgroundColor: "#10B981" }}
+                  />
                 </div>
-                <h3 className="font-semibold mb-3" style={{ color: '#111827', fontFamily: 'Space Grotesk, sans-serif', fontSize: '1rem' }}>{item.title}</h3>
-                <p style={{ fontSize: '0.85rem', color: '#6B7280', lineHeight: 1.6 }}>{item.desc}</p>
-              </motion.div>
-            ))}
+                {[
+                  { speaker: "Agent", text: "Good morning, thanks for calling SafeServ. How can I help?", delay: 0 },
+                  { speaker: "Customer", text: "Hi, I'd like to know more about your VoIP packages.", delay: 0.5 },
+                  { speaker: "Agent", text: "Of course! We have three options — the D44, E50, and F60...", delay: 1.0 },
+                  { speaker: "AI Summary", text: "📋 Customer interested in VoIP. Recommended: D44 or E50.", delay: 1.5 },
+                ].map((line, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: line.delay + 0.3 }}
+                    style={{ marginBottom: "14px" }}
+                  >
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, color: line.speaker === "AI Summary" ? "#0D9488" : "#9CA3AF", letterSpacing: "0.08em", marginBottom: "4px", fontFamily: "Space Grotesk, sans-serif" }}>
+                      {line.speaker.toUpperCase()}
+                    </div>
+                    <div style={{
+                      fontSize: "0.82rem",
+                      color: "#374151",
+                      backgroundColor: line.speaker === "AI Summary" ? "rgba(45,212,191,0.08)" : "#F9FAFB",
+                      padding: "10px 14px",
+                      borderRadius: "10px",
+                      border: line.speaker === "AI Summary" ? "1px solid rgba(45,212,191,0.25)" : "1px solid #E5E7EB",
+                      lineHeight: 1.5,
+                    }}>
+                      {line.text}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* ── PARTNER ECOSYSTEM ── */}
-      <section className="py-24" style={{ backgroundColor: '#FFFFFF' }}>
+      <section style={{ backgroundColor: "#F9FAFB", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-14"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>OUR ECOSYSTEM</p>
-            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
-              Best-in-class<br />
-              <span style={{ color: '#0D9488' }}>partners.</span>
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488", fontFamily: "Space Grotesk, sans-serif" }}>
+              PARTNER ECOSYSTEM
+            </div>
+            <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, color: "#111827", marginBottom: "16px" }}>
+              Best-in-Class Partners.
             </h2>
+            <p style={{ color: "#6B7280", maxWidth: "480px", margin: "0 auto", lineHeight: 1.7 }}>
+              We work with the UK's leading technology providers so you always get the best solution.
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                name: "Sweetbyte",
-                role: "IT Support & Cyber Security",
-                desc: "25+ years of IT expertise. The UK's first MOA (Managing Operating Agents) service included as standard with every IT support contract.",
-                color: "#2DD4BF",
-                href: "https://sweetbyte.co.uk",
-              },
-              {
-                name: "TheGreenAgents",
-                role: "AI Automation & Web Development",
-                desc: "AI voice receptionists, marketing automation, custom websites, and mobile apps. The future of business operations, available today.",
-                color: "#0D9488",
-                href: "https://thegreenagents.com",
-              },
-              {
-                name: "ClearerPaths",
-                role: "Rapid Website Delivery",
-                desc: "7-page professional websites delivered in under 48 hours from £799. Copywriting, images, and hosting included.",
-                color: "#2DD4BF",
-                href: "https://clearerpaths.co.uk",
-              },
-            ].map((partner, i) => (
+          <div className="flex flex-wrap justify-center gap-4">
+            {partners.map((p, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                key={p.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-2xl"
+                transition={{ duration: 0.4, delay: i * 0.1 }}
+                whileHover={{ scale: 1.05, boxShadow: `0 8px 24px ${p.color}25` }}
                 style={{
-                  backgroundColor: '#F9FAFB',
-                  border: `1px solid ${partner.color}30`,
+                  backgroundColor: "#FFFFFF",
+                  border: `1px solid ${p.color}30`,
+                  borderRadius: "12px",
+                  padding: "20px 28px",
+                  textAlign: "center",
+                  minWidth: "160px",
                 }}
               >
-                <div className="text-xs font-semibold tracking-widest mb-2" style={{ color: partner.color, fontFamily: 'Space Grotesk, sans-serif' }}>
-                  {partner.role.toUpperCase()}
-                </div>
-                <h3 className="text-xl font-bold mb-3" style={{ color: '#111827', fontFamily: 'Space Grotesk, sans-serif' }}>{partner.name}</h3>
-                <p className="text-sm leading-relaxed mb-5" style={{ color: '#6B7280' }}>{partner.desc}</p>
-                <a
-                  href={partner.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm font-semibold"
-                  style={{ color: partner.color }}
-                >
-                  Visit website <ChevronRight size={14} />
-                </a>
+                <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1rem", fontWeight: 700, color: "#111827", marginBottom: "4px" }}>{p.name}</div>
+                <div style={{ fontSize: "0.72rem", color: p.color, fontWeight: 600, letterSpacing: "0.06em" }}>{p.role}</div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
-      <section className="py-20" style={{ backgroundColor: '#2B4A5C' }}>
-        <div className="container text-center">
+      {/* ── FINAL CTA ── */}
+      <section
+        style={{
+          position: "relative",
+          paddingTop: "80px",
+          paddingBottom: "80px",
+          backgroundImage: `url('/manus-storage/connectivity_section_bee369cb.jpg')`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          overflow: "hidden",
+        }}
+      >
+        <div style={{ position: "absolute", inset: 0, background: "rgba(43,74,92,0.88)" }} />
+        <div className="container text-center" style={{ position: "relative", zIndex: 2 }}>
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
           >
-            <p className="text-xs font-semibold tracking-widest mb-4" style={{ color: '#2DD4BF', fontFamily: 'Space Grotesk, sans-serif' }}>READY TO GET STARTED?</p>
-            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2, marginBottom: '16px' }}>
-              One call. Every tech need.<br />
-              <span style={{ color: '#2DD4BF' }}>No lock-in.</span>
+            <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 4vw, 3.2rem)", fontWeight: 700, color: "#FFFFFF", marginBottom: "20px", lineHeight: 1.2 }}>
+              Ready to simplify your<br /><span style={{ color: "#2DD4BF" }}>business technology?</span>
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', marginBottom: '36px', maxWidth: '480px', margin: '0 auto 36px' }}>
-              Get a free, no-obligation quote for any or all of our services. We'll put together a bespoke package for your business.
+            <p style={{ color: "rgba(255,255,255,0.75)", maxWidth: "480px", margin: "0 auto 36px", lineHeight: 1.7 }}>
+              Get a free, no-obligation quote today. No lock-in contracts. No hidden fees. Just honest, expert advice.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact">
-                <button
-                  className="flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-105"
-                  style={{
-                    backgroundColor: '#2DD4BF',
-                    color: '#0D2A25',
-                    padding: '14px 32px',
-                    borderRadius: '8px',
-                    fontSize: '0.95rem',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    boxShadow: '0 4px 16px rgba(45,212,191,0.4)',
-                    border: 'none',
-                  }}
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.5)" }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 font-semibold"
+                  style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "15px 36px", borderRadius: "8px", fontSize: "1rem", fontFamily: "Space Grotesk, sans-serif", border: "none", boxShadow: "0 4px 20px rgba(45,212,191,0.4)" }}
                 >
                   Get a Free Quote <ArrowRight size={16} />
-                </button>
+                </motion.button>
               </Link>
               <a href="tel:01245850140">
-                <button
-                  className="flex items-center gap-2 font-semibold transition-all"
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: '#FFFFFF',
-                    padding: '14px 32px',
-                    borderRadius: '8px',
-                    fontSize: '0.95rem',
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    border: '1.5px solid rgba(255,255,255,0.3)',
-                  }}
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="flex items-center gap-2 font-semibold"
+                  style={{ backgroundColor: "transparent", color: "#FFFFFF", padding: "15px 36px", borderRadius: "8px", fontSize: "1rem", fontFamily: "Space Grotesk, sans-serif", border: "2px solid rgba(255,255,255,0.5)" }}
                 >
-                  <Phone size={16} />
-                  01245 850140
-                </button>
+                  <Phone size={16} /> Call 01245 850140
+                </motion.button>
               </a>
             </div>
           </motion.div>
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

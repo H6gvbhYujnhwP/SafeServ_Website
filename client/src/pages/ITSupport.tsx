@@ -18,7 +18,7 @@ export default function ITSupport() {
       <section
         className="relative py-24 overflow-hidden"
         style={{
-          backgroundImage: `url('/manus-storage/it_support_hero_445d801e.jpg')`,
+          backgroundImage: `url('/manus-storage/it_support_hero_3cd9325c.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

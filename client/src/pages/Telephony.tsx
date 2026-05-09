@@ -1,7 +1,5 @@
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { CheckCircle, ChevronRight, Phone, ArrowRight } from "lucide-react";
 
 /* OPTION 2: CRISP WHITE & TEAL */
@@ -11,7 +9,7 @@ const phones = [
     name: "D44",
     subtitle: "Entry Level IP Phone",
     tag: "ENTRY LEVEL",
-    img: "/manus-storage/VoIPPhoneD44-1_6f4c3e2a.png",
+    img: "/manus-storage/VoIPPhoneD44-1_29767178.png",
     keyFeatures: [
       "4.3\" (480x272) Colour LCD Display",
       "10 BLF/Function Keys with Tri-Colour LED",
@@ -38,7 +36,7 @@ const phones = [
     name: "E50",
     subtitle: "Mid-Range IP Phone",
     tag: "MOST POPULAR",
-    img: "/manus-storage/VoIPPhoneE50_7b2d1f3c.png",
+    img: "/manus-storage/VoIPPhoneE50_5be54825.png",
     keyFeatures: [
       "4.3\" (480x272) Colour Display",
       "36 BLF Keys with Tri-Color LEDs",
@@ -65,7 +63,7 @@ const phones = [
     name: "F60",
     subtitle: "Flagship Touchscreen Phone",
     tag: "FLAGSHIP",
-    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_9e5a2b1d.png",
+    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_35572fac.png",
     keyFeatures: [
       "7\" (1024x600) Colour Touchscreen",
       "HD Audio (Handset & Speakerphone)",
@@ -93,7 +91,6 @@ const phones = [
 export default function Telephony() {
   return (
     <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
-      <Navbar />
 
       {/* Hero */}
       <section
@@ -222,7 +219,6 @@ export default function Telephony() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

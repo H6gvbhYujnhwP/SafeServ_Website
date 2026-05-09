@@ -29,7 +29,7 @@ export default function AISolutions() {
       <section
         className="relative py-24 overflow-hidden"
         style={{
-          backgroundImage: `url('/manus-storage/ai_hero_3fdf28b4.jpg')`,
+          backgroundImage: `url('/manus-storage/ai_hero_6a889a20.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

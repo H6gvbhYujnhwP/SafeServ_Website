@@ -45,7 +45,7 @@ export default function Navbar() {
           <Link href="/">
             <div className="flex items-center gap-2">
               <img
-                src="/manus-storage/Safeserv_Logo_3cfdca1b.png"
+                src="/manus-storage/Safeserv_Logo_cb294e9c.png"
                 alt="SafeServ"
                 className="h-8 lg:h-10 object-contain"
               />

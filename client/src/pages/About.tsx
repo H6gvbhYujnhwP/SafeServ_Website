@@ -38,7 +38,7 @@ export default function About() {
     <div style={{ backgroundColor: '#F9FAFB', paddingTop: '80px' }}>
       {/* Hero */}
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #112744 0%, #1A3352 100%)' }}>
-        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`, backgroundSize: 'cover' }} />
+        <div className="absolute inset-0 opacity-15" style={{ backgroundImage: `url('/manus-storage/hero_bg_b0288072.jpg')`, backgroundSize: 'cover' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>ABOUT SAFESERV</p>

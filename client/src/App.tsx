@@ -17,7 +17,8 @@ import Contact from "./pages/Contact";
 
 function Router() {
   return (
-    <div className="min-h-screen flex flex-col" style={{ backgroundColor: '#0D1B2A' }}>
+    <div className="min-h-screen flex flex-col" style={{ backgroundColor: "#FFFFFF" }}>
+      {/* Single persistent Navbar — renders once for all pages */}
       <Navbar />
       <main className="flex-1">
         <Switch>
@@ -33,6 +34,7 @@ function Router() {
           <Route component={NotFound} />
         </Switch>
       </main>
+      {/* Single persistent Footer — renders once for all pages */}
       <Footer />
     </div>
   );
@@ -41,7 +43,7 @@ function Router() {
 function App() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark">
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <Router />

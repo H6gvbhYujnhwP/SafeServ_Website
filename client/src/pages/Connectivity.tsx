@@ -16,7 +16,7 @@ export default function Connectivity() {
       <section
         className="relative py-24 overflow-hidden"
         style={{
-          backgroundImage: `url('/manus-storage/connectivity_hero_f731c946.jpg')`,
+          backgroundImage: `url('/manus-storage/connectivity_hero_ed9ffdab.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
