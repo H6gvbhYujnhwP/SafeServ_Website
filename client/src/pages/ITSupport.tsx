@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Shield, Cpu, Users, Clock, CheckCircle, Zap, Monitor, Lock, AlertTriangle, Eye, Server } from "lucide-react";
+import { ArrowRight, Shield, Users, CheckCircle, Zap, Lock, AlertTriangle, Eye, Server, RotateCcw, Cloud, Headphones, Activity, Cpu, Monitor } from "lucide-react";
 
 function ITGraphic() {
   const nodes = [
@@ -53,115 +53,82 @@ function ITGraphic() {
 }
 
 interface ITCard {
-  title: string; tag: string; tagColor: string; accentColor: string;
-  bgGradient: string; stripColor: string; desc: string;
+  title: string; tag: string; highlight?: boolean;
+  image: string; imageAlt: string;
+  gradient: string;
+  icon: React.ElementType;
+  desc: string;
   backTitle: string; backDesc: string; features: string[];
 }
 
 const itCards: ITCard[] = [
   {
-    title: "Cyber Security", tag: "ESSENTIAL", tagColor: "#EF4444", accentColor: "#EF4444",
-    bgGradient: "linear-gradient(135deg, #1a0a0a 0%, #2a1010 100%)", stripColor: "rgba(239,68,68,0.18)",
+    title: "Cyber Security", tag: "ESSENTIAL", highlight: true,
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&q=80",
+    imageAlt: "Cyber security network protection",
+    gradient: "linear-gradient(160deg, rgba(239,68,68,0.75) 0%, rgba(13,42,37,0.85) 100%)",
+    icon: Shield,
     desc: "Multi-layered protection including endpoint security, firewalls, email filtering, and security awareness training.",
     backTitle: "Your Digital Fortress",
     backDesc: "Cyber threats evolve daily. SafeServ deploys enterprise-grade security layers that keep your business protected 24/7 — without the enterprise price tag.",
     features: ["Endpoint detection & response (EDR)", "Email filtering & anti-phishing", "Next-gen firewall management", "Security awareness training", "Dark web monitoring"],
   },
   {
-    title: "Cloud Services", tag: "MICROSOFT 365", tagColor: "#0D9488", accentColor: "#2DD4BF",
-    bgGradient: "linear-gradient(135deg, #0D2A25 0%, #0f3530 100%)", stripColor: "rgba(45,212,191,0.18)",
+    title: "Cloud Services", tag: "MICROSOFT 365",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",
+    imageAlt: "Cloud computing data centre",
+    gradient: "linear-gradient(160deg, rgba(13,148,136,0.75) 0%, rgba(13,42,37,0.85) 100%)",
+    icon: Cloud,
     desc: "Microsoft 365, Azure, and cloud migration. We move your business to the cloud safely and efficiently.",
     backTitle: "Work From Anywhere",
     backDesc: "Migrate to Microsoft 365 and Azure with zero downtime. We handle the entire transition — from planning and data migration to user training and ongoing management.",
     features: ["Microsoft 365 setup & licensing", "Azure cloud migration", "SharePoint & Teams deployment", "Cloud backup & disaster recovery", "Ongoing cloud management"],
   },
   {
-    title: "Helpdesk Support", tag: "UK ENGINEERS", tagColor: "#0D9488", accentColor: "#2DD4BF",
-    bgGradient: "linear-gradient(135deg, #0D2A25 0%, #112e28 100%)", stripColor: "rgba(45,212,191,0.15)",
+    title: "Helpdesk Support", tag: "UK ENGINEERS",
+    image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
+    imageAlt: "IT helpdesk support team",
+    gradient: "linear-gradient(160deg, rgba(13,148,136,0.75) 0%, rgba(13,42,37,0.85) 100%)",
+    icon: Headphones,
     desc: "Remote and on-site support from experienced UK engineers. Fast response times and clear communication.",
     backTitle: "Real People. Real Fast.",
     backDesc: "No call centres, no scripts. When something breaks, you speak directly to a UK-based engineer who knows your systems and fixes the problem — not just the ticket.",
     features: ["1-hour response SLA", "Remote & on-site support", "Dedicated account engineer", "Plain-English communication", "Out-of-hours emergency cover"],
   },
   {
-    title: "Proactive Monitoring", tag: "24/7", tagColor: "#0D9488", accentColor: "#2DD4BF",
-    bgGradient: "linear-gradient(135deg, #0D2A25 0%, #0e2e28 100%)", stripColor: "rgba(45,212,191,0.15)",
+    title: "Proactive Monitoring", tag: "24/7",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
+    imageAlt: "Network monitoring dashboard",
+    gradient: "linear-gradient(160deg, rgba(13,148,136,0.75) 0%, rgba(13,42,37,0.85) 100%)",
+    icon: Activity,
     desc: "24/7 monitoring of your IT infrastructure. We fix problems before they affect your business.",
     backTitle: "Fix It Before You Feel It",
     backDesc: "Our monitoring agents watch your entire infrastructure around the clock. Most issues are detected and resolved automatically before you even know they existed.",
     features: ["Real-time infrastructure monitoring", "Automated self-healing scripts", "Predictive failure alerts", "Network performance tracking", "Monthly health reports"],
   },
   {
-    title: "MOA — Managing Operating Agents", tag: "UK FIRST", tagColor: "#F59E0B", accentColor: "#F59E0B",
-    bgGradient: "linear-gradient(135deg, #1a2a10 0%, #1e3015 100%)", stripColor: "rgba(245,158,11,0.18)",
+    title: "MOA — Managing Operating Agents", tag: "UK FIRST",
+    image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80",
+    imageAlt: "AI artificial intelligence technology",
+    gradient: "linear-gradient(160deg, rgba(245,158,11,0.75) 0%, rgba(13,42,37,0.85) 100%)",
+    icon: Cpu,
     desc: "The UK's first AI-powered IT management layer. Intelligent automation that keeps your systems running at peak performance.",
     backTitle: "AI That Manages Your IT",
     backDesc: "MOA is included as standard with every SafeServ package. It doesn't just monitor your systems — it actively manages, heals, and optimises them in real time.",
     features: ["AI-driven anomaly detection", "Automated patch management", "Predictive hardware failure alerts", "Intelligent ticket routing", "Continuous compliance monitoring"],
   },
   {
-    title: "Hardware & Software", tag: "PROCUREMENT", tagColor: "#0D9488", accentColor: "#2DD4BF",
-    bgGradient: "linear-gradient(135deg, #0D2A25 0%, #0f2e2a 100%)", stripColor: "rgba(45,212,191,0.15)",
+    title: "Hardware & Software", tag: "PROCUREMENT",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    imageAlt: "IT hardware procurement",
+    gradient: "linear-gradient(160deg, rgba(13,148,136,0.75) 0%, rgba(13,42,37,0.85) 100%)",
+    icon: Monitor,
     desc: "Procurement, setup, and lifecycle management for all your business hardware and software needs.",
     backTitle: "Right Kit. Right Price.",
     backDesc: "From laptops and servers to software licences and peripherals — we source, configure, and deploy everything your business needs. No markups, no hassle.",
     features: ["Hardware procurement & setup", "Software licensing management", "Asset lifecycle tracking", "Device refresh planning", "Warranty & repair management"],
   },
 ];
-
-function CardSVG({ title, accentColor }: { title: string; accentColor: string }) {
-  if (title === "Cyber Security") return (
-    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-      <motion.path d="M24 4 L40 12 L40 26 C40 34 32 41 24 44 C16 41 8 34 8 26 L8 12 Z"
-        stroke="#EF4444" strokeWidth="2" fill="rgba(239,68,68,0.12)"
-        animate={{ opacity: [0.7,1,0.7] }} transition={{ duration: 2, repeat: Infinity }} />
-      <motion.path d="M17 24 L22 29 L31 19" stroke="#EF4444" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ duration: 0.8, delay: 0.2 }} />
-    </svg>
-  );
-  if (title === "Cloud Services") return (
-    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-      <motion.ellipse cx="24" cy="20" rx="16" ry="10" stroke={accentColor} strokeWidth="2" fill="rgba(45,212,191,0.08)"
-        animate={{ scaleX: [1,1.05,1] }} transition={{ duration: 3, repeat: Infinity }} />
-      <motion.path d="M12 20 L12 30 C12 35 17 38 24 38 C31 38 36 35 36 30 L36 20" stroke={accentColor} strokeWidth="2" fill="none" />
-      <motion.line x1="24" y1="10" x2="24" y2="38" stroke="rgba(45,212,191,0.4)" strokeWidth="1" strokeDasharray="3 3"
-        animate={{ opacity: [0.4,0.8,0.4] }} transition={{ duration: 2, repeat: Infinity }} />
-    </svg>
-  );
-  if (title === "Helpdesk Support") return (
-    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-      <motion.circle cx="24" cy="16" r="8" stroke={accentColor} strokeWidth="2" fill="rgba(45,212,191,0.08)"
-        animate={{ scale: [1,1.08,1] }} transition={{ duration: 2.5, repeat: Infinity }} />
-      <motion.path d="M10 40 C10 32 16 28 24 28 C32 28 38 32 38 40" stroke={accentColor} strokeWidth="2" fill="none" strokeLinecap="round" />
-      <motion.circle cx="36" cy="36" r="5" fill="#10B981" animate={{ opacity: [0.6,1,0.6] }} transition={{ duration: 1.5, repeat: Infinity }} />
-    </svg>
-  );
-  if (title === "Proactive Monitoring") return (
-    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-      <motion.circle cx="24" cy="24" r="16" stroke={accentColor} strokeWidth="2" fill="rgba(45,212,191,0.06)" />
-      <motion.line x1="24" y1="24" x2="24" y2="12" stroke={accentColor} strokeWidth="2.5" strokeLinecap="round"
-        animate={{ rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }} style={{ transformOrigin: "24px 24px" }} />
-      <motion.line x1="24" y1="24" x2="32" y2="24" stroke={accentColor} strokeWidth="2" strokeLinecap="round"
-        animate={{ rotate: 360 }} transition={{ duration: 60, repeat: Infinity, ease: "linear" }} style={{ transformOrigin: "24px 24px" }} />
-    </svg>
-  );
-  if (title === "MOA — Managing Operating Agents") return (
-    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-      <motion.rect x="14" y="14" width="20" height="20" rx="4" stroke="#F59E0B" strokeWidth="2" fill="rgba(245,158,11,0.08)"
-        animate={{ rotate: [0,5,-5,0] }} transition={{ duration: 4, repeat: Infinity }} style={{ transformOrigin: "24px 24px" }} />
-      <motion.circle cx="24" cy="24" r="4" fill="#F59E0B" animate={{ scale: [1,1.3,1] }} transition={{ duration: 1.5, repeat: Infinity }} />
-    </svg>
-  );
-  return (
-    <svg width="44" height="44" viewBox="0 0 48 48" fill="none">
-      <motion.rect x="8" y="10" width="32" height="22" rx="3" stroke={accentColor} strokeWidth="2" fill="rgba(45,212,191,0.08)" />
-      <motion.line x1="16" y1="32" x2="32" y2="32" stroke={accentColor} strokeWidth="2" />
-      <motion.rect x="18" y="32" width="12" height="4" rx="1" fill="rgba(45,212,191,0.2)" stroke={accentColor} strokeWidth="1" />
-      <motion.rect x="12" y="15" width="8" height="6" rx="1" fill="rgba(45,212,191,0.15)" stroke={accentColor} strokeWidth="1"
-        animate={{ opacity: [0.5,1,0.5] }} transition={{ duration: 2, repeat: Infinity }} />
-    </svg>
-  );
-}
 
 function ITFlipCards() {
   const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -176,11 +143,12 @@ function ITFlipCards() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {itCards.map((card, i) => {
             const isFlipped = activeCard === i;
+            const CardIcon = card.icon;
             return (
               <motion.div key={card.title}
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 onClick={() => setActiveCard(prev => prev === i ? null : i)}
-                style={{ cursor: "pointer", perspective: "1000px", height: "400px" }}>
+                style={{ cursor: "pointer", perspective: "1000px", height: "340px" }}>
                 <div style={{
                   position: "relative", width: "100%", height: "100%",
                   transformStyle: "preserve-3d",
@@ -190,56 +158,73 @@ function ITFlipCards() {
                   {/* FRONT */}
                   <div style={{
                     position: "absolute", inset: 0, backfaceVisibility: "hidden",
-                    borderRadius: "18px", overflow: "hidden",
-                    border: "1px solid #E5E7EB", backgroundColor: "#FFFFFF",
+                    WebkitBackfaceVisibility: "hidden",
+                    borderRadius: "20px", overflow: "hidden",
+                    border: card.highlight ? "2px solid #2DD4BF" : "1px solid #E5E7EB",
+                    backgroundColor: "#FFFFFF",
                     display: "flex", flexDirection: "column",
+                    boxShadow: card.highlight ? "0 4px 20px rgba(45,212,191,0.14)" : "0 2px 10px rgba(0,0,0,0.05)",
                   }}>
-                    <div style={{ height: "100px", background: card.bgGradient, position: "relative", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center" }}>
-                      <div style={{ position: "absolute", inset: 0, background: card.stripColor }} />
-                      <div style={{ position: "relative", zIndex: 1 }}><CardSVG title={card.title} accentColor={card.accentColor} /></div>
-                      <div style={{ position: "absolute", top: 12, right: 14, fontSize: "0.6rem", fontWeight: 700, letterSpacing: "0.1em", color: card.tagColor, backgroundColor: `${card.tagColor}20`, padding: "3px 10px", borderRadius: "100px", border: `1px solid ${card.tagColor}40` }}>{card.tag}</div>
-                    </div>
-                    <div style={{ padding: "24px", flex: 1, display: "flex", flexDirection: "column" }}>
-                      <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#111827", marginBottom: "10px" }}>{card.title}</h3>
-                      <p style={{ fontSize: "0.85rem", color: "#6B7280", lineHeight: 1.65, flex: 1 }}>{card.desc}</p>
-                      <div style={{ marginTop: "16px", display: "flex", alignItems: "center", gap: "6px", fontSize: "0.75rem", color: card.accentColor, fontWeight: 600 }}>
-                        <span>Tap to explore</span><ArrowRight size={12} />
+                    {/* Image strip */}
+                    <div style={{ position: "relative", height: "145px", overflow: "hidden", flexShrink: 0 }}>
+                      <img src={card.image} alt={card.imageAlt} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                      <div style={{ position: "absolute", inset: 0, background: card.gradient, opacity: 0.72 }} />
+                      {/* Frosted icon */}
+                      <div style={{ position: "absolute", bottom: "14px", left: "20px", width: 44, height: 44, borderRadius: "12px", background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                        <CardIcon size={22} style={{ color: "#FFFFFF" }} />
                       </div>
+                      {/* Tag */}
+                      <div style={{ position: "absolute", top: "14px", right: "14px", fontSize: "0.6rem", fontWeight: 700, color: "#FFFFFF", backgroundColor: "rgba(0,0,0,0.28)", backdropFilter: "blur(6px)", padding: "3px 10px", borderRadius: "100px", letterSpacing: "0.08em" }}>{card.tag}</div>
+                      {card.highlight && (
+                        <div style={{ position: "absolute", top: "14px", left: "14px", fontSize: "0.6rem", fontWeight: 700, color: "#0D2A25", backgroundColor: "#EF4444", padding: "3px 10px", borderRadius: "100px", letterSpacing: "0.08em" }}>ESSENTIAL</div>
+                      )}
+                      {/* Flip hint */}
+                      <div style={{ position: "absolute", bottom: "14px", right: "14px", display: "flex", alignItems: "center", gap: "4px", fontSize: "0.6rem", fontWeight: 600, color: "rgba(255,255,255,0.8)", letterSpacing: "0.06em" }}>
+                        <RotateCcw size={10} style={{ color: "rgba(255,255,255,0.8)" }} /> TAP TO EXPLORE
+                      </div>
+                    </div>
+                    {/* Card body */}
+                    <div style={{ padding: "20px 22px 22px" }}>
+                      <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1rem", fontWeight: 700, color: "#111827", marginBottom: "8px" }}>{card.title}</h3>
+                      <p style={{ fontSize: "0.83rem", color: "#6B7280", lineHeight: 1.6 }}>{card.desc}</p>
                     </div>
                   </div>
                   {/* BACK */}
                   <div style={{
                     position: "absolute", inset: 0, backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden",
                     transform: "rotateY(180deg)",
-                    borderRadius: "18px", overflow: "hidden",
-                    background: card.bgGradient,
-                    border: `1px solid ${card.accentColor}30`,
-                    display: "flex", flexDirection: "column", padding: "20px 24px",
+                    borderRadius: "20px", overflow: "hidden",
+                    border: card.highlight ? "2px solid #EF4444" : "1px solid #2DD4BF",
+                    background: "linear-gradient(160deg, #0D9488 0%, #0F766E 55%, #134E4A 100%)",
+                    display: "flex", flexDirection: "column", padding: "24px",
                   }}>
-                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(90deg, ${card.accentColor}, transparent)` }} />
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
-                      <div style={{ width: 40, height: 40, borderRadius: "10px", background: `${card.accentColor}18`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                        <CardSVG title={card.title} accentColor={card.accentColor} />
-                      </div>
-                      <div>
-                        <div style={{ fontSize: "0.6rem", fontWeight: 700, color: card.accentColor, letterSpacing: "0.1em", marginBottom: "2px" }}>{card.tag}</div>
-                        <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.2 }}>{card.backTitle}</h3>
-                      </div>
+                    <div className="flex items-center justify-between mb-3">
+                      <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF" }}>{card.backTitle}</div>
+                      <CardIcon size={20} style={{ color: "#2DD4BF", flexShrink: 0 }} />
                     </div>
-                    <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.55, marginBottom: "10px" }}>{card.backDesc}</p>
-                    <ul style={{ listStyle: "none", padding: 0, margin: 0, flex: 1 }}>
-                      {card.features.map((f, fi) => (
-                        <li key={fi} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "4px 0", borderBottom: fi < card.features.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none", fontSize: "0.72rem", color: "rgba(255,255,255,0.8)" }}>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={card.accentColor} strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                          {f}
-                        </li>
+                    <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.82)", lineHeight: 1.6, marginBottom: "14px" }}>{card.backDesc}</p>
+                    <div style={{ flex: 1 }}>
+                      {card.features.map((f) => (
+                        <div key={f} className="flex items-center gap-2 mb-2">
+                          <div style={{ width: 16, height: 16, borderRadius: "50%", backgroundColor: "rgba(45,212,191,0.25)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            <CheckCircle size={10} style={{ color: "#2DD4BF" }} />
+                          </div>
+                          <span style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.9)", fontWeight: 500 }}>{f}</span>
+                        </div>
                       ))}
-                    </ul>
-                    <Link href="/contact" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-                      <div style={{ marginTop: "10px", backgroundColor: card.accentColor, color: "#0D2A25", padding: "9px 16px", borderRadius: "8px", fontSize: "0.75rem", fontWeight: 700, fontFamily: "Space Grotesk, sans-serif", display: "flex", alignItems: "center", gap: "6px", width: "fit-content" }}>
-                        Get a Quote <ArrowRight size={12} />
-                      </div>
+                    </div>
+                    <Link href="/contact">
+                      <motion.div
+                        whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+                        onClick={(e: React.MouseEvent) => e.stopPropagation()}
+                        className="flex items-center justify-center gap-2 font-semibold mt-3"
+                        style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "10px 18px", borderRadius: "8px", fontSize: "0.8rem", fontFamily: "Space Grotesk, sans-serif", cursor: "pointer", textAlign: "center" }}
+                      >
+                        Get a Quote <ArrowRight size={13} />
+                      </motion.div>
                     </Link>
+                    <div style={{ textAlign: "center", marginTop: "8px", fontSize: "0.6rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.06em" }}>TAP TO FLIP BACK</div>
                   </div>
                 </div>
               </motion.div>
