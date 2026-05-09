@@ -168,7 +168,7 @@ function ScrollingStrip() {
               key={i}
               style={{
                 position: "relative",
-                width: "420px",
+                width: "min(420px, 85vw)",
                 height: "280px",
                 borderRadius: "16px",
                 overflow: "hidden",
