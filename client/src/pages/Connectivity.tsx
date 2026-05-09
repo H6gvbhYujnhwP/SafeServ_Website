@@ -1,6 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, Wifi, Zap, Globe, Shield, CheckCircle, Activity } from "lucide-react";
+import { ArrowRight, Wifi, Zap, Globe, Shield, CheckCircle, Activity, Satellite, Send, Building2, MapPin, ChevronDown } from "lucide-react";
 
 function ConnectivityGraphic() {
   const branches = [
@@ -16,7 +17,6 @@ function ConnectivityGraphic() {
   return (
     <div style={{ width: "100%", height: "420px" }}>
       <svg viewBox="0 0 440 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
-        {/* Concentric signal rings */}
         {[55, 85, 115, 145].map((r, i) => (
           <motion.circle key={i} cx={cx} cy={cy} r={r}
             fill="none" stroke="#2DD4BF" strokeWidth="1"
@@ -24,7 +24,6 @@ function ConnectivityGraphic() {
             transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.6, ease: "easeOut" }}
           />
         ))}
-        {/* Branch lines */}
         {branches.map((b, i) => (
           <motion.line key={i} x1={cx} y1={cy} x2={b.x} y2={b.y}
             stroke="#2DD4BF" strokeWidth="1.5" strokeDasharray="5 4"
@@ -33,18 +32,15 @@ function ConnectivityGraphic() {
             transition={{ duration: 1.1, delay: 0.3 + i * 0.12 }}
           />
         ))}
-        {/* Travelling signal pulses */}
         {branches.slice(0, 5).map((b, i) => (
           <motion.circle key={`sig-${i}`} r={5} fill="#2DD4BF"
             animate={{ cx: [cx, b.x, cx], cy: [cy, b.y, cy] }}
             transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
           />
         ))}
-        {/* Central router hub */}
         <circle cx={cx} cy={cy} r={32} fill="#2DD4BF" />
         <text x={cx} y={cy - 4} textAnchor="middle" fill="#0D2A25" fontSize="9" fontWeight="700" fontFamily="Space Grotesk, sans-serif">SAFE</text>
         <text x={cx} y={cy + 9} textAnchor="middle" fill="#0D2A25" fontSize="9" fontWeight="700" fontFamily="Space Grotesk, sans-serif">SERV</text>
-        {/* Branch nodes */}
         {branches.map((b, i) => (
           <g key={`bn-${i}`}>
             <motion.circle cx={b.x} cy={b.y} r={22}
@@ -58,7 +54,6 @@ function ConnectivityGraphic() {
             >{b.label}</motion.text>
           </g>
         ))}
-        {/* Speed indicator bars */}
         {[0,1,2,3,4].map((j) => (
           <motion.rect key={`spd-${j}`} x={160 + j * 26} y={400} width={16} rx={4}
             fill="#2DD4BF" fillOpacity="0.65"
@@ -72,15 +67,108 @@ function ConnectivityGraphic() {
 }
 
 const solutions = [
-  { icon: Zap, title: "Ultrafast Broadband", desc: "FTTP, FTTC, and SOGEA connections via DWS and NTA. Speeds from 40Mbps to 1Gbps.", tag: "UP TO 1GBPS" },
-  { icon: Globe, title: "Leased Lines", desc: "Dedicated, uncontended fibre with guaranteed speeds and 99.9% SLA uptime.", tag: "DEDICATED FIBRE" },
-  { icon: Activity, title: "4G / 5G Backup", desc: "Automatic failover to 4G or 5G if your primary connection drops. Always online.", tag: "ALWAYS ON" },
-  { icon: Shield, title: "SD-WAN", desc: "Intelligent traffic management across multiple connections. Prioritise critical applications.", tag: "INTELLIGENT" },
-  { icon: Wifi, title: "Business Wi-Fi", desc: "Enterprise-grade wireless networks with full coverage and centralised management.", tag: "FULL COVERAGE" },
-  { icon: Globe, title: "SIP Trunking", desc: "Replace ISDN lines with flexible, cost-effective SIP trunks via Gamma network.", tag: "ISDN REPLACEMENT" },
+  {
+    icon: Zap,
+    title: "Ultrafast Broadband",
+    desc: "FTTP, FTTC, and SOGEA connections via DWS and NTA. Speeds from 40Mbps to 1Gbps.",
+    tag: "UP TO 1GBPS",
+    gradient: "linear-gradient(135deg, #0D9488 0%, #2DD4BF 100%)",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80",
+    imageAlt: "Fibre optic cables glowing teal",
+  },
+  {
+    icon: Globe,
+    title: "Leased Lines",
+    desc: "Dedicated, uncontended fibre with guaranteed speeds and 99.9% SLA uptime.",
+    tag: "DEDICATED FIBRE",
+    gradient: "linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&q=80",
+    imageAlt: "Data centre server racks with teal lighting",
+  },
+  {
+    icon: Activity,
+    title: "4G / 5G Backup",
+    desc: "Automatic failover to 4G or 5G if your primary connection drops. Always online.",
+    tag: "ALWAYS ON",
+    gradient: "linear-gradient(135deg, #0D9488 0%, #06B6D4 100%)",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80",
+    imageAlt: "5G mobile network tower",
+  },
+  {
+    icon: Shield,
+    title: "SD-WAN",
+    desc: "Intelligent traffic management across multiple connections. Prioritise critical applications.",
+    tag: "INTELLIGENT",
+    gradient: "linear-gradient(135deg, #115E59 0%, #0D9488 100%)",
+    image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=600&q=80",
+    imageAlt: "Network routing diagram on screen",
+  },
+  {
+    icon: Wifi,
+    title: "Business Wi-Fi",
+    desc: "Enterprise-grade wireless networks with full coverage and centralised management.",
+    tag: "FULL COVERAGE",
+    gradient: "linear-gradient(135deg, #0D9488 0%, #2DD4BF 100%)",
+    image: "https://images.unsplash.com/photo-1606904825846-647eb07f5be2?w=600&q=80",
+    imageAlt: "Modern office with wireless network",
+  },
+  {
+    icon: Globe,
+    title: "SIP Trunking",
+    desc: "Replace ISDN lines with flexible, cost-effective SIP trunks via Gamma network.",
+    tag: "ISDN REPLACEMENT",
+    gradient: "linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80",
+    imageAlt: "Business phone system and network",
+  },
+  {
+    icon: Satellite,
+    title: "Satellite Internet",
+    desc: "High-speed satellite connectivity for remote sites, rural locations, and anywhere terrestrial broadband can't reach.",
+    tag: "REMOTE LOCATIONS",
+    gradient: "linear-gradient(135deg, #1E3A5F 0%, #0D9488 100%)",
+    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&q=80",
+    imageAlt: "Satellite dish against night sky",
+    highlight: true,
+  },
+];
+
+const tableData = [
+  { type: "SOGEA / FTTC", speed: "40–80 Mbps", sla: "Best effort", price: "£", bestFor: "Small offices, home workers" },
+  { type: "FTTP (Full Fibre)", speed: "100Mbps–1Gbps", sla: "Best effort / enhanced", price: "££", bestFor: "Growing SMEs, cloud-heavy teams" },
+  { type: "Leased Line", speed: "100Mbps–10Gbps", sla: "99.9% guaranteed", price: "£££", bestFor: "Large offices, data centres, critical ops" },
+  { type: "4G / 5G Failover", speed: "20–300 Mbps", sla: "Best effort backup", price: "£", bestFor: "Resilience & backup for any business" },
+  { type: "Satellite", speed: "50–300 Mbps", sla: "Best effort", price: "££", bestFor: "Remote sites, rural locations, pop-ups" },
+];
+
+const connectionTypes = [
+  "SOGEA / FTTC Broadband",
+  "FTTP Full Fibre",
+  "Leased Line",
+  "4G / 5G Backup",
+  "Satellite Internet",
+  "SD-WAN",
+  "Business Wi-Fi",
+  "SIP Trunking",
+  "Not sure — advise me",
 ];
 
 export default function Connectivity() {
+  const [formData, setFormData] = useState({
+    businessName: "",
+    postcode: "",
+    connectionType: "",
+    currentProvider: "",
+    budget: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
       {/* Hero */}
@@ -90,19 +178,19 @@ export default function Connectivity() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
               <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
-                <Wifi size={12} /> CONNECTIVITY SOLUTIONS
+                <Wifi size={12} /> COMMS SOLUTIONS
               </div>
               <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
                 Fast. Reliable.<br /><span style={{ color: "#0D9488" }}>Always Connected.</span>
               </h1>
               <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px", marginBottom: "32px" }}>
-                From ultrafast broadband to dedicated leased lines — SafeServ delivers the connectivity your business depends on via the UK's leading network providers.
+                From ultrafast broadband to dedicated leased lines and satellite — SafeServ delivers the connectivity your business depends on via the UK's leading network providers.
               </p>
-              <Link href="/contact">
+              <a href="#quote-form">
                 <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
-                  Check Availability <ArrowRight size={15} />
+                  Get a Comms Quote <ArrowRight size={15} />
                 </motion.button>
-              </Link>
+              </a>
               <div className="flex flex-wrap gap-6 mt-8">
                 {["No Lock-In", "99.9% SLA", "4G Backup", "Same-Day Quotes"].map((badge) => (
                   <div key={badge} className="flex items-center gap-2" style={{ fontSize: "0.8rem", color: "#6B7280" }}>
@@ -122,28 +210,108 @@ export default function Connectivity() {
       <section style={{ backgroundColor: "#F9FAFB", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>CONNECTIVITY SOLUTIONS</div>
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>COMMS SOLUTIONS</div>
             <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#111827", marginBottom: "12px" }}>The Right Connection for Your Business.</h2>
+            <p style={{ color: "#6B7280", maxWidth: "520px", margin: "0 auto", fontSize: "1rem", lineHeight: 1.7 }}>From city-centre fibre to remote satellite links — we have a solution for every location and every budget.</p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((sol, i) => (
-              <motion.div key={sol.title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} whileHover={{ y: -5, boxShadow: "0 12px 32px rgba(45,212,191,0.15)" }} style={{ backgroundColor: "#FFFFFF", borderRadius: "16px", padding: "32px", border: "1px solid #E5E7EB" }}>
-                <div className="flex items-start justify-between mb-4">
-                  <div style={{ width: 48, height: 48, borderRadius: "12px", backgroundColor: "rgba(45,212,191,0.1)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <sol.icon size={22} style={{ color: "#0D9488" }} />
+              <motion.div
+                key={sol.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                whileHover={{ y: -6, boxShadow: "0 16px 40px rgba(45,212,191,0.18)" }}
+                style={{
+                  backgroundColor: "#FFFFFF",
+                  borderRadius: "20px",
+                  overflow: "hidden",
+                  border: sol.highlight ? "2px solid #2DD4BF" : "1px solid #E5E7EB",
+                  boxShadow: sol.highlight ? "0 4px 24px rgba(45,212,191,0.12)" : "0 2px 8px rgba(0,0,0,0.04)",
+                  position: "relative",
+                }}
+              >
+                {/* Image strip */}
+                <div style={{ position: "relative", height: "140px", overflow: "hidden" }}>
+                  <img
+                    src={sol.image}
+                    alt={sol.imageAlt}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+                  />
+                  {/* Gradient overlay */}
+                  <div style={{ position: "absolute", inset: 0, background: `${sol.gradient}`, opacity: 0.72 }} />
+                  {/* Icon on top of image */}
+                  <div style={{ position: "absolute", bottom: "14px", left: "20px", width: 44, height: 44, borderRadius: "12px", background: "rgba(255,255,255,0.18)", backdropFilter: "blur(8px)", border: "1px solid rgba(255,255,255,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    <sol.icon size={22} style={{ color: "#FFFFFF" }} />
                   </div>
-                  <span style={{ fontSize: "0.6rem", fontWeight: 700, color: "#0D9488", backgroundColor: "rgba(45,212,191,0.1)", padding: "3px 10px", borderRadius: "100px" }}>{sol.tag}</span>
+                  {/* Tag badge */}
+                  <div style={{ position: "absolute", top: "14px", right: "14px", fontSize: "0.6rem", fontWeight: 700, color: "#FFFFFF", backgroundColor: "rgba(0,0,0,0.28)", backdropFilter: "blur(6px)", padding: "3px 10px", borderRadius: "100px", letterSpacing: "0.08em" }}>{sol.tag}</div>
+                  {sol.highlight && (
+                    <div style={{ position: "absolute", top: "14px", left: "14px", fontSize: "0.6rem", fontWeight: 700, color: "#0D2A25", backgroundColor: "#2DD4BF", padding: "3px 10px", borderRadius: "100px", letterSpacing: "0.08em" }}>NEW</div>
+                  )}
                 </div>
-                <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#111827", marginBottom: "10px" }}>{sol.title}</h3>
-                <p style={{ fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.65 }}>{sol.desc}</p>
+                {/* Card body */}
+                <div style={{ padding: "22px 24px 26px" }}>
+                  <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.05rem", fontWeight: 700, color: "#111827", marginBottom: "8px" }}>{sol.title}</h3>
+                  <p style={{ fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.65 }}>{sol.desc}</p>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Partners */}
+      {/* Comparison Table */}
       <section style={{ backgroundColor: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
+        <div className="container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>COMPARE SOLUTIONS</div>
+            <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#111827", marginBottom: "12px" }}>Which Connection Is Right for You?</h2>
+            <p style={{ color: "#6B7280", maxWidth: "500px", margin: "0 auto", fontSize: "1rem", lineHeight: 1.7 }}>Compare our connectivity products side by side to find the best fit for your business size, location, and budget.</p>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} style={{ overflowX: "auto", borderRadius: "20px", boxShadow: "0 4px 32px rgba(0,0,0,0.07)", border: "1px solid #E5E7EB" }}>
+            <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "Space Grotesk, sans-serif", minWidth: "640px" }}>
+              <thead>
+                <tr style={{ background: "linear-gradient(135deg, #0D9488 0%, #0F766E 100%)" }}>
+                  {["Connection Type", "Speed", "SLA", "Price Tier", "Best For"].map((h) => (
+                    <th key={h} style={{ padding: "18px 20px", textAlign: "left", color: "#FFFFFF", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {tableData.map((row, i) => (
+                  <motion.tr
+                    key={row.type}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.07 }}
+                    style={{ backgroundColor: i % 2 === 0 ? "#FFFFFF" : "#F9FAFB", borderBottom: "1px solid #E5E7EB" }}
+                  >
+                    <td style={{ padding: "16px 20px", fontWeight: 700, color: "#111827", fontSize: "0.9rem" }}>
+                      <div className="flex items-center gap-2">
+                        {row.type === "Satellite" && <span style={{ fontSize: "0.6rem", fontWeight: 700, color: "#0D9488", backgroundColor: "rgba(45,212,191,0.12)", padding: "2px 8px", borderRadius: "100px" }}>REMOTE</span>}
+                        {row.type}
+                      </div>
+                    </td>
+                    <td style={{ padding: "16px 20px", color: "#0D9488", fontWeight: 600, fontSize: "0.875rem" }}>{row.speed}</td>
+                    <td style={{ padding: "16px 20px", color: "#4B5563", fontSize: "0.875rem" }}>{row.sla}</td>
+                    <td style={{ padding: "16px 20px" }}>
+                      <span style={{ fontWeight: 700, color: row.price === "£££" ? "#0D9488" : row.price === "££" ? "#14B8A6" : "#6B7280", fontSize: "1rem" }}>{row.price}</span>
+                    </td>
+                    <td style={{ padding: "16px 20px", color: "#6B7280", fontSize: "0.875rem" }}>{row.bestFor}</td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+          <p style={{ textAlign: "center", color: "#9CA3AF", fontSize: "0.78rem", marginTop: "16px" }}>Prices and speeds are indicative. Contact us for a tailored quote based on your exact location and requirements.</p>
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section style={{ backgroundColor: "#F9FAFB", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
             <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>NETWORK PARTNERS</div>
@@ -155,7 +323,7 @@ export default function Connectivity() {
               { name: "NTA", desc: "A leading UK network provider with extensive fibre infrastructure and competitive pricing." },
               { name: "Gamma", desc: "One of the UK's largest voice and data providers powering SIP trunks for thousands of businesses." },
             ].map((p, i) => (
-              <motion.div key={p.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ backgroundColor: "#F9FAFB", borderRadius: "16px", padding: "36px", border: "1px solid #E5E7EB", textAlign: "center" }}>
+              <motion.div key={p.name} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} style={{ backgroundColor: "#FFFFFF", borderRadius: "16px", padding: "36px", border: "1px solid #E5E7EB", textAlign: "center" }}>
                 <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.8rem", fontWeight: 800, color: "#0D9488", marginBottom: "12px" }}>{p.name}</div>
                 <p style={{ fontSize: "0.875rem", color: "#6B7280", lineHeight: 1.65 }}>{p.desc}</p>
               </motion.div>
@@ -164,16 +332,163 @@ export default function Connectivity() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section style={{ background: "linear-gradient(135deg, #0D9488 0%, #0F766E 100%)", paddingTop: "72px", paddingBottom: "72px" }}>
-        <div className="container text-center">
-          <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#FFFFFF", marginBottom: "16px" }}>Check availability at your address.</h2>
-          <p style={{ color: "rgba(255,255,255,0.85)", maxWidth: "440px", margin: "0 auto 32px" }}>Get a free quote today. We'll find the fastest, most reliable connection at your location.</p>
-          <Link href="/contact">
-            <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(0,0,0,0.2)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold mx-auto" style={{ backgroundColor: "#FFFFFF", color: "#0D9488", padding: "15px 36px", borderRadius: "8px", fontSize: "1rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
-              Check Availability <ArrowRight size={16} />
-            </motion.button>
-          </Link>
+      {/* Quote Form */}
+      <section id="quote-form" style={{ background: "linear-gradient(135deg, #F0FDFB 0%, #E6FFFA 60%, #F0FDF4 100%)", paddingTop: "96px", paddingBottom: "96px" }}>
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left: copy */}
+            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
+              <div className="inline-block mb-5 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>GET A QUOTE</div>
+              <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", fontWeight: 700, color: "#111827", lineHeight: 1.2, marginBottom: "20px" }}>
+                Tell us what you need.<br /><span style={{ color: "#0D9488" }}>We'll find the best solution.</span>
+              </h2>
+              <p style={{ color: "#4B5563", lineHeight: 1.75, marginBottom: "36px", maxWidth: "420px" }}>
+                Whether you're upgrading from ADSL, moving to a new premises, or connecting a remote site via satellite — we'll get you a same-day quote with no obligation.
+              </p>
+              <div className="flex flex-col gap-5">
+                {[
+                  { icon: CheckCircle, text: "Same-day quotes on all connection types" },
+                  { icon: CheckCircle, text: "No lock-in contracts — cancel anytime" },
+                  { icon: CheckCircle, text: "UK-based account management" },
+                  { icon: CheckCircle, text: "Satellite solutions for remote locations" },
+                ].map((item) => (
+                  <div key={item.text} className="flex items-center gap-3">
+                    <item.icon size={18} style={{ color: "#2DD4BF", flexShrink: 0 }} />
+                    <span style={{ color: "#374151", fontSize: "0.9rem", fontWeight: 500 }}>{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right: form */}
+            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }}>
+              {submitted ? (
+                <div style={{ backgroundColor: "#FFFFFF", borderRadius: "24px", padding: "56px 40px", textAlign: "center", border: "1px solid #E5E7EB", boxShadow: "0 8px 40px rgba(45,212,191,0.12)" }}>
+                  <div style={{ width: 64, height: 64, borderRadius: "50%", background: "linear-gradient(135deg, #0D9488, #2DD4BF)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+                    <CheckCircle size={28} style={{ color: "#FFFFFF" }} />
+                  </div>
+                  <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.4rem", fontWeight: 700, color: "#111827", marginBottom: "12px" }}>Quote Request Sent!</h3>
+                  <p style={{ color: "#6B7280", lineHeight: 1.7 }}>Thanks — we'll be in touch within one business day with a tailored connectivity quote.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} style={{ backgroundColor: "#FFFFFF", borderRadius: "24px", padding: "40px", border: "1px solid #E5E7EB", boxShadow: "0 8px 40px rgba(45,212,191,0.1)" }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                    {/* Business Name */}
+                    <div>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "6px", letterSpacing: "0.04em" }}>BUSINESS NAME *</label>
+                      <div style={{ position: "relative" }}>
+                        <Building2 size={15} style={{ position: "absolute", left: "13px", top: "50%", transform: "translateY(-50%)", color: "#9CA3AF" }} />
+                        <input
+                          type="text"
+                          required
+                          placeholder="Acme Ltd"
+                          value={formData.businessName}
+                          onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
+                          style={{ width: "100%", paddingLeft: "38px", paddingRight: "14px", paddingTop: "11px", paddingBottom: "11px", border: "1.5px solid #E5E7EB", borderRadius: "10px", fontSize: "0.875rem", color: "#111827", fontFamily: "Space Grotesk, sans-serif", outline: "none", transition: "border-color 0.2s", backgroundColor: "#FAFAFA" }}
+                          onFocus={(e) => (e.target.style.borderColor = "#2DD4BF")}
+                          onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                        />
+                      </div>
+                    </div>
+                    {/* Postcode */}
+                    <div>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "6px", letterSpacing: "0.04em" }}>POSTCODE *</label>
+                      <div style={{ position: "relative" }}>
+                        <MapPin size={15} style={{ position: "absolute", left: "13px", top: "50%", transform: "translateY(-50%)", color: "#9CA3AF" }} />
+                        <input
+                          type="text"
+                          required
+                          placeholder="CM1 1AA"
+                          value={formData.postcode}
+                          onChange={(e) => setFormData({ ...formData, postcode: e.target.value })}
+                          style={{ width: "100%", paddingLeft: "38px", paddingRight: "14px", paddingTop: "11px", paddingBottom: "11px", border: "1.5px solid #E5E7EB", borderRadius: "10px", fontSize: "0.875rem", color: "#111827", fontFamily: "Space Grotesk, sans-serif", outline: "none", transition: "border-color 0.2s", backgroundColor: "#FAFAFA" }}
+                          onFocus={(e) => (e.target.style.borderColor = "#2DD4BF")}
+                          onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Connection Type */}
+                  <div className="mb-5">
+                    <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "6px", letterSpacing: "0.04em" }}>CONNECTION TYPE NEEDED *</label>
+                    <div style={{ position: "relative" }}>
+                      <select
+                        required
+                        value={formData.connectionType}
+                        onChange={(e) => setFormData({ ...formData, connectionType: e.target.value })}
+                        style={{ width: "100%", padding: "11px 38px 11px 14px", border: "1.5px solid #E5E7EB", borderRadius: "10px", fontSize: "0.875rem", color: formData.connectionType ? "#111827" : "#9CA3AF", fontFamily: "Space Grotesk, sans-serif", outline: "none", appearance: "none", backgroundColor: "#FAFAFA", cursor: "pointer" }}
+                        onFocus={(e) => (e.target.style.borderColor = "#2DD4BF")}
+                        onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                      >
+                        <option value="" disabled>Select a connection type…</option>
+                        {connectionTypes.map((ct) => <option key={ct} value={ct}>{ct}</option>)}
+                      </select>
+                      <ChevronDown size={15} style={{ position: "absolute", right: "13px", top: "50%", transform: "translateY(-50%)", color: "#9CA3AF", pointerEvents: "none" }} />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                    {/* Current Provider */}
+                    <div>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "6px", letterSpacing: "0.04em" }}>CURRENT PROVIDER</label>
+                      <input
+                        type="text"
+                        placeholder="BT, Virgin, Sky…"
+                        value={formData.currentProvider}
+                        onChange={(e) => setFormData({ ...formData, currentProvider: e.target.value })}
+                        style={{ width: "100%", padding: "11px 14px", border: "1.5px solid #E5E7EB", borderRadius: "10px", fontSize: "0.875rem", color: "#111827", fontFamily: "Space Grotesk, sans-serif", outline: "none", backgroundColor: "#FAFAFA" }}
+                        onFocus={(e) => (e.target.style.borderColor = "#2DD4BF")}
+                        onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                      />
+                    </div>
+                    {/* Monthly Budget */}
+                    <div>
+                      <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "6px", letterSpacing: "0.04em" }}>MONTHLY BUDGET</label>
+                      <select
+                        value={formData.budget}
+                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                        style={{ width: "100%", padding: "11px 14px", border: "1.5px solid #E5E7EB", borderRadius: "10px", fontSize: "0.875rem", color: formData.budget ? "#111827" : "#9CA3AF", fontFamily: "Space Grotesk, sans-serif", outline: "none", appearance: "none", backgroundColor: "#FAFAFA" }}
+                        onFocus={(e) => (e.target.style.borderColor = "#2DD4BF")}
+                        onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                      >
+                        <option value="">Any budget</option>
+                        <option value="Under £50/mo">Under £50/mo</option>
+                        <option value="£50–£150/mo">£50–£150/mo</option>
+                        <option value="£150–£500/mo">£150–£500/mo</option>
+                        <option value="£500+/mo">£500+/mo</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div className="mb-6">
+                    <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "#374151", marginBottom: "6px", letterSpacing: "0.04em" }}>ADDITIONAL DETAILS</label>
+                    <textarea
+                      rows={3}
+                      placeholder="Tell us about your site, number of users, or any specific requirements…"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      style={{ width: "100%", padding: "11px 14px", border: "1.5px solid #E5E7EB", borderRadius: "10px", fontSize: "0.875rem", color: "#111827", fontFamily: "Space Grotesk, sans-serif", outline: "none", resize: "vertical", backgroundColor: "#FAFAFA", lineHeight: 1.6 }}
+                      onFocus={(e) => (e.target.style.borderColor = "#2DD4BF")}
+                      onBlur={(e) => (e.target.style.borderColor = "#E5E7EB")}
+                    />
+                  </div>
+
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02, boxShadow: "0 8px 30px rgba(45,212,191,0.4)" }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full flex items-center justify-center gap-2 font-semibold"
+                    style={{ background: "linear-gradient(135deg, #0D9488 0%, #2DD4BF 100%)", color: "#FFFFFF", padding: "15px 28px", borderRadius: "10px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer", letterSpacing: "0.02em" }}
+                  >
+                    <Send size={16} /> Send Quote Request
+                  </motion.button>
+                  <p style={{ textAlign: "center", color: "#9CA3AF", fontSize: "0.75rem", marginTop: "12px" }}>No obligation. We'll respond within one business day.</p>
+                </form>
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>
