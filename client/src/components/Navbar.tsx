@@ -40,14 +40,14 @@ export default function Navbar() {
       }}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center gap-2">
               <img
-                src="/manus-storage/Safeserv_Logo_cb294e9c.png"
+                src="/manus-storage/Safeserv_Logo_white_final_029b1a7a.png"
                 alt="SafeServ"
-                className="h-8 lg:h-10 object-contain"
+                className="h-14 lg:h-[70px] object-contain"
               />
             </div>
           </Link>

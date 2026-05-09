@@ -9,10 +9,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <img
-              src="/manus-storage/Safeserv_Logo_cb294e9c.png"
+              src="/manus-storage/Safeserv_Logo_white_final_029b1a7a.png"
               alt="SafeServ"
-              className="h-10 object-contain mb-4"
-              style={{ filter: 'brightness(0) invert(1)' }}
+              className="h-[70px] object-contain mb-4"
             />
             <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.65)' }}>
               Your complete technology partner for UK SMEs. VoIP, IT support, connectivity, AI solutions, and digital services — all under one roof, with no lock-in contracts.
