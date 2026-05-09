@@ -145,6 +145,140 @@ const particles = [
   { x: 55, y: 15, size: 6, delay: 1.8, duration: 3.2 },
 ];
 
+/* ── ANIMATED NETWORK GRAPHIC ── */
+function NetworkGraphic() {
+  // Node positions: [cx, cy, label, isHub]
+  const nodes = [
+    { cx: 240, cy: 240, r: 28, label: "SafeServ", hub: true },
+    { cx: 100, cy: 100, r: 18, label: "VoIP", hub: false },
+    { cx: 380, cy: 90, r: 18, label: "IT", hub: false },
+    { cx: 420, cy: 260, r: 18, label: "AI", hub: false },
+    { cx: 350, cy: 390, r: 18, label: "Web", hub: false },
+    { cx: 100, cy: 370, r: 18, label: "Net", hub: false },
+    { cx: 60, cy: 230, r: 14, label: "PoE", hub: false },
+    { cx: 240, cy: 60, r: 14, label: "SIP", hub: false },
+    { cx: 450, cy: 160, r: 14, label: "TLS", hub: false },
+  ];
+  const edges = [
+    [0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],
+    [1,6],[1,7],[2,7],[2,8],[3,8],[3,4],[4,5],[5,6],
+  ];
+  const pulseNodes = [1,2,3,4,5];
+
+  return (
+    <div style={{ position: "relative", width: "480px", height: "480px" }}>
+      {/* Radial glow behind the whole graphic */}
+      <div style={{
+        position: "absolute", inset: 0,
+        background: "radial-gradient(ellipse at 50% 50%, rgba(45,212,191,0.18) 0%, transparent 70%)",
+        borderRadius: "50%",
+        pointerEvents: "none",
+      }} />
+      <svg width="480" height="480" viewBox="0 0 480 480" style={{ position: "absolute", inset: 0 }}>
+        <defs>
+          <radialGradient id="hubGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#2DD4BF" />
+            <stop offset="100%" stopColor="#0D9488" />
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+        {/* Edges */}
+        {edges.map(([a, b], i) => (
+          <line
+            key={i}
+            x1={nodes[a].cx} y1={nodes[a].cy}
+            x2={nodes[b].cx} y2={nodes[b].cy}
+            stroke="rgba(45,212,191,0.25)"
+            strokeWidth="1.5"
+            strokeDasharray="4 4"
+          />
+        ))}
+        {/* Nodes */}
+        {nodes.map((n, i) => (
+          <g key={i}>
+            {n.hub && (
+              <circle cx={n.cx} cy={n.cy} r={n.r + 12}
+                fill="none" stroke="rgba(45,212,191,0.2)" strokeWidth="1" />
+            )}
+            <circle
+              cx={n.cx} cy={n.cy} r={n.r}
+              fill={n.hub ? "url(#hubGrad)" : "rgba(45,212,191,0.12)"}
+              stroke={n.hub ? "#2DD4BF" : "rgba(45,212,191,0.5)"}
+              strokeWidth={n.hub ? 2.5 : 1.5}
+              filter={n.hub ? "url(#glow)" : undefined}
+            />
+            <text
+              x={n.cx} y={n.cy + (n.hub ? 5 : 4)}
+              textAnchor="middle"
+              fill={n.hub ? "#fff" : "#0D9488"}
+              fontSize={n.hub ? 9 : 8}
+              fontWeight={n.hub ? 700 : 600}
+              fontFamily="Space Grotesk, sans-serif"
+              letterSpacing="0.04em"
+            >
+              {n.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+      {/* Animated pulse rings on key nodes */}
+      {pulseNodes.map((ni, i) => (
+        <motion.div
+          key={ni}
+          style={{
+            position: "absolute",
+            left: nodes[ni].cx - nodes[ni].r - 8,
+            top: nodes[ni].cy - nodes[ni].r - 8,
+            width: (nodes[ni].r + 8) * 2,
+            height: (nodes[ni].r + 8) * 2,
+            borderRadius: "50%",
+            border: "1.5px solid rgba(45,212,191,0.5)",
+            pointerEvents: "none",
+          }}
+          animate={{ scale: [1, 1.6, 1], opacity: [0.6, 0, 0.6] }}
+          transition={{ duration: 2.5 + i * 0.4, repeat: Infinity, delay: i * 0.5 }}
+        />
+      ))}
+      {/* Travelling dot along an edge */}
+      <motion.div
+        style={{
+          position: "absolute",
+          width: 8, height: 8,
+          borderRadius: "50%",
+          background: "#2DD4BF",
+          boxShadow: "0 0 8px #2DD4BF",
+          pointerEvents: "none",
+          top: 0, left: 0,
+        }}
+        animate={{
+          x: [nodes[0].cx - 4, nodes[3].cx - 4, nodes[4].cx - 4, nodes[0].cx - 4],
+          y: [nodes[0].cy - 4, nodes[3].cy - 4, nodes[4].cy - 4, nodes[0].cy - 4],
+        }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+      />
+      <motion.div
+        style={{
+          position: "absolute",
+          width: 6, height: 6,
+          borderRadius: "50%",
+          background: "#0D9488",
+          boxShadow: "0 0 6px #0D9488",
+          pointerEvents: "none",
+          top: 0, left: 0,
+        }}
+        animate={{
+          x: [nodes[0].cx - 3, nodes[1].cx - 3, nodes[6].cx - 3, nodes[0].cx - 3],
+          y: [nodes[0].cy - 3, nodes[1].cy - 3, nodes[6].cy - 3, nodes[0].cy - 3],
+        }}
+        transition={{ duration: 3.2, repeat: Infinity, ease: "linear", delay: 1 }}
+      />
+    </div>
+  );
+}
+
 export default function Home() {
   const stat1 = useCounter(500);
   const stat2 = useCounter(99);
@@ -158,13 +292,15 @@ export default function Home() {
       <section
         style={{
           position: "relative",
-          minHeight: "92vh",
+          minHeight: "100vh",
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
           backgroundImage: `url('/manus-storage/hero_main_e010fb0a.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          paddingTop: "120px",
+          paddingBottom: "80px",
         }}
       >
         {/* Light overlay so text is readable */}
@@ -299,32 +435,15 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right: F60 phone floating */}
+            {/* Right: Animated SVG Network Graphic */}
             <motion.div
-              initial={{ opacity: 0, x: 60, y: 20 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.0, delay: 0.4 }}
               className="hidden lg:flex justify-center items-center"
-              style={{ position: "relative" }}
+              style={{ position: "relative", height: "480px", width: "100%" }}
             >
-              <motion.div
-                animate={{ y: [0, -16, 0] }}
-                transition={{ duration: 4, repeat: Infinity, repeatType: "loop" }}
-                style={{ position: "relative" }}
-              >
-                {/* Glow ring behind phone */}
-                <div style={{
-                  position: "absolute",
-                  inset: -40,
-                  background: "radial-gradient(circle, rgba(45,212,191,0.2) 0%, transparent 70%)",
-                  borderRadius: "50%",
-                }} />
-                <img
-                  src="/manus-storage/VoIPPhoneF60Safeservbrochure_35572fac.png"
-                  alt="SafeServ F60 Flagship IP Phone"
-                  style={{ maxHeight: "420px", objectFit: "contain", position: "relative", zIndex: 2, filter: "drop-shadow(0 20px 40px rgba(45,212,191,0.25))" }}
-                />
-              </motion.div>
+              <NetworkGraphic />
             </motion.div>
           </div>
         </div>
