@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 /* OPTION 2: CRISP WHITE & TEAL — Home Page */
-/* Hero: /manus-storage/hero_main_e010fb0a.jpg */
+/* Hero: /hero_main.jpg */
 
 // Animated counter hook
 function useCounter(end: number, duration = 2000) {
@@ -77,21 +77,21 @@ const phones = [
   {
     name: "D44",
     tag: "ENTRY LEVEL",
-    img: "/manus-storage/VoIPPhoneD44-1_29767178.png",
+    img: "/VoIPPhoneD44-1.png",
     features: ["4.3\" Colour LCD", "10 BLF Keys", "HD Audio", "PoE Support"],
     href: "/telephony",
   },
   {
     name: "E50",
     tag: "MOST POPULAR",
-    img: "/manus-storage/VoIPPhoneE50_5be54825.png",
+    img: "/VoIPPhoneE50.png",
     features: ["4.3\" Colour LCD", "36 BLF Keys", "5-Way Conference", "Bluetooth & EHS"],
     href: "/telephony",
   },
   {
     name: "F60",
     tag: "FLAGSHIP",
-    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_35572fac.png",
+    img: "/VoIPPhoneF60.png",
     features: ["7\" Touchscreen", "20 SIP Accounts", "Video Calling", "Built-in Wi-Fi"],
     href: "/telephony",
   },
@@ -296,7 +296,7 @@ export default function Home() {
           display: "flex",
           alignItems: "center",
           overflow: "hidden",
-          backgroundImage: `url('/manus-storage/hero_main_e010fb0a.jpg')`,
+          backgroundImage: `url('/hero_main.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           paddingTop: "120px",
@@ -576,7 +576,7 @@ export default function Home() {
           position: "relative",
           paddingTop: "80px",
           paddingBottom: "80px",
-          backgroundImage: `url('/manus-storage/voip_section_5cc9dbec.jpg')`,
+          backgroundImage: `url('/voip_section.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           overflow: "hidden",
@@ -665,7 +665,7 @@ export default function Home() {
           position: "relative",
           paddingTop: "80px",
           paddingBottom: "80px",
-          backgroundImage: `url('/manus-storage/ai_section_7dcdbe5e.jpg')`,
+          backgroundImage: `url('/ai_section.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           overflow: "hidden",
@@ -824,7 +824,7 @@ export default function Home() {
           position: "relative",
           paddingTop: "80px",
           paddingBottom: "80px",
-          backgroundImage: `url('/manus-storage/connectivity_section_bee369cb.jpg')`,
+          backgroundImage: `url('/connectivity_section.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           overflow: "hidden",

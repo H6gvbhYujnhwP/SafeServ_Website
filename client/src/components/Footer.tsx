@@ -9,7 +9,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <img
-              src="/manus-storage/Safeserv_Logo_white_final_029b1a7a.png"
+              src="/logo.png"
               alt="SafeServ"
               className="h-[70px] object-contain mb-4"
             />

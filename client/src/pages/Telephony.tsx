@@ -83,7 +83,7 @@ const phones = [
     name: "D44",
     subtitle: "Entry Level IP Phone",
     tag: "ENTRY LEVEL",
-    img: "/manus-storage/D44_8656242d.png",
+    img: "/D44.png",
     keyFeatures: [
       "4.3\" (480x272) Colour LCD Display",
       "10 BLF/Function Keys with Tri-Colour LED",
@@ -110,7 +110,7 @@ const phones = [
     name: "E50",
     subtitle: "Mid-Range IP Phone",
     tag: "MOST POPULAR",
-    img: "/manus-storage/E50_b057ac5b.png",
+    img: "/E50.png",
     keyFeatures: [
       "4.3\" (480x272) Colour Display",
       "36 BLF Keys with Tri-Color LEDs",
@@ -137,7 +137,7 @@ const phones = [
     name: "F60",
     subtitle: "Flagship Touchscreen Phone",
     tag: "FLAGSHIP",
-    img: "/manus-storage/F60_2f81ce76.png",
+    img: "/F60.png",
     keyFeatures: [
       "7\" (1024x600) Colour Touchscreen",
       "HD Audio (Handset & Speakerphone)",

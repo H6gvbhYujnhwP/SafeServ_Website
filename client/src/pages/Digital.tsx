@@ -72,19 +72,19 @@ function WebDesignGraphic() {
 
 // Portfolio images for the scrolling strip — device mockups showing website designs
 const portfolioImages = [
-  { src: "/manus-storage/3mH5KkbsXKFf_891a0a4f.jpg", label: "Finance", sector: "FINANCIAL SERVICES" },
-  { src: "/manus-storage/hjx2zGP11v8O_f6a505cb.jpg", label: "Corporate", sector: "CORPORATE" },
-  { src: "/manus-storage/WtGysQThY6Y5_de05098f.webp", label: "Professional", sector: "PROFESSIONAL SERVICES" },
-  { src: "/manus-storage/Uhpk0uuGLzw7_09c4879f.png", label: "Creative", sector: "CREATIVE AGENCY" },
-  { src: "/manus-storage/3AEwn3IPM0fu_492ac93e.jpg", label: "Multi-Device", sector: "RESPONSIVE DESIGN" },
-  { src: "/manus-storage/EAbgn5hZTtkA_e781c05d.jpg", label: "Modern", sector: "MODERN BUSINESS" },
+  { src: "/portfolio_1.jpg", label: "Finance", sector: "FINANCIAL SERVICES" },
+  { src: "/portfolio_2.jpg", label: "Corporate", sector: "CORPORATE" },
+  { src: "/portfolio_3.webp", label: "Professional", sector: "PROFESSIONAL SERVICES" },
+  { src: "/portfolio_4.png", label: "Creative", sector: "CREATIVE AGENCY" },
+  { src: "/portfolio_5.jpg", label: "Multi-Device", sector: "RESPONSIVE DESIGN" },
+  { src: "/portfolio_6.jpg", label: "Modern", sector: "MODERN BUSINESS" },
   // Duplicate for seamless loop
-  { src: "/manus-storage/3mH5KkbsXKFf_891a0a4f.jpg", label: "Finance", sector: "FINANCIAL SERVICES" },
-  { src: "/manus-storage/hjx2zGP11v8O_f6a505cb.jpg", label: "Corporate", sector: "CORPORATE" },
-  { src: "/manus-storage/WtGysQThY6Y5_de05098f.webp", label: "Professional", sector: "PROFESSIONAL SERVICES" },
-  { src: "/manus-storage/Uhpk0uuGLzw7_09c4879f.png", label: "Creative", sector: "CREATIVE AGENCY" },
-  { src: "/manus-storage/3AEwn3IPM0fu_492ac93e.jpg", label: "Multi-Device", sector: "RESPONSIVE DESIGN" },
-  { src: "/manus-storage/EAbgn5hZTtkA_e781c05d.jpg", label: "Modern", sector: "MODERN BUSINESS" },
+  { src: "/portfolio_1.jpg", label: "Finance", sector: "FINANCIAL SERVICES" },
+  { src: "/portfolio_2.jpg", label: "Corporate", sector: "CORPORATE" },
+  { src: "/portfolio_3.webp", label: "Professional", sector: "PROFESSIONAL SERVICES" },
+  { src: "/portfolio_4.png", label: "Creative", sector: "CREATIVE AGENCY" },
+  { src: "/portfolio_5.jpg", label: "Multi-Device", sector: "RESPONSIVE DESIGN" },
+  { src: "/portfolio_6.jpg", label: "Modern", sector: "MODERN BUSINESS" },
 ];
 
 const webServices = [
