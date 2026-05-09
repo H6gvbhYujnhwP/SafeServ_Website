@@ -428,7 +428,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.45 }}
               style={{
-                background: "linear-gradient(135deg, #2B4A5C 0%, #1A3352 100%)",
+                background: "linear-gradient(135deg, #0D9488 0%, #0F766E 100%)",
                 borderRadius: "16px",
                 padding: "32px",
                 display: "flex",
@@ -608,7 +608,7 @@ export default function Home() {
               <div style={{ backgroundColor: "#FFFFFF", borderRadius: "20px", padding: "28px", border: "1px solid #E5E7EB", boxShadow: "0 16px 48px rgba(45,212,191,0.12)" }}>
                 <div className="flex items-center gap-3 mb-5">
                   <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#EF4444" }} />
-                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#F59E0B" }} />
+                  <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#2DD4BF" }} />
                   <div style={{ width: 10, height: 10, borderRadius: "50%", backgroundColor: "#10B981" }} />
                   <span style={{ fontSize: "0.75rem", color: "#9CA3AF", marginLeft: "8px", fontFamily: "Space Grotesk, sans-serif" }}>SafeServ Translate+ — Live</span>
                   <motion.div
