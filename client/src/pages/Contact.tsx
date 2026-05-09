@@ -29,18 +29,18 @@ export default function Contact() {
   };
 
   return (
-    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#F9FAFB', paddingTop: '80px' }}>
       {/* Hero */}
       <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #112744 0%, #1A3352 100%)' }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`, backgroundSize: 'cover' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>GET IN TOUCH</p>
-            <h1 className="text-6xl lg:text-7xl font-black leading-none mb-4" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>GET IN TOUCH</p>
+            <h1 className="text-6xl lg:text-7xl font-black leading-none mb-4" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#111827' }}>
               LET'S TALK<br />
-              <span style={{ color: '#2DD4BF' }}>TECHNOLOGY.</span>
+              <span style={{ color: '#0D9488' }}>TECHNOLOGY.</span>
             </h1>
-            <p className="text-lg max-w-xl" style={{ color: '#94A3B8' }}>
+            <p className="text-lg max-w-xl" style={{ color: '#6B7280' }}>
               No pressure. No obligation. Just an honest conversation about what technology can do for your business.
             </p>
           </motion.div>
@@ -65,7 +65,7 @@ export default function Contact() {
               <div className="space-y-6 mb-12">
                 <a href="tel:01245850140" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
-                    <Phone size={18} style={{ color: '#2DD4BF' }} />
+                    <Phone size={18} style={{ color: '#0D9488' }} />
                   </div>
                   <div>
                     <p className="text-xs tracking-widest mb-0.5" style={{ color: '#475569' }}>PHONE</p>
@@ -75,7 +75,7 @@ export default function Contact() {
 
                 <a href="mailto:hello@safeserv.co.uk" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
-                    <Mail size={18} style={{ color: '#2DD4BF' }} />
+                    <Mail size={18} style={{ color: '#0D9488' }} />
                   </div>
                   <div>
                     <p className="text-xs tracking-widest mb-0.5" style={{ color: '#475569' }}>EMAIL</p>
@@ -85,7 +85,7 @@ export default function Contact() {
 
                 <a href="https://www.safeserv.co.uk" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
-                    <Globe size={18} style={{ color: '#2DD4BF' }} />
+                    <Globe size={18} style={{ color: '#0D9488' }} />
                   </div>
                   <div>
                     <p className="text-xs tracking-widest mb-0.5" style={{ color: '#475569' }}>WEBSITE</p>
@@ -95,7 +95,7 @@ export default function Contact() {
 
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
-                    <MapPin size={18} style={{ color: '#2DD4BF' }} />
+                    <MapPin size={18} style={{ color: '#0D9488' }} />
                   </div>
                   <div>
                     <p className="text-xs tracking-widest mb-0.5" style={{ color: '#475569' }}>LOCATION</p>
@@ -105,12 +105,12 @@ export default function Contact() {
               </div>
 
               {/* Promise */}
-              <div className="p-6 rounded-xl" style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}>
-                <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>THE SAFESERV PROMISE</p>
+              <div className="p-6 rounded-xl" style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(45, 212, 191, 0.25)' }}>
+                <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>THE SAFESERV PROMISE</p>
                 {["No lock-in contracts", "No obligation consultations", "Fast response times", "Honest, plain-speaking advice"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 mb-2">
-                    <CheckCircle2 size={13} style={{ color: '#2DD4BF' }} />
-                    <span className="text-sm" style={{ color: '#94A3B8' }}>{item}</span>
+                    <CheckCircle2 size={13} style={{ color: '#0D9488' }} />
+                    <span className="text-sm" style={{ color: '#6B7280' }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -126,13 +126,13 @@ export default function Contact() {
               {submitted ? (
                 <div
                   className="p-12 rounded-2xl text-center"
-                  style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.3)' }}
+                  style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(45, 212, 191, 0.3)' }}
                 >
-                  <CheckCircle2 size={48} style={{ color: '#2DD4BF', margin: '0 auto 24px' }} />
+                  <CheckCircle2 size={48} style={{ color: '#0D9488', margin: '0 auto 24px' }} />
                   <h3 className="text-3xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                     MESSAGE RECEIVED!
                   </h3>
-                  <p className="text-base mb-2" style={{ color: '#94A3B8' }}>
+                  <p className="text-base mb-2" style={{ color: '#6B7280' }}>
                     Thanks for getting in touch. James will be in contact with you shortly.
                   </p>
                   <p className="text-sm" style={{ color: '#475569' }}>
@@ -143,7 +143,7 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   className="p-10 rounded-2xl"
-                  style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}
+                  style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(45, 212, 191, 0.25)' }}
                 >
                   <h3 className="text-2xl font-black mb-8 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                     SEND US A MESSAGE
@@ -151,29 +151,29 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>YOUR NAME *</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#6B7280' }}>YOUR NAME *</label>
                       <input
                         type="text"
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm text-white outline-none transition-all"
-                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(0,0,0,0.06)', color: '#111827' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
-                        onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'rgba(0,0,0,0.06)')}
                         placeholder="John Smith"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>COMPANY</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#6B7280' }}>COMPANY</label>
                       <input
                         type="text"
                         value={form.company}
                         onChange={(e) => setForm({ ...form, company: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all"
-                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(0,0,0,0.06)', color: '#111827' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
-                        onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'rgba(0,0,0,0.06)')}
                         placeholder="Your Company Ltd"
                       />
                     </div>
@@ -181,62 +181,62 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>EMAIL ADDRESS *</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#6B7280' }}>EMAIL ADDRESS *</label>
                       <input
                         type="email"
                         required
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all"
-                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(0,0,0,0.06)', color: '#111827' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
-                        onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'rgba(0,0,0,0.06)')}
                         placeholder="john@company.co.uk"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>PHONE NUMBER</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#6B7280' }}>PHONE NUMBER</label>
                       <input
                         type="tel"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all"
-                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(0,0,0,0.06)', color: '#111827' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
-                        onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                        onBlur={(e) => (e.target.style.borderColor = 'rgba(0,0,0,0.06)')}
                         placeholder="07700 900000"
                       />
                     </div>
                   </div>
 
                   <div className="mb-5">
-                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>I'M INTERESTED IN</label>
+                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#6B7280' }}>I'M INTERESTED IN</label>
                     <select
                       value={form.service}
                       onChange={(e) => setForm({ ...form, service: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all appearance-none"
-                      style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: form.service ? '#FFFFFF' : '#475569' }}
+                      style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(0,0,0,0.06)', color: form.service ? '#FFFFFF' : '#475569' }}
                       onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
-                      onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'rgba(0,0,0,0.06)')}
                     >
-                      <option value="" style={{ backgroundColor: '#1A3352' }}>Select a service...</option>
+                      <option value="" style={{ backgroundColor: '#F9FAFB' }}>Select a service...</option>
                       {services.map((s) => (
-                        <option key={s} value={s} style={{ backgroundColor: '#1A3352' }}>{s}</option>
+                        <option key={s} value={s} style={{ backgroundColor: '#F9FAFB' }}>{s}</option>
                       ))}
                     </select>
                   </div>
 
                   <div className="mb-8">
-                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>YOUR MESSAGE *</label>
+                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#6B7280' }}>YOUR MESSAGE *</label>
                     <textarea
                       required
                       rows={5}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all resize-none"
-                      style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                      style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(0,0,0,0.06)', color: '#111827' }}
                       onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
-                      onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
+                      onBlur={(e) => (e.target.style.borderColor = 'rgba(0,0,0,0.06)')}
                       placeholder="Tell us about your business and what you're looking for..."
                     />
                   </div>

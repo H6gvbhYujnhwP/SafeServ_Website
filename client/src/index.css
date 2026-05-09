@@ -4,15 +4,18 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   SAFESERV — CINEMATIC DEEP SPACE DESIGN SYSTEM v2
-   Background: #112744 (Rich Mid-Navy — not black)
-   Section Alt BG: #1A3352 (Lighter Navy — creates real contrast)
-   Elevated Surface: #1E3A5F (Cards & callout boxes)
-   Hero Overlay: #0A1628 (Deep navy — used sparingly)
-   Primary Accent: #2DD4BF (Vibrant Teal)
-   Secondary Accent: #F59E0B (Warm Gold — CTAs)
-   Text Primary: #FFFFFF
-   Text Secondary: #94A3B8 (Slate)
+   SAFESERV — CRISP WHITE & TEAL DESIGN SYSTEM v3
+   Background:        #FFFFFF (pure white)
+   Section Alt BG:    #F0FDFB (very light teal tint)
+   Section Alt BG 2:  #F9FAFB (light grey)
+   Hero BG:           linear-gradient(135deg, #F0FDFB → #E6F7F5 → #F8FFFE)
+   Primary Dark:      #2B4A5C (dark slate navy — from logo)
+   Primary Teal:      #2DD4BF (vibrant teal — CTAs, accents)
+   Teal Dark:         #0D9488 (hover states, links)
+   Gold CTA:          #F59E0B (secondary CTA)
+   Text Primary:      #111827
+   Text Secondary:    #6B7280
+   Border:            #E5E7EB
    ============================================================ */
 
 @theme inline {
@@ -56,37 +59,37 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.18 0.04 230);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.22 0.045 230);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.16 0.025 230);
-  --popover-foreground: oklch(0.98 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.13 0.02 240);
+  --card: oklch(0.99 0.002 200);
+  --card-foreground: oklch(0.13 0.02 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.13 0.02 240);
   --primary: oklch(0.76 0.12 185);
-  --primary-foreground: oklch(0.12 0.025 230);
-  --secondary: oklch(0.20 0.025 230);
-  --secondary-foreground: oklch(0.85 0.01 230);
-  --muted: oklch(0.22 0.02 230);
-  --muted-foreground: oklch(0.65 0.02 230);
-  --accent: oklch(0.72 0.15 75);
-  --accent-foreground: oklch(0.12 0.025 230);
+  --primary-foreground: oklch(0.13 0.05 185);
+  --secondary: oklch(0.97 0.005 200);
+  --secondary-foreground: oklch(0.25 0.04 220);
+  --muted: oklch(0.97 0.003 200);
+  --muted-foreground: oklch(0.52 0.02 240);
+  --accent: oklch(0.95 0.02 185);
+  --accent-foreground: oklch(0.25 0.06 185);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 12%);
+  --border: oklch(0.92 0.005 240);
+  --input: oklch(0.92 0.005 240);
   --ring: oklch(0.76 0.12 185);
   --chart-1: oklch(0.76 0.12 185);
-  --chart-2: oklch(0.72 0.15 75);
-  --chart-3: oklch(0.60 0.10 185);
-  --chart-4: oklch(0.50 0.08 230);
-  --chart-5: oklch(0.40 0.06 230);
-  --sidebar: oklch(0.14 0.025 230);
-  --sidebar-foreground: oklch(0.98 0 0);
+  --chart-2: oklch(0.65 0.14 185);
+  --chart-3: oklch(0.55 0.12 220);
+  --chart-4: oklch(0.72 0.15 80);
+  --chart-5: oklch(0.62 0.18 30);
+  --sidebar: oklch(0.99 0.002 200);
+  --sidebar-foreground: oklch(0.13 0.02 240);
   --sidebar-primary: oklch(0.76 0.12 185);
-  --sidebar-primary-foreground: oklch(0.12 0.025 230);
-  --sidebar-accent: oklch(0.20 0.025 230);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-primary-foreground: oklch(0.13 0.05 185);
+  --sidebar-accent: oklch(0.95 0.02 185);
+  --sidebar-accent-foreground: oklch(0.25 0.06 185);
+  --sidebar-border: oklch(0.92 0.005 240);
   --sidebar-ring: oklch(0.76 0.12 185);
 }
 
@@ -96,19 +99,16 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', sans-serif;
-  }
-  h1, h2, h3, h4, h5 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 800;
-    letter-spacing: -0.01em;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
   a[href],
-  select:not(:disabled) {
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
   }
 }
@@ -141,62 +141,4 @@
       max-width: 1280px;
     }
   }
-
-  /* SafeServ custom utilities */
-  .ss-teal {
-    color: #2DD4BF;
-  }
-  .ss-gold {
-    color: #F59E0B;
-  }
-  .ss-navy {
-    background-color: #0D1B2A;
-  }
-  .ss-navy-alt {
-    background-color: #0F2336;
-  }
-  .teal-glow {
-    box-shadow: 0 0 30px rgba(45, 212, 191, 0.25);
-  }
-  .gold-glow {
-    box-shadow: 0 0 30px rgba(245, 158, 11, 0.35);
-  }
-  .teal-border {
-    border: 1px solid rgba(45, 212, 191, 0.3);
-  }
-  .section-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #2DD4BF, transparent);
-    opacity: 0.4;
-  }
-}
-
-/* Particle canvas for hero */
-#particle-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0D1B2A;
-}
-::-webkit-scrollbar-thumb {
-  background: #2DD4BF;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #5eead4;
 }

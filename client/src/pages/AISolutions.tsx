@@ -24,7 +24,7 @@ const translateFeatures = [
 
 export default function AISolutions() {
   return (
-    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#F9FAFB', paddingTop: '80px' }}>
       {/* Hero */}
       <section
         className="relative py-24 overflow-hidden"
@@ -38,12 +38,12 @@ export default function AISolutions() {
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#F59E0B' }}>AI SOLUTIONS</p>
-            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
+            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#111827' }}>
               YOUR AI-POWERED<br />
               <span style={{ color: '#F59E0B' }}>BUSINESS</span><br />
               WORKFORCE.
             </h1>
-            <p className="text-lg max-w-xl mb-8" style={{ color: '#94A3B8' }}>
+            <p className="text-lg max-w-xl mb-8" style={{ color: '#6B7280' }}>
               SafeServ's AI solutions — powered by SafeServ Translate+ and TheGreenAgents — automate your entire business operation. From call transcription to full AI workforces.
             </p>
             <Link href="/contact">
@@ -70,17 +70,17 @@ export default function AISolutions() {
                 SAFESERV<br />
                 <span style={{ color: '#F59E0B' }}>TRANSLATE+</span>
               </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-6" style={{ color: '#6B7280' }}>
                 SafeServ Translate+ is our proprietary AI call transcription and translation service. Every call your business makes or receives is automatically transcribed in real-time, with full speaker identification and sentiment analysis.
               </p>
-              <p className="text-base leading-relaxed mb-8" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: '#6B7280' }}>
                 Never miss a detail from a client call again. Search your entire call history in seconds. Understand how your customers feel about your service. All GDPR compliant and securely stored.
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {translateFeatures.map((f, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <CheckCircle2 size={13} style={{ color: '#F59E0B', flexShrink: 0 }} />
-                    <span className="text-sm" style={{ color: '#94A3B8' }}>{f}</span>
+                    <span className="text-sm" style={{ color: '#6B7280' }}>{f}</span>
                   </div>
                 ))}
               </div>
@@ -111,13 +111,13 @@ export default function AISolutions() {
                       <span className="text-xs font-semibold shrink-0 pt-0.5" style={{ color: line.speaker === 'CALLER' ? '#2DD4BF' : '#F59E0B', minWidth: '50px' }}>
                         {line.speaker}
                       </span>
-                      <p className="text-sm" style={{ color: '#94A3B8' }}>{line.text}</p>
+                      <p className="text-sm" style={{ color: '#6B7280' }}>{line.text}</p>
                     </div>
                   ))}
                 </div>
-                <div className="mt-6 pt-6 flex items-center justify-between" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                <div className="mt-6 pt-6 flex items-center justify-between" style={{ borderTop: '1px solid rgba(0,0,0,0.06)' }}>
                   <span className="text-xs" style={{ color: '#475569' }}>Overall Sentiment</span>
-                  <span className="text-xs font-semibold px-2 py-1 rounded" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', color: '#2DD4BF' }}>POSITIVE — 94%</span>
+                  <span className="text-xs font-semibold px-2 py-1 rounded" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', color: '#0D9488' }}>POSITIVE — 94%</span>
                 </div>
               </div>
             </motion.div>
@@ -126,7 +126,7 @@ export default function AISolutions() {
       </section>
 
       {/* AI Tools Grid */}
-      <section className="py-24" style={{ backgroundColor: '#1E3A5F' }}>
+      <section className="py-24" style={{ backgroundColor: '#F0FDFB' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#F59E0B' }}>IN PARTNERSHIP WITH THEGREENAGENTS</p>
@@ -145,7 +145,7 @@ export default function AISolutions() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#1A3352', border: '1px solid rgba(245, 158, 11, 0.12)' }}
+                style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(245, 158, 11, 0.12)' }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(245, 158, 11, 0.12)' }}>
@@ -156,7 +156,7 @@ export default function AISolutions() {
                   </span>
                 </div>
                 <h3 className="text-xl font-black mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{tool.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{tool.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{tool.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -179,10 +179,10 @@ export default function AISolutions() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(245, 158, 11, 0.2)' }}
+                style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(245, 158, 11, 0.2)' }}
               >
                 <div className="text-5xl font-black mb-2" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#F59E0B' }}>{stat.value}</div>
-                <p className="text-sm" style={{ color: '#7A8FA6' }}>{stat.label}</p>
+                <p className="text-sm" style={{ color: '#6B7280' }}>{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -190,12 +190,12 @@ export default function AISolutions() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: '#1E3A5F', borderTop: '1px solid rgba(245, 158, 11, 0.15)' }}>
+      <section className="py-20" style={{ backgroundColor: '#F0FDFB', borderTop: '1px solid rgba(245, 158, 11, 0.15)' }}>
         <div className="container text-center">
           <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
             READY TO BUILD YOUR AI WORKFORCE?
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>Book a free AI consultation and discover what's possible for your business.</p>
+          <p className="text-lg mb-8" style={{ color: '#6B7280' }}>Book a free AI consultation and discover what's possible for your business.</p>
           <Link href="/contact">
             <button
               className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"

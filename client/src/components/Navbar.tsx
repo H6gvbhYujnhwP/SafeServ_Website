@@ -33,10 +33,10 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? 'rgba(17, 39, 68, 0.97)' : 'rgba(17, 39, 68, 0.82)',
+        backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.97)' : 'rgba(255, 255, 255, 0.95)',
         backdropFilter: 'blur(12px)',
-        borderBottom: scrolled ? '1px solid rgba(45, 212, 191, 0.15)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.25)' : 'none',
+        borderBottom: scrolled ? '1px solid #E5E7EB' : '1px solid rgba(229,231,235,0.6)',
+        boxShadow: scrolled ? '0 2px 20px rgba(0,0,0,0.08)' : 'none',
       }}
     >
       <div className="container">
@@ -59,8 +59,8 @@ export default function Navbar() {
                 <span
                   className="px-3 py-2 text-sm font-medium transition-all duration-200 relative group"
                   style={{
-                    color: location === link.href ? '#2DD4BF' : '#94A3B8',
-                    fontFamily: 'DM Sans, sans-serif',
+                    color: location === link.href ? '#0D9488' : '#4B5563',
+                    fontFamily: 'Space Grotesk, DM Sans, sans-serif',
                   }}
                 >
                   {link.label}
@@ -81,21 +81,21 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:01245850140"
-              className="flex items-center gap-2 text-sm font-medium transition-colors"
-              style={{ color: '#2DD4BF' }}
+              className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-teal-600"
+              style={{ color: '#0D9488' }}
             >
               <Phone size={14} />
               01245 850140
             </a>
             <Link href="/contact">
               <button
-                className="px-5 py-2 text-sm font-semibold rounded transition-all duration-200 hover:scale-105"
+                className="px-5 py-2.5 text-sm font-semibold rounded-md transition-all duration-200 hover:scale-105 hover:shadow-lg"
                 style={{
-                  backgroundColor: '#F59E0B',
-                  color: '#112744',
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                  letterSpacing: '0.05em',
-                  fontSize: '0.9rem',
+                  backgroundColor: '#2DD4BF',
+                  color: '#0D2A25',
+                  fontFamily: 'Space Grotesk, sans-serif',
+                  letterSpacing: '0.02em',
+                  boxShadow: '0 2px 8px rgba(45,212,191,0.35)',
                 }}
               >
                 GET A FREE QUOTE
@@ -106,7 +106,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             className="lg:hidden p-2"
-            style={{ color: '#2DD4BF' }}
+            style={{ color: '#0D9488' }}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -123,15 +123,15 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            style={{ backgroundColor: 'rgba(17, 39, 68, 0.98)', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}
+            style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #E5E7EB' }}
           >
             <div className="container py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link key={link.href} href={link.href}>
                   <span
-                    className="block px-4 py-3 text-base font-medium rounded transition-colors"
+                    className="block px-4 py-3 text-base font-medium rounded-md transition-colors"
                     style={{
-                      color: location === link.href ? '#2DD4BF' : '#94A3B8',
+                      color: location === link.href ? '#0D9488' : '#4B5563',
                       backgroundColor: location === link.href ? 'rgba(45, 212, 191, 0.08)' : 'transparent',
                     }}
                   >
@@ -139,15 +139,14 @@ export default function Navbar() {
                   </span>
                 </Link>
               ))}
-              <div className="mt-3 pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <div className="mt-3 pt-3" style={{ borderTop: '1px solid #E5E7EB' }}>
                 <Link href="/contact">
                   <button
-                    className="w-full py-3 font-semibold rounded"
+                    className="w-full py-3 font-semibold rounded-md"
                     style={{
-                      backgroundColor: '#F59E0B',
-                      color: '#112744',
-                      fontFamily: 'Barlow Condensed, sans-serif',
-                      letterSpacing: '0.05em',
+                      backgroundColor: '#2DD4BF',
+                      color: '#0D2A25',
+                      fontFamily: 'Space Grotesk, sans-serif',
                     }}
                   >
                     GET A FREE QUOTE

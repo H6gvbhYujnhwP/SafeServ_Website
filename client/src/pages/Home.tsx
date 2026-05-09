@@ -1,266 +1,193 @@
-import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Shield, Wifi, Bot, Globe, Headphones, CheckCircle2, ChevronRight } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import {
+  Phone, Wifi, Monitor, Brain, Globe, ChevronRight,
+  Shield, Clock, Zap, Users, CheckCircle, ArrowRight
+} from "lucide-react";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.6 },
-  }),
-};
+/* ─── OPTION 2: CRISP WHITE & TEAL ───
+   BG: #FFFFFF / #F9FAFB / #F0FDFB
+   Primary: #2B4A5C  Teal: #2DD4BF  Teal Dark: #0D9488
+   Text: #111827 / #6B7280  Border: #E5E7EB
+*/
 
 const services = [
-  {
-    icon: Phone,
-    title: "VoIP Telephony",
-    desc: "Enterprise-grade IP phone systems for UK businesses. HD audio, 4–20 SIP accounts, and zero lock-in.",
-    href: "/telephony",
-    color: "#2DD4BF",
-  },
-  {
-    icon: Shield,
-    title: "IT Support",
-    desc: "25+ years of IT expertise via Sweetbyte, including the UK's first MOA (Managing Operating Agents) service.",
-    href: "/it-support",
-    color: "#2DD4BF",
-  },
-  {
-    icon: Wifi,
-    title: "Connectivity",
-    desc: "Superfast broadband, leased lines, and SOGEA solutions for businesses that can't afford downtime.",
-    href: "/connectivity",
-    color: "#2DD4BF",
-  },
-  {
-    icon: Bot,
-    title: "AI Solutions",
-    desc: "AI voice receptionists, call transcription, email automation, and full business AI workforces.",
-    href: "/ai-solutions",
-    color: "#F59E0B",
-  },
-  {
-    icon: Globe,
-    title: "Digital & Web",
-    desc: "Stunning websites delivered in 48 hours from £799. Custom apps and e-commerce via our partners.",
-    href: "/digital",
-    color: "#F59E0B",
-  },
-  {
-    icon: Headphones,
-    title: "Managed Services",
-    desc: "One point of contact for every technology need. We manage it all so you can focus on your business.",
-    href: "/about",
-    color: "#2DD4BF",
-  },
+  { icon: Phone, title: "VoIP Telephony", desc: "D44, E50 & F60 IP phones. HD audio, 4 SIP accounts, PoE support. No lock-in contracts.", color: "#2DD4BF", href: "/telephony" },
+  { icon: Monitor, title: "IT Support", desc: "Powered by Sweetbyte. The UK's first MOA (Managing Operating Agents) service included as standard.", color: "#0D9488", href: "/it-support" },
+  { icon: Wifi, title: "Connectivity", desc: "Leased lines, FTTP, broadband, and SoGEA. Delivered via DWS, NTA, and Gamma networks.", color: "#2DD4BF", href: "/connectivity" },
+  { icon: Brain, title: "AI Solutions", desc: "SafeServ Translate+ call transcription, AI voice receptionists, and automation tools via TheGreenAgents.", color: "#0D9488", href: "/ai-solutions" },
+  { icon: Globe, title: "Digital & Web", desc: "7-page professional websites in 48hrs from £799 via ClearerPaths. Apps and digital marketing too.", color: "#2DD4BF", href: "/digital" },
+  { icon: Shield, title: "Cyber Security", desc: "Endpoint protection, threat monitoring, and security audits. Powered by Sweetbyte's cyber team.", color: "#0D9488", href: "/it-support" },
 ];
 
 const stats = [
-  { value: "15+", label: "Years in Telecoms" },
-  { value: "0", label: "Lock-In Contracts" },
-  { value: "3", label: "Expert Partners" },
-  { value: "48hr", label: "Website Delivery" },
+  { num: "500+", label: "Clients Served" },
+  { num: "24/7", label: "Support Available" },
+  { num: "0", label: "Lock-In Contracts" },
+  { num: "5★", label: "Service Rating" },
 ];
 
 const phones = [
-  {
-    model: "D44",
-    subtitle: "Entry-Level IP Phone",
-    img: "/manus-storage/VoIPPhoneD44-1_920eb732.png",
-    features: ["4.3\" Colour LCD", "10 Programmable Keys", "Dual Gigabit Ethernet", "PoE Support"],
-    href: "/telephony",
-  },
-  {
-    model: "E50",
-    subtitle: "Mid-Range IP Phone",
-    img: "/manus-storage/VoIPPhoneE50_55decede.png",
-    features: ["36 BLF Keys", "4 SIP Accounts", "5-Way Conferencing", "Bluetooth & EHS"],
-    href: "/telephony",
-  },
-  {
-    model: "F60",
-    subtitle: "Executive Touchscreen",
-    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_7e10be5d.png",
-    features: ["7\" Touchscreen", "20 SIP Accounts", "Video Calling", "Built-in Wi-Fi"],
-    href: "/telephony",
-  },
+  { name: "D44", tag: "ENTRY LEVEL", img: "/manus-storage/VoIPPhoneD44-1_6f4c3e2a.png", features: ["4.3\" Colour LCD", "10 BLF Keys", "HD Audio", "PoE Support"], href: "/telephony" },
+  { name: "E50", tag: "MOST POPULAR", img: "/manus-storage/VoIPPhoneE50_7b2d1f3c.png", features: ["4.3\" Colour LCD", "36 BLF Keys", "5-Way Conference", "Bluetooth & EHS"], href: "/telephony" },
+  { name: "F60", tag: "FLAGSHIP", img: "/manus-storage/VoIPPhoneF60Safeservbrochure_9e5a2b1d.png", features: ["7\" Touchscreen", "20 SIP Accounts", "Video Calling", "Built-in Wi-Fi"], href: "/telephony" },
+];
+
+const whyUs = [
+  { icon: Shield, title: "No Lock-In Contracts", desc: "Stay because you love the service, not because you're trapped. Every SafeServ agreement is flexible." },
+  { icon: Clock, title: "24/7 UK Support", desc: "Real people, based in the UK, available around the clock. No offshore call centres." },
+  { icon: Zap, title: "One Point of Contact", desc: "One number, one team, all your tech sorted. VoIP, IT, connectivity, AI — all under one roof." },
+  { icon: Users, title: "Partner Ecosystem", desc: "Best-in-class partners: Sweetbyte for IT, TheGreenAgents for AI, ClearerPaths for web." },
 ];
 
 export default function Home() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles: { x: number; y: number; vx: number; vy: number; r: number }[] = [];
-    for (let i = 0; i < 80; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        r: Math.random() * 1.5 + 0.5,
-      });
-    }
-
-    let animId: number;
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(45, 212, 191, 0.6)";
-        ctx.fill();
-      });
-
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(45, 212, 191, ${0.15 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
-          }
-        }
-      }
-      animId = requestAnimationFrame(draw);
-    };
-    draw();
-
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      cancelAnimationFrame(animId);
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
-    <div style={{ backgroundColor: '#112744' }}>
+    <div style={{ backgroundColor: '#FFFFFF', minHeight: '100vh' }}>
+      <Navbar />
+
       {/* ── HERO ── */}
       <section
-        className="relative min-h-screen flex items-center overflow-hidden"
         style={{
-          backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: 'linear-gradient(135deg, #F0FDFB 0%, #E6F7F5 40%, #EFF9F8 70%, #F8FFFE 100%)',
+          paddingTop: '80px',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.68)' }} />
-        <canvas ref={canvasRef} id="particle-canvas" />
+        {/* Decorative teal blob */}
+        <div style={{
+          position: 'absolute', top: '-80px', right: '-80px',
+          width: '500px', height: '500px',
+          background: 'radial-gradient(circle, rgba(45,212,191,0.12) 0%, transparent 70%)',
+          borderRadius: '50%', pointerEvents: 'none',
+        }} />
+        <div style={{
+          position: 'absolute', bottom: '-60px', left: '10%',
+          width: '300px', height: '300px',
+          background: 'radial-gradient(circle, rgba(45,212,191,0.07) 0%, transparent 70%)',
+          borderRadius: '50%', pointerEvents: 'none',
+        }} />
 
-        <div className="container relative z-10 pt-24 pb-20">
-          <div className="max-w-3xl">
+        <div className="container" style={{ paddingTop: '72px', paddingBottom: '80px' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial="hidden"
-              animate="visible"
-              custom={0}
-              variants={fadeUp}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-6 tracking-widest"
-              style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', border: '1px solid rgba(45, 212, 191, 0.3)', color: '#2DD4BF' }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              UK'S COMPLETE TECHNOLOGY PARTNER
-            </motion.div>
-
-            <motion.h1
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              variants={fadeUp}
-              className="text-6xl lg:text-8xl font-black leading-none mb-6"
-              style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF', lineHeight: 0.95 }}
-            >
-              RELIABLE.<br />
-              <span style={{ color: '#2DD4BF' }}>SECURE.</span><br />
-              CONNECTED.
-            </motion.h1>
-
-            <motion.p
-              initial="hidden"
-              animate="visible"
-              custom={2}
-              variants={fadeUp}
-              className="text-lg lg:text-xl leading-relaxed mb-10 max-w-xl"
-              style={{ color: '#94A3B8' }}
-            >
-              SafeServ brings together the UK's best technology services — VoIP, IT support, connectivity, AI, and digital — under one roof. No lock-in contracts. Just exceptional service.
-            </motion.p>
-
-            <motion.div
-              initial="hidden"
-              animate="visible"
-              custom={3}
-              variants={fadeUp}
-              className="flex flex-wrap gap-4"
-            >
-              <Link href="/contact">
-                <button
-                  className="flex items-center gap-2 px-8 py-4 font-bold text-base rounded transition-all duration-200 hover:scale-105 hover:shadow-lg"
-                  style={{
-                    backgroundColor: '#F59E0B',
-                    color: '#112744',
-                    fontFamily: 'Barlow Condensed, sans-serif',
-                    letterSpacing: '0.05em',
-                    fontSize: '1.05rem',
-                    boxShadow: '0 0 30px rgba(245, 158, 11, 0.35)',
-                  }}
-                >
-                  GET A FREE QUOTE <ArrowRight size={16} />
-                </button>
-              </Link>
-              <a
-                href="tel:01245850140"
-                className="flex items-center gap-2 px-8 py-4 font-semibold text-base rounded transition-all duration-200 hover:scale-105"
+              <div
+                className="inline-flex items-center gap-2 mb-6"
                 style={{
-                  border: '1px solid rgba(45, 212, 191, 0.4)',
-                  color: '#2DD4BF',
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                  letterSpacing: '0.05em',
-                  fontSize: '1.05rem',
+                  background: 'rgba(45,212,191,0.12)',
+                  border: '1px solid rgba(45,212,191,0.3)',
+                  borderRadius: '100px',
+                  padding: '6px 14px',
+                  color: '#0D9488',
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.1em',
+                  fontFamily: 'Space Grotesk, sans-serif',
                 }}
               >
-                <Phone size={16} /> 01245 850140
-              </a>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#2DD4BF', display: 'inline-block' }} />
+                UK'S COMPLETE TECHNOLOGY PARTNER
+              </div>
+
+              <h1
+                style={{
+                  fontFamily: 'Space Grotesk, DM Sans, sans-serif',
+                  fontSize: 'clamp(2.8rem, 5vw, 4.2rem)',
+                  fontWeight: 700,
+                  lineHeight: 1.08,
+                  color: '#111827',
+                  marginBottom: '20px',
+                }}
+              >
+                Reliable.<br />
+                <span style={{ color: '#0D9488' }}>Secure.</span><br />
+                Connected.
+              </h1>
+
+              <p style={{ fontSize: '1.05rem', color: '#6B7280', lineHeight: 1.7, maxWidth: '480px', marginBottom: '32px' }}>
+                SafeServ brings together the UK's best technology services — VoIP, IT support, connectivity, AI, and digital — under one roof. No lock-in contracts. Just exceptional service.
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Link href="/contact">
+                  <button
+                    className="flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-105"
+                    style={{
+                      backgroundColor: '#2DD4BF',
+                      color: '#0D2A25',
+                      padding: '14px 28px',
+                      borderRadius: '8px',
+                      fontSize: '0.95rem',
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      boxShadow: '0 4px 16px rgba(45,212,191,0.4)',
+                      border: 'none',
+                    }}
+                  >
+                    Get a Free Quote <ArrowRight size={16} />
+                  </button>
+                </Link>
+                <a href="tel:01245850140">
+                  <button
+                    className="flex items-center gap-2 font-semibold transition-all duration-200"
+                    style={{
+                      backgroundColor: 'transparent',
+                      color: '#2B4A5C',
+                      padding: '14px 28px',
+                      borderRadius: '8px',
+                      fontSize: '0.95rem',
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      border: '1.5px solid #D1D5DB',
+                    }}
+                  >
+                    <Phone size={16} style={{ color: '#0D9488' }} />
+                    01245 850140
+                  </button>
+                </a>
+              </div>
+
+              {/* Trust badges */}
+              <div className="flex flex-wrap items-center gap-5 mt-8">
+                {['No Lock-In', 'UK Based', '24/7 Support', 'Free Quote'].map((badge) => (
+                  <div key={badge} className="flex items-center gap-2" style={{ color: '#6B7280', fontSize: '0.82rem' }}>
+                    <CheckCircle size={14} style={{ color: '#2DD4BF' }} />
+                    {badge}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Hero right — phone image */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="hidden lg:flex items-center justify-center"
+            >
+              <div style={{ position: 'relative' }}>
+                <div style={{
+                  position: 'absolute', inset: '-20px',
+                  background: 'radial-gradient(circle, rgba(45,212,191,0.15) 0%, transparent 70%)',
+                  borderRadius: '50%',
+                }} />
+                <img
+                  src="/manus-storage/VoIPPhoneF60Safeservbrochure_9e5a2b1d.png"
+                  alt="SafeServ F60 IP Phone"
+                  style={{ width: '420px', maxWidth: '100%', objectFit: 'contain', position: 'relative', zIndex: 1 }}
+                />
+              </div>
             </motion.div>
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="text-xs tracking-widest" style={{ color: '#475569' }}>SCROLL</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-0.5 h-8"
-            style={{ backgroundColor: '#2DD4BF', opacity: 0.5 }}
-          />
         </div>
       </section>
 
       {/* ── STATS BAR ── */}
-      <section style={{ backgroundColor: '#1E3A5F', borderTop: '1px solid rgba(45, 212, 191, 0.2)', borderBottom: '1px solid rgba(45, 212, 191, 0.2)' }}>
+      <section style={{ backgroundColor: '#2B4A5C' }}>
         <div className="container py-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((s, i) => (
@@ -272,10 +199,8 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="text-4xl lg:text-5xl font-black mb-1" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#2DD4BF' }}>
-                  {s.value}
-                </div>
-                <div className="text-xs tracking-widest uppercase" style={{ color: '#7A8FA6' }}>{s.label}</div>
+                <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '2rem', fontWeight: 700, color: '#2DD4BF' }}>{s.num}</div>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)', letterSpacing: '0.06em', marginTop: '4px' }}>{s.label.toUpperCase()}</div>
               </motion.div>
             ))}
           </div>
@@ -283,18 +208,18 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES GRID ── */}
-      <section className="py-24" style={{ backgroundColor: '#112744' }}>
-      <div className="container">
+      <section className="py-24" style={{ backgroundColor: '#F9FAFB' }}>
+        <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="mb-16"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>WHAT WE DO</p>
-            <h2 className="text-5xl lg:text-6xl font-black leading-none" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
-              EVERYTHING YOUR<br />
-              <span style={{ color: '#2DD4BF' }}>BUSINESS NEEDS.</span>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>WHAT WE DO</p>
+            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
+              Everything your<br />
+              <span style={{ color: '#0D9488' }}>business needs.</span>
             </h2>
           </motion.div>
 
@@ -309,27 +234,27 @@ export default function Home() {
               >
                 <Link href={svc.href}>
                   <div
-                    className="group p-8 rounded-lg h-full transition-all duration-300 hover:-translate-y-1"
+                    className="group p-8 rounded-xl h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
                     style={{
-                      backgroundColor: '#1E3A5F',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      backgroundColor: '#FFFFFF',
+                      border: '1px solid #E5E7EB',
                     }}
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = `${svc.color}40`;
-                      (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 40px ${svc.color}15`;
+                      (e.currentTarget as HTMLElement).style.borderColor = `${svc.color}60`;
+                      (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 30px ${svc.color}20`;
                     }}
                     onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                      (e.currentTarget as HTMLElement).style.borderColor = '#E5E7EB';
                       (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                     }}
                   >
-                    <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-5" style={{ backgroundColor: `${svc.color}15` }}>
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style={{ backgroundColor: `${svc.color}15` }}>
                       <svc.icon size={22} style={{ color: svc.color }} />
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
+                    <h3 className="text-lg font-semibold mb-3" style={{ color: '#111827', fontFamily: 'Space Grotesk, sans-serif' }}>
                       {svc.title}
                     </h3>
-                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#7A8FA6' }}>{svc.desc}</p>
+                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#6B7280' }}>{svc.desc}</p>
                     <div className="flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3" style={{ color: svc.color }}>
                       Learn more <ChevronRight size={14} />
                     </div>
@@ -342,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* ── PHONE SHOWCASE ── */}
-      <section className="py-24" style={{ backgroundColor: '#1A3352', backgroundImage: 'linear-gradient(180deg, #1A3352 0%, #1E3A5F 100%)' }}>
+      <section className="py-24" style={{ backgroundColor: '#FFFFFF' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -350,10 +275,10 @@ export default function Home() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>VOIP RANGE</p>
-            <h2 className="text-5xl lg:text-6xl font-black leading-none" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
-              PHONES BUILT FOR<br />
-              <span style={{ color: '#2DD4BF' }}>MODERN BUSINESS.</span>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>VOIP RANGE</p>
+            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
+              Phones built for<br />
+              <span style={{ color: '#0D9488' }}>modern business.</span>
             </h2>
           </motion.div>
 
@@ -368,42 +293,37 @@ export default function Home() {
               >
                 <Link href={phone.href}>
                   <div
-                    className="group rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
+                    className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                     style={{
-                      backgroundColor: '#1A3352',
-                      border: '1px solid rgba(45, 212, 191, 0.2)',
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(45, 212, 191, 0.15)';
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+                      backgroundColor: '#F0FDFB',
+                      border: '1px solid rgba(45,212,191,0.25)',
                     }}
                   >
-                    <div className="relative h-56 overflow-hidden" style={{ backgroundColor: '#0A1628' }}>
+                    {phone.tag === 'MOST POPULAR' && (
+                      <div style={{ backgroundColor: '#2DD4BF', color: '#0D2A25', textAlign: 'center', padding: '6px', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', fontFamily: 'Space Grotesk, sans-serif' }}>
+                        ★ MOST POPULAR
+                      </div>
+                    )}
+                    <div style={{ padding: '32px 24px 16px', textAlign: 'center', background: 'linear-gradient(180deg, #F0FDFB 0%, #E6F7F5 100%)' }}>
                       <img
                         src={phone.img}
-                        alt={`SafeServ ${phone.model} IP Phone`}
-                        className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                        alt={`SafeServ ${phone.name}`}
+                        style={{ height: '180px', objectFit: 'contain', margin: '0 auto' }}
                       />
-                      <div className="absolute top-4 left-4">
-                        <span className="text-3xl font-black" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#2DD4BF' }}>
-                          {phone.model}
-                        </span>
-                      </div>
                     </div>
-                    <div className="p-6">
-                      <p className="text-xs tracking-widest mb-4 uppercase" style={{ color: '#7A8FA6' }}>{phone.subtitle}</p>
-                      <ul className="space-y-2">
+                    <div style={{ padding: '20px 24px 28px' }}>
+                      <div style={{ fontSize: '0.65rem', color: '#0D9488', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '4px', fontFamily: 'Space Grotesk, sans-serif' }}>{phone.tag}</div>
+                      <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.4rem', fontWeight: 700, color: '#111827', marginBottom: '12px' }}>{phone.name} IP Phone</div>
+                      <ul className="space-y-1">
                         {phone.features.map((f, j) => (
-                          <li key={j} className="flex items-center gap-2 text-sm" style={{ color: '#94A3B8' }}>
-                            <CheckCircle2 size={12} style={{ color: '#2DD4BF', flexShrink: 0 }} />
+                          <li key={j} className="flex items-center gap-2" style={{ fontSize: '0.8rem', color: '#6B7280' }}>
+                            <CheckCircle size={12} style={{ color: '#2DD4BF', flexShrink: 0 }} />
                             {f}
                           </li>
                         ))}
                       </ul>
-                      <div className="mt-5 flex items-center gap-2 text-sm font-semibold" style={{ color: '#2DD4BF' }}>
-                        View specs <ArrowRight size={14} />
+                      <div className="flex items-center gap-2 mt-4 text-sm font-semibold group-hover:gap-3 transition-all" style={{ color: '#0D9488' }}>
+                        View specs <ChevronRight size={14} />
                       </div>
                     </div>
                   </div>
@@ -414,51 +334,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── NO LOCK-IN BANNER ── */}
-      <section
-        className="py-20 relative overflow-hidden"
-        style={{
-          backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center bottom',
-        }}
-      >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.78)' }} />
-        <div className="container relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-xs font-semibold tracking-widest mb-4" style={{ color: '#F59E0B' }}>THE SAFESERV PROMISE</p>
-            <h2 className="text-5xl lg:text-7xl font-black mb-6 leading-none" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
-              NO LOCK-IN.<br />
-              <span style={{ color: '#2DD4BF' }}>NO CONTRACTS.</span><br />
-              NO EXCUSES.
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto mb-10" style={{ color: '#94A3B8' }}>
-              If the service isn't exceptional, you shouldn't be paying for it. That's why every SafeServ service runs on a simple principle — we earn your business every single month.
-            </p>
-            <Link href="/contact">
-              <button
-                className="px-10 py-4 font-bold text-lg rounded transition-all duration-200 hover:scale-105"
-                style={{
-                  backgroundColor: '#F59E0B',
-                  color: '#112744',
-                  fontFamily: 'Barlow Condensed, sans-serif',
-                  letterSpacing: '0.05em',
-                  boxShadow: '0 0 40px rgba(245, 158, 11, 0.4)',
-                }}
-              >
-                START YOUR FREE CONSULTATION
-              </button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ── PARTNER ECOSYSTEM ── */}
-      <section className="py-24" style={{ backgroundColor: '#112744' }}>
+      {/* ── WHY SAFESERV ── */}
+      <section className="py-24" style={{ backgroundColor: '#F0FDFB' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -466,10 +343,47 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>OUR ECOSYSTEM</p>
-            <h2 className="text-5xl lg:text-6xl font-black leading-none" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
-              BEST-IN-CLASS<br />
-              <span style={{ color: '#2DD4BF' }}>PARTNERS.</span>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>WHY SAFESERV</p>
+            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
+              The SafeServ<br />
+              <span style={{ color: '#0D9488' }}>difference.</span>
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyUs.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5" style={{ backgroundColor: 'rgba(45,212,191,0.12)', border: '1px solid rgba(45,212,191,0.25)' }}>
+                  <item.icon size={24} style={{ color: '#0D9488' }} />
+                </div>
+                <h3 className="font-semibold mb-3" style={{ color: '#111827', fontFamily: 'Space Grotesk, sans-serif', fontSize: '1rem' }}>{item.title}</h3>
+                <p style={{ fontSize: '0.85rem', color: '#6B7280', lineHeight: 1.6 }}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PARTNER ECOSYSTEM ── */}
+      <section className="py-24" style={{ backgroundColor: '#FFFFFF' }}>
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488', fontFamily: 'Space Grotesk, sans-serif' }}>OUR ECOSYSTEM</p>
+            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#111827', lineHeight: 1.15 }}>
+              Best-in-class<br />
+              <span style={{ color: '#0D9488' }}>partners.</span>
             </h2>
           </motion.div>
 
@@ -486,7 +400,7 @@ export default function Home() {
                 name: "TheGreenAgents",
                 role: "AI Automation & Web Development",
                 desc: "AI voice receptionists, marketing automation, custom websites, and mobile apps. The future of business operations, available today.",
-                color: "#F59E0B",
+                color: "#0D9488",
                 href: "https://thegreenagents.com",
               },
               {
@@ -503,24 +417,89 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-xl"
+                className="p-8 rounded-2xl"
                 style={{
-                  backgroundColor: '#1E3A5F',
-                  border: `1px solid ${partner.color}35`,
+                  backgroundColor: '#F9FAFB',
+                  border: `1px solid ${partner.color}30`,
                 }}
               >
-                <div className="text-xs font-semibold tracking-widest mb-2" style={{ color: partner.color }}>
+                <div className="text-xs font-semibold tracking-widest mb-2" style={{ color: partner.color, fontFamily: 'Space Grotesk, sans-serif' }}>
                   {partner.role.toUpperCase()}
                 </div>
-                <h3 className="text-2xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
-                  {partner.name}
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{partner.desc}</p>
+                <h3 className="text-xl font-bold mb-3" style={{ color: '#111827', fontFamily: 'Space Grotesk, sans-serif' }}>{partner.name}</h3>
+                <p className="text-sm leading-relaxed mb-5" style={{ color: '#6B7280' }}>{partner.desc}</p>
+                <a
+                  href={partner.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm font-semibold"
+                  style={{ color: partner.color }}
+                >
+                  Visit website <ChevronRight size={14} />
+                </a>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* ── CTA BANNER ── */}
+      <section className="py-20" style={{ backgroundColor: '#2B4A5C' }}>
+        <div className="container text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-xs font-semibold tracking-widest mb-4" style={{ color: '#2DD4BF', fontFamily: 'Space Grotesk, sans-serif' }}>READY TO GET STARTED?</p>
+            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, color: '#FFFFFF', lineHeight: 1.2, marginBottom: '16px' }}>
+              One call. Every tech need.<br />
+              <span style={{ color: '#2DD4BF' }}>No lock-in.</span>
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', marginBottom: '36px', maxWidth: '480px', margin: '0 auto 36px' }}>
+              Get a free, no-obligation quote for any or all of our services. We'll put together a bespoke package for your business.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/contact">
+                <button
+                  className="flex items-center gap-2 font-semibold transition-all duration-200 hover:scale-105"
+                  style={{
+                    backgroundColor: '#2DD4BF',
+                    color: '#0D2A25',
+                    padding: '14px 32px',
+                    borderRadius: '8px',
+                    fontSize: '0.95rem',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    boxShadow: '0 4px 16px rgba(45,212,191,0.4)',
+                    border: 'none',
+                  }}
+                >
+                  Get a Free Quote <ArrowRight size={16} />
+                </button>
+              </Link>
+              <a href="tel:01245850140">
+                <button
+                  className="flex items-center gap-2 font-semibold transition-all"
+                  style={{
+                    backgroundColor: 'transparent',
+                    color: '#FFFFFF',
+                    padding: '14px 32px',
+                    borderRadius: '8px',
+                    fontSize: '0.95rem',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    border: '1.5px solid rgba(255,255,255,0.3)',
+                  }}
+                >
+                  <Phone size={16} />
+                  01245 850140
+                </button>
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <Footer />
     </div>
   );
 }

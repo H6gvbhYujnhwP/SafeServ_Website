@@ -1,214 +1,228 @@
-import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { CheckCircle2, ArrowRight, Phone } from "lucide-react";
+import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { CheckCircle, ChevronRight, Phone, ArrowRight } from "lucide-react";
+
+/* OPTION 2: CRISP WHITE & TEAL */
 
 const phones = [
   {
-    model: "D44",
-    subtitle: "Entry-Level IP Phone",
-    tagline: "The reliable workhorse for every desk.",
-    img: "/manus-storage/VoIPPhoneD44-1_920eb732.png",
+    name: "D44",
+    subtitle: "Entry Level IP Phone",
+    tag: "ENTRY LEVEL",
+    img: "/manus-storage/VoIPPhoneD44-1_6f4c3e2a.png",
     keyFeatures: [
       "4.3\" (480x272) Colour LCD Display",
       "10 BLF/Function Keys with Tri-Colour LED",
       "4 SIP Accounts",
       "HD Audio (Handset & Speakerphone)",
       "Dual Gigabit Ethernet (10/100/1000)",
-      "PoE 802.3af/at Support",
-      "Bluetooth & EHS Compatible",
-      "Desktop Stand or Wall Mount",
+      "1x USB Port, 1x RJ9 Headset Jack",
+      "Desktop Stand or Wall Mount Option",
+    ],
+    advanced: [
+      "USB Wi-Fi & Bluetooth Support",
+      "5-Way Conference Calling",
+      "Remote Phonebook, LDAP",
+      "Auto Provisioning",
+      "Secure SIP over TLS",
+      "Hot Desking",
     ],
     protocols: ["SIP2.0 / UDP/TCP/TLS", "RTP/RTCP/SRTP", "IPv6"],
     networking: ["Dual Gigabit Ethernet", "PoE 802.3af/at", "VLAN, QoS, VPN"],
-    advanced: ["USB Wi-Fi & Bluetooth", "5-Way Conference Calling", "Remote Phonebook, LDAP", "Auto Provisioning", "Secure SIP over TLS", "Hot Desking"],
-    color: "#2DD4BF",
+    tagline: "The reliable workhorse for any desk.",
+    accentColor: "#2DD4BF",
   },
   {
-    model: "E50",
+    name: "E50",
     subtitle: "Mid-Range IP Phone",
-    tagline: "Power and flexibility for busy teams.",
-    img: "/manus-storage/VoIPPhoneE50_55decede.png",
+    tag: "MOST POPULAR",
+    img: "/manus-storage/VoIPPhoneE50_7b2d1f3c.png",
     keyFeatures: [
-      "4.3\" (480x272) Colour LCD Display",
+      "4.3\" (480x272) Colour Display",
       "36 BLF Keys with Tri-Color LEDs",
       "4 SIP Accounts",
       "HD Audio (Handset & Speakerphone)",
       "Dual Gigabit Ethernet (10/100/1000)",
       "USB Port, RJ9 & EHS Headset Support",
-      "5-Way Conference Calling",
       "Desktop or Wall Mount Option",
+    ],
+    advanced: [
+      "USB Wi-Fi & Bluetooth Support",
+      "Remote Phonebook, LDAP",
+      "Secure SIP over TLS",
+      "Auto Provisioning",
+      "Hot Desking",
+      "Busy Lamp Field (BLF)",
     ],
     protocols: ["SIP2.0 / UDP/TCP/TLS", "RTP/RTCP/SRTP", "IPv6"],
     networking: ["Dual Gigabit Ethernet", "PoE 802.3af/at", "VLAN, QoS, VPN"],
-    advanced: ["USB Wi-Fi & Bluetooth", "Remote Phonebook, LDAP", "Secure SIP over TLS", "Auto Provisioning", "Hot Desking", "Busy Lamp Field"],
-    color: "#2DD4BF",
+    tagline: "36 programmable keys — power at your fingertips.",
+    accentColor: "#0D9488",
   },
   {
-    model: "F60",
-    subtitle: "Executive Touchscreen Phone",
-    tagline: "The ultimate communication hub for leaders.",
-    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_7e10be5d.png",
+    name: "F60",
+    subtitle: "Flagship Touchscreen Phone",
+    tag: "FLAGSHIP",
+    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_9e5a2b1d.png",
     keyFeatures: [
       "7\" (1024x600) Colour Touchscreen",
       "HD Audio (Handset & Speakerphone)",
       "20 SIP Accounts",
       "Built-in Bluetooth & Wi-Fi",
       "Dual Gigabit Ethernet (10/100/1000)",
-      "HD Video Support with USB Camera",
-      "5-Way Conference Calling",
+      "HD Video Support with USB Camera Option",
       "USB Port & RJ9/EHS Headset Support",
+    ],
+    advanced: [
+      "Video Calling via USB Camera",
+      "5-Way Conference Calling",
+      "Remote Phonebook, LDAP",
+      "Secure SIP over TLS",
+      "Auto Provisioning",
+      "Hot Desking",
     ],
     protocols: ["SIP2.0 / UDP/TCP/TLS", "RTP/RTCP/SRTP", "IPv6"],
     networking: ["Dual Gigabit Ethernet", "PoE 802.3af/at", "VLAN, QoS, VPN"],
-    advanced: ["Video Calling via USB Camera", "5-Way Conference Calling", "Remote Phonebook, LDAP", "Secure SIP over TLS", "Auto Provisioning", "Hot Desking"],
-    color: "#F59E0B",
+    tagline: "7\" touchscreen. Video calling. The future of desk phones.",
+    accentColor: "#2DD4BF",
   },
 ];
 
 export default function Telephony() {
   return (
-    <div style={{ backgroundColor: '#112744', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh" }}>
+      <Navbar />
+
       {/* Hero */}
       <section
-        className="relative py-24 overflow-hidden"
         style={{
-          backgroundImage: `url('/manus-storage/voip_hero_ffef5711.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          background: "linear-gradient(135deg, #F0FDFB 0%, #E6F7F5 50%, #F8FFFE 100%)",
+          paddingTop: "80px",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.70)' }} />
-        <div className="container relative z-10">
+        <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, background: "radial-gradient(circle, rgba(45,212,191,0.12) 0%, transparent 70%)", borderRadius: "50%" }} />
+        <div className="container" style={{ paddingTop: "72px", paddingBottom: "72px" }}>
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>VOIP TELEPHONY</p>
-            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
-              IP PHONES<br />
-              <span style={{ color: '#2DD4BF' }}>BUILT FOR</span><br />
-              BUSINESS.
+            <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 14px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", fontFamily: "Space Grotesk, sans-serif" }}>
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2DD4BF", display: "inline-block" }} />
+              VOIP TELEPHONY
+            </div>
+            <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: "#111827", lineHeight: 1.1, marginBottom: "16px" }}>
+              HD Voice for<br /><span style={{ color: "#0D9488" }}>Modern Business.</span>
             </h1>
-            <p className="text-lg max-w-xl mb-8" style={{ color: '#94A3B8' }}>
-              From entry-level desk phones to executive touchscreen systems — SafeServ's VoIP range delivers HD audio, enterprise features, and zero lock-in contracts.
+            <p style={{ fontSize: "1.05rem", color: "#6B7280", lineHeight: 1.7, maxWidth: "520px", marginBottom: "28px" }}>
+              Three industry-leading IP phones — from the reliable D44 to the flagship F60 touchscreen. All with HD audio, PoE support, and no lock-in contracts.
             </p>
             <Link href="/contact">
-              <button
-                className="flex items-center gap-2 px-8 py-4 font-bold rounded transition-all hover:scale-105"
-                style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem' }}
-              >
-                GET A QUOTE <ArrowRight size={16} />
+              <button className="flex items-center gap-2 font-semibold transition-all hover:scale-105" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", boxShadow: "0 4px 16px rgba(45,212,191,0.4)", border: "none" }}>
+                Get a Quote <ArrowRight size={16} />
               </button>
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Phone Cards */}
-      <section className="py-24">
-        <div className="container">
-          <div className="space-y-24">
-            {phones.map((phone, i) => (
+      {/* Phone sections */}
+      {phones.map((phone, i) => (
+        <section key={phone.name} className="py-20" style={{ backgroundColor: i % 2 === 0 ? "#FFFFFF" : "#F9FAFB" }}>
+          <div className="container">
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-center ${i % 2 !== 0 ? "lg:flex-row-reverse" : ""}`}>
+              {/* Image side */}
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -40 : 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                className={i % 2 !== 0 ? "lg:order-2" : ""}
               >
-                {/* Image side */}
-                <div className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div
-                    className="rounded-2xl overflow-hidden relative"
-                    style={{ backgroundColor: '#0A1628', border: `1px solid ${phone.color}25` }}
-                  >
-                    <div className="absolute top-6 left-6 z-10">
-                      <span
-                        className="text-5xl font-black"
-                        style={{ fontFamily: 'Barlow Condensed, sans-serif', color: phone.color }}
-                      >
-                        {phone.model}
-                      </span>
-                      <p className="text-xs tracking-widest mt-1" style={{ color: '#7A8FA6' }}>{phone.subtitle.toUpperCase()}</p>
-                    </div>
-                    <img
-                      src={phone.img}
-                      alt={`SafeServ ${phone.model} IP Phone`}
-                      className="w-full object-contain"
-                      style={{ maxHeight: '420px', padding: '2rem' }}
-                    />
-                  </div>
-                </div>
-
-                {/* Content side */}
-                <div className={`${i % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <p className="text-sm italic mb-4" style={{ color: phone.color }}>{phone.tagline}</p>
-                  <h2 className="text-4xl lg:text-5xl font-black mb-6 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
-                    {phone.model} IP PHONE
-                  </h2>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
-                    {phone.keyFeatures.map((f, j) => (
-                      <div key={j} className="flex items-start gap-2">
-                        <CheckCircle2 size={14} style={{ color: phone.color, flexShrink: 0, marginTop: 2 }} />
-                        <span className="text-sm" style={{ color: '#94A3B8' }}>{f}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Specs table */}
-                  <div className="grid grid-cols-3 gap-3 mb-8">
-                    {[
-                      { label: "Protocols", items: phone.protocols },
-                      { label: "Networking", items: phone.networking },
-                      { label: "Advanced", items: phone.advanced.slice(0, 3) },
-                    ].map((col, k) => (
-                      <div key={k} className="p-4 rounded-lg" style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.06)' }}>
-                        <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: phone.color }}>{col.label.toUpperCase()}</p>
-                        {col.items.map((item, l) => (
-                          <p key={l} className="text-xs mb-1" style={{ color: '#7A8FA6' }}>{item}</p>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link href="/contact">
-                    <button
-                      className="flex items-center gap-2 px-6 py-3 font-semibold rounded transition-all hover:scale-105"
-                      style={{
-                        border: `1px solid ${phone.color}50`,
-                        color: phone.color,
-                        fontFamily: 'Barlow Condensed, sans-serif',
-                        letterSpacing: '0.05em',
-                      }}
-                    >
-                      <Phone size={14} /> ENQUIRE ABOUT {phone.model}
-                    </button>
-                  </Link>
+                <div style={{ background: "linear-gradient(135deg, #F0FDFB, #E6F7F5)", borderRadius: "24px", padding: "48px", display: "flex", alignItems: "center", justifyContent: "center", border: `1px solid ${phone.accentColor}30` }}>
+                  <img src={phone.img} alt={`SafeServ ${phone.name}`} style={{ maxHeight: "280px", objectFit: "contain" }} />
                 </div>
               </motion.div>
-            ))}
+
+              {/* Content side */}
+              <motion.div
+                initial={{ opacity: 0, x: i % 2 === 0 ? 40 : -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className={i % 2 !== 0 ? "lg:order-1" : ""}
+              >
+                <div className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest rounded" style={{ backgroundColor: `${phone.accentColor}15`, color: phone.accentColor, fontFamily: "Space Grotesk, sans-serif" }}>
+                  {phone.tag}
+                </div>
+                <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#111827", lineHeight: 1.15, marginBottom: "8px" }}>
+                  {phone.name} <span style={{ color: phone.accentColor }}>IP Phone</span>
+                </h2>
+                <p style={{ color: "#6B7280", marginBottom: "24px", fontStyle: "italic" }}>{phone.tagline}</p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div>
+                    <h4 style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, color: "#111827", marginBottom: "12px", fontSize: "0.85rem", letterSpacing: "0.06em" }}>PHYSICAL SPECS</h4>
+                    <ul className="space-y-2">
+                      {phone.keyFeatures.map((f, j) => (
+                        <li key={j} className="flex items-start gap-2" style={{ fontSize: "0.82rem", color: "#4B5563" }}>
+                          <CheckCircle size={13} style={{ color: phone.accentColor, flexShrink: 0, marginTop: 2 }} />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 style={{ fontFamily: "Space Grotesk, sans-serif", fontWeight: 600, color: "#111827", marginBottom: "12px", fontSize: "0.85rem", letterSpacing: "0.06em" }}>ADVANCED FEATURES</h4>
+                    <ul className="space-y-2">
+                      {phone.advanced.map((f, j) => (
+                        <li key={j} className="flex items-start gap-2" style={{ fontSize: "0.82rem", color: "#4B5563" }}>
+                          <CheckCircle size={13} style={{ color: phone.accentColor, flexShrink: 0, marginTop: 2 }} />
+                          {f}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div style={{ backgroundColor: "#F9FAFB", borderRadius: "10px", padding: "14px", border: "1px solid #E5E7EB" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", color: phone.accentColor, marginBottom: "8px", fontFamily: "Space Grotesk, sans-serif" }}>PROTOCOLS</div>
+                    {phone.protocols.map((p, j) => <div key={j} style={{ fontSize: "0.75rem", color: "#6B7280", marginBottom: "2px" }}>{p}</div>)}
+                  </div>
+                  <div style={{ backgroundColor: "#F9FAFB", borderRadius: "10px", padding: "14px", border: "1px solid #E5E7EB" }}>
+                    <div style={{ fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.1em", color: phone.accentColor, marginBottom: "8px", fontFamily: "Space Grotesk, sans-serif" }}>NETWORKING</div>
+                    {phone.networking.map((p, j) => <div key={j} style={{ fontSize: "0.75rem", color: "#6B7280", marginBottom: "2px" }}>{p}</div>)}
+                  </div>
+                </div>
+
+                <Link href="/contact">
+                  <button className="flex items-center gap-2 font-semibold transition-all hover:scale-105" style={{ backgroundColor: phone.accentColor, color: "#0D2A25", padding: "12px 24px", borderRadius: "8px", fontSize: "0.9rem", fontFamily: "Space Grotesk, sans-serif", border: "none", boxShadow: `0 4px 16px ${phone.accentColor}40` }}>
+                    <Phone size={15} /> Get a Quote for {phone.name}
+                  </button>
+                </Link>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: '#1A3352', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}>
+      <section className="py-20" style={{ backgroundColor: "#2B4A5C" }}>
         <div className="container text-center">
-          <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
-            NOT SURE WHICH PHONE IS RIGHT FOR YOU?
+          <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#FFFFFF", marginBottom: "16px" }}>
+            Not sure which phone is right for you?
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>
-            Talk to James. He'll recommend the perfect setup for your team — with no pressure and no lock-in.
+          <p style={{ color: "rgba(255,255,255,0.7)", marginBottom: "32px", maxWidth: "480px", margin: "0 auto 32px" }}>
+            Our team will assess your needs and recommend the perfect solution — free of charge, no obligation.
           </p>
           <Link href="/contact">
-            <button
-              className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"
-              style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
-            >
-              BOOK A FREE CONSULTATION
+            <button className="flex items-center gap-2 font-semibold mx-auto transition-all hover:scale-105" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 32px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", boxShadow: "0 4px 16px rgba(45,212,191,0.4)" }}>
+              Talk to an Expert <ChevronRight size={16} />
             </button>
           </Link>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 }

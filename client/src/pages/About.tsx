@@ -35,19 +35,19 @@ const partners = [
 
 export default function About() {
   return (
-    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#F9FAFB', paddingTop: '80px' }}>
       {/* Hero */}
       <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #112744 0%, #1A3352 100%)' }}>
         <div className="absolute inset-0 opacity-15" style={{ backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`, backgroundSize: 'cover' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>ABOUT SAFESERV</p>
-            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>ABOUT SAFESERV</p>
+            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#111827' }}>
               TECHNOLOGY<br />
-              <span style={{ color: '#2DD4BF' }}>WITH A</span><br />
+              <span style={{ color: '#0D9488' }}>WITH A</span><br />
               CONSCIENCE.
             </h1>
-            <p className="text-lg max-w-xl" style={{ color: '#94A3B8' }}>
+            <p className="text-lg max-w-xl" style={{ color: '#6B7280' }}>
               SafeServ was built on a simple belief: UK businesses deserve exceptional technology services without being locked into contracts that don't serve them.
             </p>
           </motion.div>
@@ -63,7 +63,7 @@ export default function About() {
               <div
                 className="rounded-2xl overflow-hidden relative"
                 style={{
-                  backgroundColor: '#1E3A5F',
+                  backgroundColor: '#F0FDFB',
                   border: '1px solid rgba(45, 212, 191, 0.2)',
                   minHeight: '480px',
                   display: 'flex',
@@ -74,18 +74,18 @@ export default function About() {
                 <div className="text-center p-12">
                   <div
                     className="w-32 h-32 rounded-full mx-auto mb-6 flex items-center justify-center text-5xl font-black"
-                    style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', color: '#2DD4BF', fontFamily: 'Barlow Condensed, sans-serif', border: '2px solid rgba(45, 212, 191, 0.3)' }}
+                    style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)', color: '#0D9488', fontFamily: 'Barlow Condensed, sans-serif', border: '2px solid rgba(45, 212, 191, 0.3)' }}
                   >
                     JW
                   </div>
                   <h3 className="text-3xl font-black text-white mb-1" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>James Woodhouse</h3>
-                  <p className="text-sm mb-2" style={{ color: '#2DD4BF' }}>Founder, SafeServ</p>
+                  <p className="text-sm mb-2" style={{ color: '#0D9488' }}>Founder, SafeServ</p>
                   <p className="text-xs" style={{ color: '#475569' }}>15+ Years in Telecoms & IT Communications</p>
                   <div className="mt-8 grid grid-cols-2 gap-4">
-                    <a href="tel:01245850140" className="text-sm py-2 px-4 rounded text-center transition-all hover:scale-105" style={{ backgroundColor: 'rgba(45, 212, 191, 0.1)', color: '#2DD4BF', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
+                    <a href="tel:01245850140" className="text-sm py-2 px-4 rounded text-center transition-all hover:scale-105" style={{ backgroundColor: 'rgba(45, 212, 191, 0.1)', color: '#0D9488', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
                       01245 850140
                     </a>
-                    <a href="mailto:james@safeserv.co.uk" className="text-sm py-2 px-4 rounded text-center transition-all hover:scale-105" style={{ backgroundColor: 'rgba(45, 212, 191, 0.1)', color: '#2DD4BF', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
+                    <a href="mailto:james@safeserv.co.uk" className="text-sm py-2 px-4 rounded text-center transition-all hover:scale-105" style={{ backgroundColor: 'rgba(45, 212, 191, 0.1)', color: '#0D9488', border: '1px solid rgba(45, 212, 191, 0.2)' }}>
                       Email James
                     </a>
                   </div>
@@ -95,37 +95,37 @@ export default function About() {
 
             {/* Story */}
             <motion.div initial={{ opacity: 0, x: 40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>MEET THE FOUNDER</p>
+              <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>MEET THE FOUNDER</p>
               <h2 className="text-5xl font-black mb-6 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                 JAMES<br />
-                <span style={{ color: '#2DD4BF' }}>WOODHOUSE</span>
+                <span style={{ color: '#0D9488' }}>WOODHOUSE</span>
               </h2>
 
               <div
                 className="p-6 rounded-xl mb-8 relative"
-                style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}
+                style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(45, 212, 191, 0.25)' }}
               >
-                <Quote size={24} style={{ color: '#2DD4BF', opacity: 0.4, marginBottom: '12px' }} />
+                <Quote size={24} style={{ color: '#0D9488', opacity: 0.4, marginBottom: '12px' }} />
                 <p className="text-base italic leading-relaxed text-white">
                   "I'm more interested in helping your business than just profiting mine. If the service isn't exceptional, you shouldn't be paying for it."
                 </p>
-                <p className="text-sm mt-3" style={{ color: '#7A8FA6' }}>— James Woodhouse, Founder of SafeServ</p>
+                <p className="text-sm mt-3" style={{ color: '#6B7280' }}>— James Woodhouse, Founder of SafeServ</p>
               </div>
 
-              <p className="text-base leading-relaxed mb-5" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-5" style={{ color: '#6B7280' }}>
                 With over 15 years in telecoms and IT communications, James founded SafeServ with a clear mission: to give UK SMEs access to enterprise-grade technology services without the enterprise-grade complexity or lock-in contracts.
               </p>
-              <p className="text-base leading-relaxed mb-5" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-5" style={{ color: '#6B7280' }}>
                 Having worked across the telecoms industry, James saw first-hand how businesses were being tied into long contracts for services that didn't deliver. SafeServ was his answer — a company built on trust, transparency, and genuine results.
               </p>
-              <p className="text-base leading-relaxed mb-8" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: '#6B7280' }}>
                 Today, SafeServ serves businesses across Essex and beyond, bringing together the UK's best technology partners under one roof — with James as your single point of contact for everything.
               </p>
 
               <Link href="/contact">
                 <button
                   className="flex items-center gap-2 px-6 py-3 font-semibold rounded transition-all hover:scale-105"
-                  style={{ border: '1px solid rgba(45, 212, 191, 0.4)', color: '#2DD4BF', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em' }}
+                  style={{ border: '1px solid rgba(45, 212, 191, 0.4)', color: '#0D9488', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em' }}
                 >
                   TALK TO JAMES <ArrowRight size={14} />
                 </button>
@@ -136,13 +136,13 @@ export default function About() {
       </section>
 
       {/* Partners */}
-      <section className="py-24" style={{ backgroundColor: '#1E3A5F' }}>
+      <section className="py-24" style={{ backgroundColor: '#F0FDFB' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>OUR ECOSYSTEM</p>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>OUR ECOSYSTEM</p>
             <h2 className="text-5xl font-black text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
               BEST-IN-CLASS<br />
-              <span style={{ color: '#2DD4BF' }}>PARTNERS.</span>
+              <span style={{ color: '#0D9488' }}>PARTNERS.</span>
             </h2>
           </motion.div>
 
@@ -155,11 +155,11 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#1A3352', border: `1px solid ${partner.color}20` }}
+                style={{ backgroundColor: '#F9FAFB', border: `1px solid ${partner.color}20` }}
               >
                 <p className="text-xs font-semibold tracking-widest mb-2" style={{ color: partner.color }}>{partner.role.toUpperCase()}</p>
                 <h3 className="text-2xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{partner.name}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{partner.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{partner.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -172,7 +172,7 @@ export default function About() {
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <h2 className="text-5xl font-black text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
               THE SAFESERV<br />
-              <span style={{ color: '#2DD4BF' }}>PROMISE.</span>
+              <span style={{ color: '#0D9488' }}>PROMISE.</span>
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -188,10 +188,10 @@ export default function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="p-10 rounded-xl"
-                style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}
+                style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(45, 212, 191, 0.25)' }}
               >
-                <div className="text-4xl font-black mb-4" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#2DD4BF' }}>{val.word}</div>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{val.desc}</p>
+                <div className="text-4xl font-black mb-4" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#0D9488' }}>{val.word}</div>
+                <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{val.desc}</p>
               </motion.div>
             ))}
           </div>

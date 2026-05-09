@@ -11,7 +11,7 @@ const solutions = [
 
 export default function Connectivity() {
   return (
-    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#F9FAFB', paddingTop: '80px' }}>
       {/* Hero */}
       <section
         className="relative py-24 overflow-hidden"
@@ -21,16 +21,16 @@ export default function Connectivity() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.68)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(43, 74, 92, 0.68)' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>CONNECTIVITY</p>
-            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#FFFFFF' }}>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>CONNECTIVITY</p>
+            <h1 className="text-6xl lg:text-8xl font-black leading-none mb-6" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#111827' }}>
               ALWAYS<br />
-              <span style={{ color: '#2DD4BF' }}>CONNECTED.</span><br />
+              <span style={{ color: '#0D9488' }}>CONNECTED.</span><br />
               ALWAYS ON.
             </h1>
-            <p className="text-lg max-w-xl mb-8" style={{ color: '#94A3B8' }}>
+            <p className="text-lg max-w-xl mb-8" style={{ color: '#6B7280' }}>
               Superfast broadband, leased lines, and SOGEA solutions for UK businesses. Delivered through our trusted network partners DWS, NTA, and Gamma.
             </p>
             <Link href="/contact">
@@ -49,10 +49,10 @@ export default function Connectivity() {
       <section className="py-24">
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>CONNECTIVITY SOLUTIONS</p>
+            <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>CONNECTIVITY SOLUTIONS</p>
             <h2 className="text-5xl font-black text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
               THE RIGHT CONNECTION<br />
-              <span style={{ color: '#2DD4BF' }}>FOR YOUR BUSINESS.</span>
+              <span style={{ color: '#0D9488' }}>FOR YOUR BUSINESS.</span>
             </h2>
           </motion.div>
 
@@ -65,18 +65,18 @@ export default function Connectivity() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}
+                style={{ backgroundColor: '#F0FDFB', border: '1px solid rgba(45, 212, 191, 0.25)' }}
               >
                 <div className="flex items-start justify-between mb-5">
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)' }}>
-                    <sol.icon size={22} style={{ color: '#2DD4BF' }} />
+                    <sol.icon size={22} style={{ color: '#0D9488' }} />
                   </div>
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(45, 212, 191, 0.1)', color: '#2DD4BF' }}>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: 'rgba(45, 212, 191, 0.1)', color: '#0D9488' }}>
                     {sol.speed}
                   </span>
                 </div>
                 <h3 className="text-2xl font-black mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{sol.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{sol.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#6B7280' }}>{sol.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -84,24 +84,24 @@ export default function Connectivity() {
       </section>
 
       {/* Why Connectivity Matters */}
-      <section className="py-24" style={{ backgroundColor: '#1E3A5F' }}>
+      <section className="py-24" style={{ backgroundColor: '#F0FDFB' }}>
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-              <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>WHY IT MATTERS</p>
+              <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#0D9488' }}>WHY IT MATTERS</p>
               <h2 className="text-5xl font-black mb-6 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                 YOUR INTERNET IS<br />
-                <span style={{ color: '#2DD4BF' }}>YOUR BUSINESS.</span>
+                <span style={{ color: '#0D9488' }}>YOUR BUSINESS.</span>
               </h2>
-              <p className="text-base leading-relaxed mb-6" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-6" style={{ color: '#6B7280' }}>
                 In today's world, a slow or unreliable internet connection doesn't just frustrate your team — it costs you customers, damages your reputation, and limits your growth.
               </p>
-              <p className="text-base leading-relaxed mb-8" style={{ color: '#94A3B8' }}>
+              <p className="text-base leading-relaxed mb-8" style={{ color: '#6B7280' }}>
                 SafeServ works with the UK's leading connectivity providers — DWS, NTA, and Gamma — to deliver the right solution for your business at the right price, with the right SLA.
               </p>
               {["Guaranteed uptime SLAs", "Dedicated account management", "Fast fault resolution", "Scalable as you grow", "Competitive pricing"].map((item, i) => (
                 <div key={i} className="flex items-center gap-3 mb-3">
-                  <CheckCircle2 size={14} style={{ color: '#2DD4BF' }} />
+                  <CheckCircle2 size={14} style={{ color: '#0D9488' }} />
                   <span className="text-sm text-white">{item}</span>
                 </div>
               ))}
@@ -113,11 +113,11 @@ export default function Connectivity() {
                   <div
                     key={i}
                     className="p-6 rounded-xl flex items-center justify-between"
-                    style={{ backgroundColor: '#1A3352', border: '1px solid rgba(45, 212, 191, 0.12)' }}
+                    style={{ backgroundColor: '#F9FAFB', border: '1px solid rgba(45, 212, 191, 0.12)' }}
                   >
                     <div>
                       <p className="text-2xl font-black text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{partner}</p>
-                      <p className="text-xs" style={{ color: '#7A8FA6' }}>Network Partner</p>
+                      <p className="text-xs" style={{ color: '#6B7280' }}>Network Partner</p>
                     </div>
                     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: '#2DD4BF', boxShadow: '0 0 8px #2DD4BF' }} />
                   </div>
@@ -134,7 +134,7 @@ export default function Connectivity() {
           <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
             LET'S FIND YOUR PERFECT CONNECTION.
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>Tell us your postcode and requirements — we'll find the best solution at the best price.</p>
+          <p className="text-lg mb-8" style={{ color: '#6B7280' }}>Tell us your postcode and requirements — we'll find the best solution at the best price.</p>
           <Link href="/contact">
             <button
               className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"
