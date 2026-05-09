@@ -40,24 +40,24 @@ export default function Navbar() {
       }}
     >
       <div className="container">
-        <div className="flex items-center justify-between h-20 lg:h-24">
+        <div className="flex items-center justify-between h-16 xl:h-20">
           {/* Logo */}
           <Link href="/">
             <div className="flex items-center gap-2">
               <img
                 src="/logo.png"
                 alt="SafeServ"
-                className="h-14 lg:h-[70px] object-contain"
+                className="h-11 xl:h-14 object-contain"
               />
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden xl:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 <span
-                  className="px-3 py-2 text-sm font-medium transition-all duration-200 relative group"
+                  className="px-2 py-2 text-sm font-medium transition-all duration-200 relative group whitespace-nowrap"
                   style={{
                     color: location === link.href ? '#0D9488' : '#4B5563',
                     fontFamily: 'Space Grotesk, DM Sans, sans-serif',
@@ -78,7 +78,7 @@ export default function Navbar() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex items-center gap-3">
             <a
               href="tel:01245850140"
               className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-teal-600"
@@ -105,7 +105,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden p-2"
+            className="xl:hidden p-2"
             style={{ color: '#0D9488' }}
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
