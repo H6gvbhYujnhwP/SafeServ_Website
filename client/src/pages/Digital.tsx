@@ -3,6 +3,73 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Globe, Smartphone, ShoppingCart, Code2, CheckCircle, Clock, Search, Share2 } from "lucide-react";
 
+function WebDesignGraphic() {
+  const steps = [
+    { label: "Brief", x: 60, y: 210, icon: "📋" },
+    { label: "Design", x: 180, y: 120, icon: "🎨" },
+    { label: "Build", x: 300, y: 120, icon: "⚡" },
+    { label: "SEO", x: 180, y: 300, icon: "🔍" },
+    { label: "Mobile", x: 300, y: 300, icon: "📱" },
+    { label: "Live!", x: 390, y: 210, icon: "🚀" },
+  ];
+  const pipes = [[0,1],[0,3],[1,2],[3,4],[2,5],[4,5]];
+  return (
+    <div style={{ width: "100%", height: "420px" }}>
+      <svg viewBox="0 0 450 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Browser chrome at top */}
+        <rect x="30" y="20" width="390" height="60" rx="10" fill="rgba(45,212,191,0.08)" stroke="#2DD4BF" strokeWidth="1.5" />
+        <circle cx="55" cy="50" r="7" fill="#F87171" />
+        <circle cx="78" cy="50" r="7" fill="#FBBF24" />
+        <circle cx="101" cy="50" r="7" fill="#34D399" />
+        <rect x="120" y="40" width="240" height="20" rx="10" fill="rgba(45,212,191,0.15)" stroke="#2DD4BF" strokeWidth="1" />
+        <text x="240" y="54" textAnchor="middle" fill="#0D9488" fontSize="9" fontWeight="600" fontFamily="Space Grotesk, sans-serif">www.yourclientsite.co.uk</text>
+        {/* Pipeline connections */}
+        {pipes.map(([a, b], i) => (
+          <motion.line key={i}
+            x1={steps[a].x} y1={steps[a].y}
+            x2={steps[b].x} y2={steps[b].y}
+            stroke="#2DD4BF" strokeWidth="2" strokeDasharray="6 4"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.6 }}
+            transition={{ duration: 1, delay: 0.4 + i * 0.18 }}
+          />
+        ))}
+        {/* Travelling build packets */}
+        {pipes.slice(0, 4).map(([a, b], i) => (
+          <motion.circle key={`pkt-${i}`} r={5} fill="#2DD4BF"
+            animate={{ cx: [steps[a].x, steps[b].x, steps[a].x], cy: [steps[a].y, steps[b].y, steps[a].y] }}
+            transition={{ duration: 2.0, repeat: Infinity, delay: i * 0.55, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Step nodes */}
+        {steps.map((s, i) => (
+          <g key={`s-${i}`}>
+            <motion.circle cx={s.x} cy={s.y} r={i === 5 ? 30 : 24}
+              fill={i === 5 ? "#2DD4BF" : "rgba(45,212,191,0.12)"}
+              stroke="#2DD4BF" strokeWidth="2"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.3 + i * 0.15 }}
+            />
+            <motion.text x={s.x} y={s.y + 4} textAnchor="middle"
+              fill={i === 5 ? "#0D2A25" : "#0D9488"}
+              fontSize={i === 5 ? "10" : "9"} fontWeight="700" fontFamily="Space Grotesk, sans-serif"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 + i * 0.15 }}
+            >{s.label}</motion.text>
+          </g>
+        ))}
+        {/* 48hr badge */}
+        <motion.rect x="340" y="360" width="80" height="30" rx="15"
+          fill="#2DD4BF"
+          animate={{ opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+        <text x="380" y="380" textAnchor="middle" fill="#0D2A25" fontSize="10" fontWeight="800" fontFamily="Space Grotesk, sans-serif">48 HRS</text>
+      </svg>
+    </div>
+  );
+}
+
 // Portfolio images for the scrolling strip — device mockups showing website designs
 const portfolioImages = [
   { src: "/manus-storage/3mH5KkbsXKFf_891a0a4f.jpg", label: "Finance", sector: "FINANCIAL SERVICES" },
@@ -142,29 +209,34 @@ export default function Digital() {
       <section style={{ position: "relative", paddingTop: "100px", paddingBottom: "80px", background: "linear-gradient(135deg, #F0FDFB 0%, #E6FFFA 50%, #F0FDF4 100%)", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -100, right: -100, width: 500, height: 500, borderRadius: "50%", background: "rgba(45,212,191,0.07)", pointerEvents: "none" }} />
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
-              <Globe size={12} /> WEBSITE DESIGN
-            </div>
-            <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
-              Your Website.<br /><span style={{ color: "#0D9488" }}>Built Fast.</span>
-            </h1>
-            <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px", marginBottom: "32px" }}>
-              From a professional website in 48 hours to full digital marketing — SafeServ and our <strong style={{ color: "#0D9488" }}>ClearerPaths</strong> partnership handle your entire digital presence.
-            </p>
-            <Link href="/contact">
-              <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
-                Get a Website Quote <ArrowRight size={15} />
-              </motion.button>
-            </Link>
-            <div className="flex flex-wrap gap-6 mt-8">
-              {["48-Hour Delivery", "Mobile-First", "SEO Optimised", "No Lock-In"].map((badge) => (
-                <div key={badge} className="flex items-center gap-2" style={{ fontSize: "0.8rem", color: "#6B7280" }}>
-                  <CheckCircle size={14} style={{ color: "#2DD4BF" }} />{badge}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
+                <Globe size={12} /> WEBSITE DESIGN
+              </div>
+              <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
+                Your Website.<br /><span style={{ color: "#0D9488" }}>Built Fast.</span>
+              </h1>
+              <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px", marginBottom: "32px" }}>
+                From a professional website in 48 hours to full digital marketing — SafeServ and our <strong style={{ color: "#0D9488" }}>ClearerPaths</strong> partnership handle your entire digital presence.
+              </p>
+              <Link href="/contact">
+                <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
+                  Get a Website Quote <ArrowRight size={15} />
+                </motion.button>
+              </Link>
+              <div className="flex flex-wrap gap-6 mt-8">
+                {["48-Hour Delivery", "Mobile-First", "SEO Optimised", "No Lock-In"].map((badge) => (
+                  <div key={badge} className="flex items-center gap-2" style={{ fontSize: "0.8rem", color: "#6B7280" }}>
+                    <CheckCircle size={14} style={{ color: "#2DD4BF" }} />{badge}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.0, delay: 0.4 }} className="hidden lg:flex justify-center items-center">
+              <WebDesignGraphic />
+            </motion.div>
+          </div>
         </div>
       </section>
 

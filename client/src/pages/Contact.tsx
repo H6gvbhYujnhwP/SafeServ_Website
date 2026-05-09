@@ -2,6 +2,67 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, Globe, MapPin, Send, CheckCircle } from "lucide-react";
 
+function ContactGraphic() {
+  const channels = [
+    { label: "Phone", x: 120, y: 100 },
+    { label: "Email", x: 320, y: 100 },
+    { label: "Chat", x: 80, y: 260 },
+    { label: "Form", x: 360, y: 260 },
+    { label: "WhatsApp", x: 220, y: 60 },
+    { label: "Callback", x: 220, y: 340 },
+  ];
+  return (
+    <div style={{ width: "100%", height: "420px" }}>
+      <svg viewBox="0 0 440 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Routing lines from channels to central inbox */}
+        {channels.map((c, i) => (
+          <motion.line key={i}
+            x1={c.x} y1={c.y} x2={220} y2={200}
+            stroke="#2DD4BF" strokeWidth="1.2" strokeDasharray="5 4" strokeOpacity="0.45"
+            initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+            transition={{ duration: 1.0, delay: i * 0.15 }}
+          />
+        ))}
+        {/* Animated message dots travelling to inbox */}
+        {channels.map((c, i) => (
+          <motion.circle key={`msg-${i}`} r={5} fill="#2DD4BF"
+            animate={{ cx: [c.x, 220, c.x], cy: [c.y, 200, c.y], opacity: [0, 1, 0] }}
+            transition={{ duration: 2.0, repeat: Infinity, delay: i * 0.5, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Channel nodes */}
+        {channels.map((c, i) => (
+          <g key={`ch-${i}`}>
+            <motion.circle cx={c.x} cy={c.y} r={24}
+              fill="rgba(45,212,191,0.1)" stroke="#2DD4BF" strokeWidth="1.5"
+              initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.12 }}
+            />
+            <motion.text x={c.x} y={c.y + 4} textAnchor="middle"
+              fill="#0D9488" fontSize="8" fontWeight="700" fontFamily="Space Grotesk, sans-serif"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 + i * 0.12 }}
+            >{c.label}</motion.text>
+          </g>
+        ))}
+        {/* Central inbox hub */}
+        <motion.circle cx={220} cy={200} r={44}
+          fill="#2DD4BF"
+          animate={{ r: [44, 48, 44] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <text x={220} y={196} textAnchor="middle" fill="#0D2A25" fontSize="10" fontWeight="800" fontFamily="Space Grotesk, sans-serif">SafeServ</text>
+        <text x={220} y={210} textAnchor="middle" fill="#0D2A25" fontSize="8" fontWeight="600" fontFamily="Space Grotesk, sans-serif">Inbox</text>
+        {/* Response time badge */}
+        <motion.rect x="130" y="380" width="180" height="26" rx="13"
+          fill="rgba(45,212,191,0.15)" stroke="#2DD4BF" strokeWidth="1"
+          animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 2.5, repeat: Infinity }}
+        />
+        <text x="220" y="397" textAnchor="middle" fill="#0D9488" fontSize="9" fontWeight="700" fontFamily="Space Grotesk, sans-serif">FAST RESPONSE GUARANTEED</text>
+      </svg>
+    </div>
+  );
+}
+
 const services = [
   "VoIP Telephony",
   "IT Support (Sweetbyte)",
@@ -38,17 +99,22 @@ export default function Contact() {
       <section style={{ position: "relative", paddingTop: "100px", paddingBottom: "60px", background: "linear-gradient(135deg, #F0FDFB 0%, #E6FFFA 50%, #F0FDF4 100%)", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -100, right: -100, width: 500, height: 500, borderRadius: "50%", background: "rgba(45,212,191,0.07)", pointerEvents: "none" }} />
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
-              GET IN TOUCH
-            </div>
-            <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "16px" }}>
-              Let's Talk<br /><span style={{ color: "#0D9488" }}>Technology.</span>
-            </h1>
-            <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px" }}>
-              No pressure. No obligation. Just an honest conversation about what technology can do for your business.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
+                GET IN TOUCH
+              </div>
+              <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "16px" }}>
+                Let's Talk<br /><span style={{ color: "#0D9488" }}>Technology.</span>
+              </h1>
+              <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px" }}>
+                No pressure. No obligation. Just an honest conversation about what technology can do for your business.
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.0, delay: 0.4 }} className="hidden lg:flex justify-center items-center">
+              <ContactGraphic />
+            </motion.div>
+          </div>
         </div>
       </section>
 

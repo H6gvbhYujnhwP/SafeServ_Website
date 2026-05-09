@@ -2,6 +2,79 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Brain, Mic, Users, CheckCircle, Bot, BarChart3, Mail } from "lucide-react";
 
+function AIGraphic() {
+  const neurons = [
+    // Input layer
+    { id: 0, x: 60, y: 100, layer: 0 }, { id: 1, x: 60, y: 180, layer: 0 },
+    { id: 2, x: 60, y: 260, layer: 0 }, { id: 3, x: 60, y: 340, layer: 0 },
+    // Hidden layer 1
+    { id: 4, x: 170, y: 130, layer: 1 }, { id: 5, x: 170, y: 215, layer: 1 },
+    { id: 6, x: 170, y: 300, layer: 1 },
+    // Hidden layer 2
+    { id: 7, x: 280, y: 150, layer: 2 }, { id: 8, x: 280, y: 240, layer: 2 },
+    { id: 9, x: 280, y: 330, layer: 2 },
+    // Output layer
+    { id: 10, x: 390, y: 170, layer: 3 }, { id: 11, x: 390, y: 260, layer: 3 },
+  ];
+  const connections = [
+    [0,4],[0,5],[1,4],[1,5],[1,6],[2,5],[2,6],[3,6],
+    [4,7],[4,8],[5,7],[5,8],[5,9],[6,8],[6,9],
+    [7,10],[7,11],[8,10],[8,11],[9,11],
+  ];
+  const labels = ["Translate+", "AI Voice", "Email AI", "Workforce", "", "", "", "", "", "", "Insights", "Actions"];
+  return (
+    <div style={{ width: "100%", height: "420px" }}>
+      <svg viewBox="0 0 450 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Synaptic connections */}
+        {connections.map(([a, b], i) => (
+          <motion.line key={i}
+            x1={neurons[a].x} y1={neurons[a].y}
+            x2={neurons[b].x} y2={neurons[b].y}
+            stroke="#2DD4BF" strokeWidth="1" strokeOpacity="0.35"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.2, delay: i * 0.04 }}
+          />
+        ))}
+        {/* Firing pulses travelling along connections */}
+        {connections.slice(0, 8).map(([a, b], i) => (
+          <motion.circle key={`fire-${i}`} r={4} fill="#2DD4BF"
+            animate={{
+              cx: [neurons[a].x, neurons[b].x, neurons[a].x],
+              cy: [neurons[a].y, neurons[b].y, neurons[a].y],
+              opacity: [0, 1, 0],
+            }}
+            transition={{ duration: 1.8, repeat: Infinity, delay: i * 0.35, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Neuron nodes */}
+        {neurons.map((n, i) => (
+          <g key={`n-${i}`}>
+            <motion.circle cx={n.x} cy={n.y} r={n.layer === 0 || n.layer === 3 ? 20 : 16}
+              fill={n.layer === 0 || n.layer === 3 ? "#2DD4BF" : "rgba(45,212,191,0.15)"}
+              stroke="#2DD4BF" strokeWidth="1.5"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.2 + i * 0.08 }}
+            />
+            {labels[i] && (
+              <motion.text x={n.x} y={n.y + 4} textAnchor="middle"
+                fill={n.layer === 0 || n.layer === 3 ? "#0D2A25" : "#0D9488"}
+                fontSize="7" fontWeight="700" fontFamily="Space Grotesk, sans-serif"
+                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 + i * 0.08 }}
+              >{labels[i]}</motion.text>
+            )}
+          </g>
+        ))}
+        {/* Layer labels */}
+        {[{x:60,t:"INPUT"},{x:170,t:"PROCESS"},{x:280,t:"LEARN"},{x:390,t:"OUTPUT"}].map((l,i)=>(
+          <text key={i} x={l.x} y={390} textAnchor="middle" fill="#9CA3AF" fontSize="8" fontWeight="600" fontFamily="Space Grotesk, sans-serif">{l.t}</text>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 const aiTools = [
   { icon: Mic, title: "SafeServ Translate+", desc: "Live call transcription with speaker identification, sentiment analysis, and searchable archives.", tag: "EXCLUSIVE" },
   { icon: Bot, title: "AI Voice Receptionist", desc: "A 24/7 AI receptionist that answers calls, qualifies leads, and books appointments.", tag: "24/7" },
@@ -18,31 +91,36 @@ export default function AISolutions() {
       <section style={{ position: "relative", paddingTop: "100px", paddingBottom: "80px", background: "linear-gradient(135deg, #F0FDFB 0%, #E6FFFA 50%, #F0FDF4 100%)", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -100, right: -100, width: 500, height: 500, borderRadius: "50%", background: "rgba(45,212,191,0.07)", pointerEvents: "none" }} />
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
-              <Brain size={12} /> AI SOLUTIONS
-            </div>
-            <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
-              AI That Works<br /><span style={{ color: "#0D9488" }}>For Your Business.</span>
-            </h1>
-            <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "520px", marginBottom: "32px" }}>
-              Two powerful AI platforms — <strong style={{ color: "#0D9488" }}>SafeServ Translate+</strong> for live call transcription and <strong style={{ color: "#0D9488" }}>TheGreenAgents</strong> for AI workforce tools. Practical AI that delivers real results.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link href="/contact">
-                <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
-                  Explore AI Solutions <ArrowRight size={15} />
-                </motion.button>
-              </Link>
-            </div>
-            <div className="flex flex-wrap gap-6 mt-8">
-              {["Live Transcription", "AI Workforce", "Email Automation", "Custom Workflows"].map((badge) => (
-                <div key={badge} className="flex items-center gap-2" style={{ fontSize: "0.8rem", color: "#6B7280" }}>
-                  <CheckCircle size={14} style={{ color: "#2DD4BF" }} />{badge}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
+                <Brain size={12} /> AI SOLUTIONS
+              </div>
+              <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
+                AI That Works<br /><span style={{ color: "#0D9488" }}>For Your Business.</span>
+              </h1>
+              <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "520px", marginBottom: "32px" }}>
+                Two powerful AI platforms — <strong style={{ color: "#0D9488" }}>SafeServ Translate+</strong> for live call transcription and <strong style={{ color: "#0D9488" }}>TheGreenAgents</strong> for AI workforce tools. Practical AI that delivers real results.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/contact">
+                  <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
+                    Explore AI Solutions <ArrowRight size={15} />
+                  </motion.button>
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-6 mt-8">
+                {["Live Transcription", "AI Workforce", "Email Automation", "Custom Workflows"].map((badge) => (
+                  <div key={badge} className="flex items-center gap-2" style={{ fontSize: "0.8rem", color: "#6B7280" }}>
+                    <CheckCircle size={14} style={{ color: "#2DD4BF" }} />{badge}
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.0, delay: 0.4 }} className="hidden lg:flex justify-center items-center">
+              <AIGraphic />
+            </motion.div>
+          </div>
         </div>
       </section>
 

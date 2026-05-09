@@ -2,6 +2,68 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Quote, Users, Shield, Wifi, Globe } from "lucide-react";
 
+function PartnershipGraphic() {
+  const nodes = [
+    { id: 0, x: 220, y: 200, label: "SafeServ", r: 36, primary: true },
+    { id: 1, x: 100, y: 90, label: "Sweetbyte", r: 26 },
+    { id: 2, x: 340, y: 90, label: "GreenAgents", r: 26 },
+    { id: 3, x: 100, y: 310, label: "ClearerPaths", r: 26 },
+    { id: 4, x: 340, y: 310, label: "DWS/NTA", r: 26 },
+    { id: 5, x: 220, y: 60, label: "IT", r: 18 },
+    { id: 6, x: 380, y: 200, label: "AI", r: 18 },
+    { id: 7, x: 60, y: 200, label: "VoIP", r: 18 },
+    { id: 8, x: 220, y: 360, label: "Web", r: 18 },
+  ];
+  const edges = [[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[0,8],[1,5],[2,6],[3,8],[4,6]];
+  return (
+    <div style={{ width: "100%", height: "420px" }}>
+      <svg viewBox="0 0 440 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Edges */}
+        {edges.map(([a, b], i) => (
+          <motion.line key={i}
+            x1={nodes[a].x} y1={nodes[a].y}
+            x2={nodes[b].x} y2={nodes[b].y}
+            stroke="#2DD4BF" strokeWidth="1.2" strokeOpacity="0.4"
+            initial={{ pathLength: 0 }}
+            animate={{ pathLength: 1 }}
+            transition={{ duration: 1.0, delay: i * 0.1 }}
+          />
+        ))}
+        {/* Trust pulses travelling along edges */}
+        {edges.slice(0, 6).map(([a, b], i) => (
+          <motion.circle key={`tp-${i}`} r={5} fill="#2DD4BF"
+            animate={{ cx: [nodes[a].x, nodes[b].x, nodes[a].x], cy: [nodes[a].y, nodes[b].y, nodes[a].y], opacity: [0, 1, 0] }}
+            transition={{ duration: 2.2, repeat: Infinity, delay: i * 0.4, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Nodes */}
+        {nodes.map((n, i) => (
+          <g key={`nd-${i}`}>
+            <motion.circle cx={n.x} cy={n.y} r={n.r}
+              fill={n.primary ? "#2DD4BF" : "rgba(45,212,191,0.12)"}
+              stroke="#2DD4BF" strokeWidth={n.primary ? 0 : 1.5}
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
+            />
+            <motion.text x={n.x} y={n.y + (n.primary ? 5 : 4)} textAnchor="middle"
+              fill={n.primary ? "#0D2A25" : "#0D9488"}
+              fontSize={n.primary ? "10" : "7"} fontWeight="700" fontFamily="Space Grotesk, sans-serif"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 + i * 0.1 }}
+            >{n.label}</motion.text>
+          </g>
+        ))}
+        {/* "No Lock-In" badge */}
+        <motion.rect x="140" y="385" width="160" height="26" rx="13"
+          fill="rgba(45,212,191,0.15)" stroke="#2DD4BF" strokeWidth="1"
+          animate={{ opacity: [0.7, 1, 0.7] }} transition={{ duration: 2.5, repeat: Infinity }}
+        />
+        <text x="220" y="402" textAnchor="middle" fill="#0D9488" fontSize="9" fontWeight="700" fontFamily="Space Grotesk, sans-serif">NO LOCK-IN CONTRACTS</text>
+      </svg>
+    </div>
+  );
+}
+
 const partners = [
   { icon: Shield, name: "Sweetbyte", role: "IT Support & Cyber Security", desc: "25+ years of IT expertise. One of the first UK companies to introduce MOA (Managing Operating Agents) as standard. No lock-in contracts, no jargon — just great IT support.", url: "https://sweetbyte.co.uk" },
   { icon: Users, name: "TheGreenAgents", role: "AI Automation & Web Development", desc: "The UK's leading AI business automation agency. From AI voice receptionists to full business workforces, custom websites to mobile apps.", url: "https://thegreenagents.com" },
@@ -16,17 +78,22 @@ export default function About() {
       <section style={{ position: "relative", paddingTop: "100px", paddingBottom: "80px", background: "linear-gradient(135deg, #F0FDFB 0%, #E6FFFA 50%, #F0FDF4 100%)", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: -100, right: -100, width: 500, height: 500, borderRadius: "50%", background: "rgba(45,212,191,0.07)", pointerEvents: "none" }} />
         <div className="container" style={{ position: "relative", zIndex: 2 }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-            <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
-              ABOUT SAFESERV
-            </div>
-            <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
-              Technology with<br /><span style={{ color: "#0D9488" }}>a Conscience.</span>
-            </h1>
-            <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "520px" }}>
-              SafeServ was built on a simple belief: UK businesses deserve exceptional technology services without being locked into contracts that don't serve them.
-            </p>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
+                ABOUT SAFESERV
+              </div>
+              <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
+                Technology with<br /><span style={{ color: "#0D9488" }}>a Conscience.</span>
+              </h1>
+              <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "520px" }}>
+                SafeServ was built on a simple belief: UK businesses deserve exceptional technology services without being locked into contracts that don't serve them.
+              </p>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.0, delay: 0.4 }} className="hidden lg:flex justify-center items-center">
+              <PartnershipGraphic />
+            </motion.div>
+          </div>
         </div>
       </section>
 

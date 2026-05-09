@@ -2,6 +2,80 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { CheckCircle, ChevronRight, Phone, ArrowRight } from "lucide-react";
 
+function VoIPGraphic() {
+  const protocols = [
+    { label: "SIP", x: 300, y: 80 },
+    { label: "HD", x: 380, y: 180 },
+    { label: "TLS", x: 340, y: 300 },
+    { label: "RTP", x: 180, y: 340 },
+    { label: "PoE", x: 80, y: 260 },
+    { label: "BLF", x: 60, y: 140 },
+    { label: "SIP2", x: 160, y: 60 },
+  ];
+  const cx = 220, cy = 200, r = 28;
+  return (
+    <div style={{ width: "100%", height: "420px", position: "relative" }}>
+      <svg viewBox="0 0 440 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Animated pulse rings from central handset */}
+        {[60, 90, 120].map((radius, i) => (
+          <motion.circle key={i} cx={cx} cy={cy} r={radius}
+            fill="none" stroke="#2DD4BF" strokeWidth="1"
+            initial={{ opacity: 0.6, scale: 0.8 }}
+            animate={{ opacity: [0.6, 0, 0.6], scale: [0.8, 1.3, 0.8] }}
+            transition={{ duration: 2.8, repeat: Infinity, delay: i * 0.9, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Connection lines to protocol nodes */}
+        {protocols.map((p, i) => (
+          <motion.line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y}
+            stroke="#2DD4BF" strokeWidth="1" strokeDasharray="4 4"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.5 }}
+            transition={{ duration: 1.2, delay: 0.3 + i * 0.15 }}
+          />
+        ))}
+        {/* Travelling signal dots */}
+        {protocols.slice(0, 4).map((p, i) => (
+          <motion.circle key={`dot-${i}`} r={4} fill="#2DD4BF"
+            initial={{ cx, cy }}
+            animate={{ cx: [cx, p.x, cx], cy: [cy, p.y, cy] }}
+            transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.6, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Central handset icon circle */}
+        <circle cx={cx} cy={cy} r={r} fill="#2DD4BF" />
+        <text x={cx} y={cy + 5} textAnchor="middle" fill="#0D2A25" fontSize="11" fontWeight="700" fontFamily="Space Grotesk, sans-serif">VoIP</text>
+        {/* Protocol nodes */}
+        {protocols.map((p, i) => (
+          <g key={`node-${i}`}>
+            <motion.circle cx={p.x} cy={p.y} r={20} fill="rgba(45,212,191,0.12)" stroke="#2DD4BF" strokeWidth="1"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
+            />
+            <motion.text x={p.x} y={p.y + 4} textAnchor="middle" fill="#0D9488" fontSize="9" fontWeight="700" fontFamily="Space Grotesk, sans-serif"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 + i * 0.15 }}
+            >{p.label}</motion.text>
+          </g>
+        ))}
+        {/* Audio waveform below handset */}
+        {[-3,-2,-1,0,1,2,3].map((offset, i) => (
+          <motion.rect key={`wave-${i}`}
+            x={cx - 42 + i * 14} y={cy + 50}
+            width={8} rx={4}
+            fill="#2DD4BF" fillOpacity="0.7"
+            initial={{ height: 4, y: cy + 68 }}
+            animate={{ height: [4, 8 + Math.abs(offset) * 8, 4], y: [cy + 68, cy + 60 - Math.abs(offset) * 4, cy + 68] }}
+            transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.12, ease: "easeInOut" }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 /* OPTION 2: CRISP WHITE & TEAL */
 
 const phones = [
@@ -103,23 +177,28 @@ export default function Telephony() {
       >
         <div style={{ position: "absolute", top: -80, right: -80, width: 400, height: 400, background: "radial-gradient(circle, rgba(45,212,191,0.12) 0%, transparent 70%)", borderRadius: "50%" }} />
         <div className="container" style={{ paddingTop: "72px", paddingBottom: "72px" }}>
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 14px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", fontFamily: "Space Grotesk, sans-serif" }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2DD4BF", display: "inline-block" }} />
-              VOIP TELEPHONY
-            </div>
-            <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: "#111827", lineHeight: 1.1, marginBottom: "16px" }}>
-              HD Voice for<br /><span style={{ color: "#0D9488" }}>Modern Business.</span>
-            </h1>
-            <p style={{ fontSize: "1.05rem", color: "#6B7280", lineHeight: 1.7, maxWidth: "520px", marginBottom: "28px" }}>
-              Three industry-leading IP phones — from the reliable D44 to the flagship F60 touchscreen. All with HD audio, PoE support, and no lock-in contracts.
-            </p>
-            <Link href="/contact">
-              <button className="flex items-center gap-2 font-semibold transition-all hover:scale-105" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", boxShadow: "0 4px 16px rgba(45,212,191,0.4)", border: "none" }}>
-                Get a Quote <ArrowRight size={16} />
-              </button>
-            </Link>
-          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+              <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 14px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.1em", fontFamily: "Space Grotesk, sans-serif" }}>
+                <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#2DD4BF", display: "inline-block" }} />
+                VOIP TELEPHONY
+              </div>
+              <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, color: "#111827", lineHeight: 1.1, marginBottom: "16px" }}>
+                HD Voice for<br /><span style={{ color: "#0D9488" }}>Modern Business.</span>
+              </h1>
+              <p style={{ fontSize: "1.05rem", color: "#6B7280", lineHeight: 1.7, maxWidth: "520px", marginBottom: "28px" }}>
+                Three industry-leading IP phones — from the reliable D44 to the flagship F60 touchscreen. All with HD audio, PoE support, and no lock-in contracts.
+              </p>
+              <Link href="/contact">
+                <button className="flex items-center gap-2 font-semibold transition-all hover:scale-105" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", boxShadow: "0 4px 16px rgba(45,212,191,0.4)", border: "none" }}>
+                  Get a Quote <ArrowRight size={16} />
+                </button>
+              </Link>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, x: 60 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 1.0, delay: 0.4 }} className="hidden lg:flex justify-center items-center">
+              <VoIPGraphic />
+            </motion.div>
+          </div>
         </div>
       </section>
 

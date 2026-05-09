@@ -2,6 +2,78 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Shield, Cpu, Users, Clock, CheckCircle, Zap, Monitor } from "lucide-react";
 
+function ITGraphic() {
+  const nodes = [
+    { label: "Server", x: 220, y: 180, r: 32, main: true },
+    { label: "Security", x: 100, y: 80, r: 22 },
+    { label: "Cloud", x: 340, y: 80, r: 22 },
+    { label: "Helpdesk", x: 380, y: 220, r: 22 },
+    { label: "MOA", x: 320, y: 330, r: 22 },
+    { label: "Monitor", x: 120, y: 330, r: 22 },
+    { label: "Users", x: 60, y: 220, r: 22 },
+  ];
+  const centre = nodes[0];
+  return (
+    <div style={{ width: "100%", height: "420px" }}>
+      <svg viewBox="0 0 440 420" style={{ width: "100%", height: "100%" }} xmlns="http://www.w3.org/2000/svg">
+        {/* Pulse rings on server */}
+        {[50, 75, 100].map((r, i) => (
+          <motion.circle key={i} cx={centre.x} cy={centre.y} r={r}
+            fill="none" stroke="#2DD4BF" strokeWidth="1"
+            animate={{ opacity: [0.5, 0, 0.5], r: [r, r + 20, r] }}
+            transition={{ duration: 3, repeat: Infinity, delay: i * 1, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Connection lines */}
+        {nodes.slice(1).map((n, i) => (
+          <motion.line key={i} x1={centre.x} y1={centre.y} x2={n.x} y2={n.y}
+            stroke="#2DD4BF" strokeWidth="1.5" strokeDasharray="5 4"
+            initial={{ pathLength: 0, opacity: 0 }}
+            animate={{ pathLength: 1, opacity: 0.6 }}
+            transition={{ duration: 1, delay: 0.3 + i * 0.15 }}
+          />
+        ))}
+        {/* Travelling data packets */}
+        {nodes.slice(1, 5).map((n, i) => (
+          <motion.circle key={`pkt-${i}`} r={5} fill="#2DD4BF"
+            animate={{ cx: [centre.x, n.x, centre.x], cy: [centre.y, n.y, centre.y] }}
+            transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.65, ease: "easeInOut" }}
+          />
+        ))}
+        {/* Server node */}
+        <motion.circle cx={centre.x} cy={centre.y} r={centre.r}
+          fill="#2DD4BF"
+          animate={{ boxShadow: ["0 0 0px #2DD4BF", "0 0 20px #2DD4BF", "0 0 0px #2DD4BF"] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        />
+        <text x={centre.x} y={centre.y + 5} textAnchor="middle" fill="#0D2A25" fontSize="10" fontWeight="700" fontFamily="Space Grotesk, sans-serif">SERVER</text>
+        {/* Outer nodes */}
+        {nodes.slice(1).map((n, i) => (
+          <g key={`node-${i}`}>
+            <motion.circle cx={n.x} cy={n.y} r={n.r}
+              fill="rgba(45,212,191,0.12)" stroke="#2DD4BF" strokeWidth="1.5"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.5 + i * 0.15 }}
+            />
+            <motion.text x={n.x} y={n.y + 4} textAnchor="middle" fill="#0D9488" fontSize="8" fontWeight="700" fontFamily="Space Grotesk, sans-serif"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 + i * 0.15 }}
+            >{n.label}</motion.text>
+          </g>
+        ))}
+        {/* Monitoring pulse line at bottom */}
+        {[0,1,2,3,4,5,6,7,8].map((j) => (
+          <motion.rect key={`bar-${j}`} x={100 + j * 28} y={390} width={14} rx={3}
+            fill="#2DD4BF" fillOpacity="0.6"
+            animate={{ height: [4, 6 + (j % 3) * 8, 4], y: [394, 388 - (j % 3) * 4, 394] }}
+            transition={{ duration: 1.4, repeat: Infinity, delay: j * 0.14, ease: "easeInOut" }}
+          />
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 const services = [
   { icon: Shield, title: "Cyber Security", desc: "Multi-layered protection including endpoint security, firewalls, email filtering, and security awareness training." },
   { icon: Cpu, title: "Cloud Services", desc: "Microsoft 365, Azure, and cloud migration. We move your business to the cloud safely and efficiently." },
@@ -42,15 +114,8 @@ export default function ITSupport() {
                 ))}
               </div>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="hidden lg:flex justify-center">
-              <div style={{ backgroundColor: "#FFFFFF", borderRadius: "24px", padding: "48px", border: "1px solid #E5E7EB", boxShadow: "0 16px 48px rgba(45,212,191,0.12)", textAlign: "center", maxWidth: "320px" }}>
-                <div style={{ width: 80, height: 80, borderRadius: "20px", background: "linear-gradient(135deg, #2DD4BF, #0D9488)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-                  <Shield size={36} style={{ color: "#FFFFFF" }} />
-                </div>
-                <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.3rem", fontWeight: 800, color: "#111827", marginBottom: "6px" }}>Sweetbyte</div>
-                <div style={{ fontSize: "0.8rem", color: "#0D9488", fontWeight: 600, marginBottom: "16px" }}>OFFICIAL IT PARTNER</div>
-                <p style={{ fontSize: "0.85rem", color: "#6B7280", lineHeight: 1.65 }}>25+ years of enterprise IT expertise delivered to every SafeServ client.</p>
-              </div>
+            <motion.div initial={{ opacity: 0, x: 40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="hidden lg:flex justify-center items-center">
+              <ITGraphic />
             </motion.div>
           </div>
         </div>
