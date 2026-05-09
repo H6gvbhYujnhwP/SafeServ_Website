@@ -9,7 +9,7 @@ const phones = [
     name: "D44",
     subtitle: "Entry Level IP Phone",
     tag: "ENTRY LEVEL",
-    img: "/manus-storage/VoIPPhoneD44-1_29767178.png",
+    img: "/manus-storage/D44_8656242d.png",
     keyFeatures: [
       "4.3\" (480x272) Colour LCD Display",
       "10 BLF/Function Keys with Tri-Colour LED",
@@ -36,7 +36,7 @@ const phones = [
     name: "E50",
     subtitle: "Mid-Range IP Phone",
     tag: "MOST POPULAR",
-    img: "/manus-storage/VoIPPhoneE50_5be54825.png",
+    img: "/manus-storage/E50_b057ac5b.png",
     keyFeatures: [
       "4.3\" (480x272) Colour Display",
       "36 BLF Keys with Tri-Color LEDs",
@@ -63,7 +63,7 @@ const phones = [
     name: "F60",
     subtitle: "Flagship Touchscreen Phone",
     tag: "FLAGSHIP",
-    img: "/manus-storage/VoIPPhoneF60Safeservbrochure_35572fac.png",
+    img: "/manus-storage/F60_2f81ce76.png",
     keyFeatures: [
       "7\" (1024x600) Colour Touchscreen",
       "HD Audio (Handset & Speakerphone)",
@@ -203,7 +203,7 @@ export default function Telephony() {
       ))}
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: "#2B4A5C" }}>
+      <section className="py-20" style={{ background: "linear-gradient(135deg, #0D9488 0%, #0F766E 100%)" }}>
         <div className="container text-center">
           <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#FFFFFF", marginBottom: "16px" }}>
             Not sure which phone is right for you?
