@@ -180,7 +180,7 @@ function ITFlipCards() {
               <motion.div key={card.title}
                 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
                 onClick={() => setActiveCard(prev => prev === i ? null : i)}
-                style={{ cursor: "pointer", perspective: "1000px", height: "340px" }}>
+                style={{ cursor: "pointer", perspective: "1000px", height: "400px" }}>
                 <div style={{
                   position: "relative", width: "100%", height: "100%",
                   transformStyle: "preserve-3d",
@@ -214,10 +214,10 @@ function ITFlipCards() {
                     borderRadius: "18px", overflow: "hidden",
                     background: card.bgGradient,
                     border: `1px solid ${card.accentColor}30`,
-                    display: "flex", flexDirection: "column", padding: "28px",
+                    display: "flex", flexDirection: "column", padding: "20px 24px",
                   }}>
                     <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: `linear-gradient(90deg, ${card.accentColor}, transparent)` }} />
-                    <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "14px" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
                       <div style={{ width: 40, height: 40, borderRadius: "10px", background: `${card.accentColor}18`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                         <CardSVG title={card.title} accentColor={card.accentColor} />
                       </div>
@@ -226,17 +226,17 @@ function ITFlipCards() {
                         <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "0.95rem", fontWeight: 700, color: "#FFFFFF", lineHeight: 1.2 }}>{card.backTitle}</h3>
                       </div>
                     </div>
-                    <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.65, marginBottom: "14px" }}>{card.backDesc}</p>
+                    <p style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.55, marginBottom: "10px" }}>{card.backDesc}</p>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0, flex: 1 }}>
                       {card.features.map((f, fi) => (
-                        <li key={fi} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "5px 0", borderBottom: fi < card.features.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none", fontSize: "0.75rem", color: "rgba(255,255,255,0.8)" }}>
+                        <li key={fi} style={{ display: "flex", alignItems: "center", gap: "8px", padding: "4px 0", borderBottom: fi < card.features.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none", fontSize: "0.72rem", color: "rgba(255,255,255,0.8)" }}>
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={card.accentColor} strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                           {f}
                         </li>
                       ))}
                     </ul>
                     <Link href="/contact" onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-                      <div style={{ marginTop: "14px", backgroundColor: card.accentColor, color: "#0D2A25", padding: "10px 18px", borderRadius: "8px", fontSize: "0.78rem", fontWeight: 700, fontFamily: "Space Grotesk, sans-serif", display: "flex", alignItems: "center", gap: "6px", width: "fit-content" }}>
+                      <div style={{ marginTop: "10px", backgroundColor: card.accentColor, color: "#0D2A25", padding: "9px 16px", borderRadius: "8px", fontSize: "0.75rem", fontWeight: 700, fontFamily: "Space Grotesk, sans-serif", display: "flex", alignItems: "center", gap: "6px", width: "fit-content" }}>
                         Get a Quote <ArrowRight size={12} />
                       </div>
                     </Link>
