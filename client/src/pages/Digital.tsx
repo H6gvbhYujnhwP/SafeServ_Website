@@ -315,6 +315,90 @@ export default function Digital() {
         </div>
       </section>
 
+      {/* Advanced Web Solutions */}
+      <section style={{ backgroundColor: "#0D2A25", paddingTop: "96px", paddingBottom: "96px", position: "relative", overflow: "hidden" }}>
+        <div style={{ position: "absolute", top: -120, right: -120, width: 500, height: 500, borderRadius: "50%", background: "rgba(45,212,191,0.06)", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", bottom: -80, left: -80, width: 350, height: 350, borderRadius: "50%", background: "rgba(45,212,191,0.04)", pointerEvents: "none" }} />
+        <div className="container" style={{ position: "relative", zIndex: 2 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.15)", color: "#2DD4BF" }}>ADVANCED WEB SOLUTIONS</div>
+            <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 3.5vw, 3rem)", fontWeight: 700, color: "#FFFFFF", marginBottom: "16px" }}>More Than a Brochure Site.</h2>
+            <p style={{ color: "rgba(255,255,255,0.65)", maxWidth: "520px", margin: "0 auto", fontSize: "0.95rem", lineHeight: 1.75 }}>We build full-stack web applications that work as hard as you do — connecting your data, your customers, and your team in one seamless platform.</p>
+          </motion.div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Database-Driven */}
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 }} style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(45,212,191,0.2)", borderRadius: "20px", padding: "40px 32px", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, #2DD4BF, #0D9488)" }} />
+              <div style={{ width: 56, height: 56, borderRadius: "14px", background: "rgba(45,212,191,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+              </div>
+              <div className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#2DD4BF" }}>DATABASE-DRIVEN</div>
+              <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.3rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "12px" }}>Live Data. Live Business.</h3>
+              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.875rem", lineHeight: 1.75, marginBottom: "20px" }}>Connect your website directly to your stock system, CRM, or internal database. Product catalogues, availability checkers, live pricing, and inventory levels — all updated in real time without touching the site.</p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {["Real-time stock & inventory display", "CRM integration (HubSpot, Salesforce, Zoho)", "Live pricing & availability feeds", "Custom admin dashboards", "Automated data sync & webhooks"].map((item, i) => (
+                  <li key={i} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 0", borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.06)" : "none", fontSize: "0.82rem", color: "rgba(255,255,255,0.75)" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            {/* E-Commerce */}
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.12 }} style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(45,212,191,0.2)", borderRadius: "20px", padding: "40px 32px", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, #2DD4BF, #0D9488)" }} />
+              <div style={{ width: 56, height: 56, borderRadius: "14px", background: "rgba(45,212,191,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              </div>
+              <div className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#2DD4BF" }}>E-COMMERCE</div>
+              <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.3rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "12px" }}>Your Shop. Open 24/7.</h3>
+              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.875rem", lineHeight: 1.75, marginBottom: "20px" }}>From a five-product boutique to a 5,000-SKU trade catalogue — we build e-commerce stores that convert. Stripe, PayPal, and trade-account payments. Full order management, automated fulfilment triggers, and abandoned-cart recovery built in.</p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {["Stripe & PayPal payment integration", "Trade accounts & B2B pricing tiers", "Automated order & fulfilment workflows", "Abandoned cart & email recovery", "Multi-currency & VAT-compliant checkout"].map((item, i) => (
+                  <li key={i} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 0", borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.06)" : "none", fontSize: "0.82rem", color: "rgba(255,255,255,0.75)" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+            {/* Customer Portals */}
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.24 }} style={{ backgroundColor: "rgba(255,255,255,0.04)", border: "1px solid rgba(45,212,191,0.2)", borderRadius: "20px", padding: "40px 32px", position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "3px", background: "linear-gradient(90deg, #2DD4BF, #0D9488)" }} />
+              <div style={{ width: 56, height: 56, borderRadius: "14px", background: "rgba(45,212,191,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              </div>
+              <div className="inline-block mb-3 px-3 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#2DD4BF" }}>CUSTOMER PORTALS</div>
+              <h3 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "1.3rem", fontWeight: 700, color: "#FFFFFF", marginBottom: "12px" }}>Your Clients. Their Own Space.</h3>
+              <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.875rem", lineHeight: 1.75, marginBottom: "20px" }}>Give your customers a secure, branded login portal to track orders, download invoices, raise support tickets, or access exclusive content. Reduce inbound calls, increase retention, and look like the enterprise player you are.</p>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                {["Secure login with role-based access", "Order tracking & invoice downloads", "Support ticket & helpdesk integration", "Document & contract management", "White-labelled to your brand"].map((item, i) => (
+                  <li key={i} style={{ display: "flex", alignItems: "center", gap: "10px", padding: "8px 0", borderBottom: i < 4 ? "1px solid rgba(255,255,255,0.06)" : "none", fontSize: "0.82rem", color: "rgba(255,255,255,0.75)" }}>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2DD4BF" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+          {/* Stat bar */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.3 }} className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-12" style={{ borderTop: "1px solid rgba(45,212,191,0.15)" }}>
+            {[
+              { value: "100%", label: "Bespoke builds", sub: "No templates" },
+              { value: "48hrs", label: "Average go-live", sub: "From brief to live" },
+              { value: "\u00a30", label: "Platform fees", sub: "You own the code" },
+              { value: "\u221e", label: "Scalability", sub: "Grows with you" },
+            ].map((stat, i) => (
+              <div key={i} className="text-center">
+                <div style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 4vw, 2.8rem)", fontWeight: 800, color: "#2DD4BF", lineHeight: 1 }}>{stat.value}</div>
+                <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#FFFFFF", marginTop: "6px" }}>{stat.label}</div>
+                <div style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.45)", marginTop: "2px" }}>{stat.sub}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Sectors */}
       <section style={{ backgroundColor: "#FFFFFF", paddingTop: "60px", paddingBottom: "60px" }}>
         <div className="container text-center">
