@@ -13,9 +13,9 @@ const sectors = ["Finance", "Legal", "Manufacturing", "Creative", "Property", "H
 
 export default function Digital() {
   return (
-    <div style={{ backgroundColor: '#0D1B2A', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
       {/* Hero */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0F2336 50%, #0D1B2A 100%)' }}>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #112744 0%, #1A3352 50%, #112744 100%)' }}>
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`, backgroundSize: 'cover' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -32,7 +32,7 @@ export default function Digital() {
               <Link href="/contact">
                 <button
                   className="flex items-center gap-2 px-8 py-4 font-bold rounded transition-all hover:scale-105"
-                  style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem', boxShadow: '0 0 30px rgba(245, 158, 11, 0.35)' }}
+                  style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem', boxShadow: '0 0 30px rgba(245, 158, 11, 0.35)' }}
                 >
                   GET YOUR WEBSITE <ArrowRight size={16} />
                 </button>
@@ -76,7 +76,7 @@ export default function Digital() {
               <div
                 className="p-10 rounded-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #0F2336 0%, #0D1B2A 100%)',
+                  background: 'linear-gradient(135deg, #1A3352 0%, #112744 100%)',
                   border: '1px solid rgba(45, 212, 191, 0.3)',
                   boxShadow: '0 0 60px rgba(45, 212, 191, 0.08)',
                 }}
@@ -86,7 +86,7 @@ export default function Digital() {
                   <span className="text-xs font-semibold tracking-widest" style={{ color: '#2DD4BF' }}>RAPID DELIVERY</span>
                 </div>
                 <div className="text-6xl font-black mb-1 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>£799</div>
-                <p className="text-sm mb-8" style={{ color: '#64748B' }}>Complete 7-page website, live in 48 hours</p>
+                <p className="text-sm mb-8" style={{ color: '#7A8FA6' }}>Complete 7-page website, live in 48 hours</p>
 
                 <div className="space-y-3 mb-8">
                   {[
@@ -108,7 +108,7 @@ export default function Digital() {
                 <Link href="/contact">
                   <button
                     className="w-full py-4 font-bold rounded transition-all hover:scale-105"
-                    style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' }}
+                    style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 20px rgba(245, 158, 11, 0.3)' }}
                   >
                     CLAIM YOUR WEBSITE
                   </button>
@@ -120,7 +120,7 @@ export default function Digital() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24" style={{ backgroundColor: '#0F2336' }}>
+      <section className="py-24" style={{ backgroundColor: '#1E3A5F' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>FULL DIGITAL SERVICES</p>
@@ -137,7 +137,7 @@ export default function Digital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#0D1B2A', border: `1px solid ${svc.color}20` }}
+                style={{ backgroundColor: '#1A3352', border: `1px solid ${svc.color}20` }}
               >
                 <div className="flex items-start justify-between mb-5">
                   <div className="w-12 h-12 rounded-lg flex items-center justify-center" style={{ backgroundColor: `${svc.color}12` }}>
@@ -149,7 +149,7 @@ export default function Digital() {
                   </div>
                 </div>
                 <h3 className="text-2xl font-black mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{svc.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{svc.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{svc.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -174,7 +174,7 @@ export default function Digital() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
                 className="px-4 py-2 rounded-full text-sm font-medium"
-                style={{ backgroundColor: '#0F2336', border: '1px solid rgba(45, 212, 191, 0.2)', color: '#94A3B8' }}
+                style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.2)', color: '#94A3B8' }}
               >
                 {sector}
               </motion.span>
@@ -184,16 +184,16 @@ export default function Digital() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: '#0F2336', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}>
+      <section className="py-20" style={{ backgroundColor: '#1E3A5F', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}>
         <div className="container text-center">
           <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
             READY TO TRANSFORM YOUR DIGITAL PRESENCE?
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#64748B' }}>Talk to us today. Your new website could be live by tomorrow.</p>
+          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>Talk to us today. Your new website could be live by tomorrow.</p>
           <Link href="/contact">
             <button
               className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"
-              style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
+              style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
             >
               START YOUR PROJECT
             </button>

@@ -33,10 +33,10 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
       style={{
-        backgroundColor: scrolled ? 'rgba(13, 27, 42, 0.97)' : 'rgba(13, 27, 42, 0.85)',
+        backgroundColor: scrolled ? 'rgba(17, 39, 68, 0.97)' : 'rgba(17, 39, 68, 0.82)',
         backdropFilter: 'blur(12px)',
         borderBottom: scrolled ? '1px solid rgba(45, 212, 191, 0.15)' : '1px solid transparent',
-        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.4)' : 'none',
+        boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.25)' : 'none',
       }}
     >
       <div className="container">
@@ -92,7 +92,7 @@ export default function Navbar() {
                 className="px-5 py-2 text-sm font-semibold rounded transition-all duration-200 hover:scale-105"
                 style={{
                   backgroundColor: '#F59E0B',
-                  color: '#0D1B2A',
+                  color: '#112744',
                   fontFamily: 'Barlow Condensed, sans-serif',
                   letterSpacing: '0.05em',
                   fontSize: '0.9rem',
@@ -123,7 +123,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            style={{ backgroundColor: 'rgba(13, 27, 42, 0.98)', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}
+            style={{ backgroundColor: 'rgba(17, 39, 68, 0.98)', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}
           >
             <div className="container py-4 flex flex-col gap-1">
               {navLinks.map((link) => (
@@ -145,7 +145,7 @@ export default function Navbar() {
                     className="w-full py-3 font-semibold rounded"
                     style={{
                       backgroundColor: '#F59E0B',
-                      color: '#0D1B2A',
+                      color: '#112744',
                       fontFamily: 'Barlow Condensed, sans-serif',
                       letterSpacing: '0.05em',
                     }}

@@ -158,7 +158,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div style={{ backgroundColor: '#0D1B2A' }}>
+    <div style={{ backgroundColor: '#112744' }}>
       {/* ── HERO ── */}
       <section
         className="relative min-h-screen flex items-center overflow-hidden"
@@ -168,7 +168,7 @@ export default function Home() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(13, 27, 42, 0.75)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.68)' }} />
         <canvas ref={canvasRef} id="particle-canvas" />
 
         <div className="container relative z-10 pt-24 pb-20">
@@ -220,7 +220,7 @@ export default function Home() {
                   className="flex items-center gap-2 px-8 py-4 font-bold text-base rounded transition-all duration-200 hover:scale-105 hover:shadow-lg"
                   style={{
                     backgroundColor: '#F59E0B',
-                    color: '#0D1B2A',
+                    color: '#112744',
                     fontFamily: 'Barlow Condensed, sans-serif',
                     letterSpacing: '0.05em',
                     fontSize: '1.05rem',
@@ -260,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section style={{ backgroundColor: '#0F2336', borderTop: '1px solid rgba(45, 212, 191, 0.15)', borderBottom: '1px solid rgba(45, 212, 191, 0.15)' }}>
+      <section style={{ backgroundColor: '#1E3A5F', borderTop: '1px solid rgba(45, 212, 191, 0.2)', borderBottom: '1px solid rgba(45, 212, 191, 0.2)' }}>
         <div className="container py-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((s, i) => (
@@ -275,7 +275,7 @@ export default function Home() {
                 <div className="text-4xl lg:text-5xl font-black mb-1" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#2DD4BF' }}>
                   {s.value}
                 </div>
-                <div className="text-xs tracking-widest uppercase" style={{ color: '#64748B' }}>{s.label}</div>
+                <div className="text-xs tracking-widest uppercase" style={{ color: '#7A8FA6' }}>{s.label}</div>
               </motion.div>
             ))}
           </div>
@@ -283,8 +283,8 @@ export default function Home() {
       </section>
 
       {/* ── SERVICES GRID ── */}
-      <section className="py-24">
-        <div className="container">
+      <section className="py-24" style={{ backgroundColor: '#112744' }}>
+      <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -311,8 +311,8 @@ export default function Home() {
                   <div
                     className="group p-8 rounded-lg h-full transition-all duration-300 hover:-translate-y-1"
                     style={{
-                      backgroundColor: '#0F2336',
-                      border: '1px solid rgba(255,255,255,0.06)',
+                      backgroundColor: '#1E3A5F',
+                      border: '1px solid rgba(255,255,255,0.1)',
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.borderColor = `${svc.color}40`;
@@ -329,7 +329,7 @@ export default function Home() {
                     <h3 className="text-xl font-bold mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                       {svc.title}
                     </h3>
-                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#64748B' }}>{svc.desc}</p>
+                    <p className="text-sm leading-relaxed mb-5" style={{ color: '#7A8FA6' }}>{svc.desc}</p>
                     <div className="flex items-center gap-2 text-sm font-semibold transition-all group-hover:gap-3" style={{ color: svc.color }}>
                       Learn more <ChevronRight size={14} />
                     </div>
@@ -342,7 +342,7 @@ export default function Home() {
       </section>
 
       {/* ── PHONE SHOWCASE ── */}
-      <section className="py-24" style={{ backgroundColor: '#0F2336' }}>
+      <section className="py-24" style={{ backgroundColor: '#1A3352', backgroundImage: 'linear-gradient(180deg, #1A3352 0%, #1E3A5F 100%)' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -370,8 +370,8 @@ export default function Home() {
                   <div
                     className="group rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-2"
                     style={{
-                      backgroundColor: '#0D1B2A',
-                      border: '1px solid rgba(45, 212, 191, 0.15)',
+                      backgroundColor: '#1A3352',
+                      border: '1px solid rgba(45, 212, 191, 0.2)',
                     }}
                     onMouseEnter={(e) => {
                       (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 60px rgba(45, 212, 191, 0.15)';
@@ -380,7 +380,7 @@ export default function Home() {
                       (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                     }}
                   >
-                    <div className="relative h-56 overflow-hidden" style={{ backgroundColor: '#060E18' }}>
+                    <div className="relative h-56 overflow-hidden" style={{ backgroundColor: '#0A1628' }}>
                       <img
                         src={phone.img}
                         alt={`SafeServ ${phone.model} IP Phone`}
@@ -393,7 +393,7 @@ export default function Home() {
                       </div>
                     </div>
                     <div className="p-6">
-                      <p className="text-xs tracking-widest mb-4 uppercase" style={{ color: '#64748B' }}>{phone.subtitle}</p>
+                      <p className="text-xs tracking-widest mb-4 uppercase" style={{ color: '#7A8FA6' }}>{phone.subtitle}</p>
                       <ul className="space-y-2">
                         {phone.features.map((f, j) => (
                           <li key={j} className="flex items-center gap-2 text-sm" style={{ color: '#94A3B8' }}>
@@ -423,7 +423,7 @@ export default function Home() {
           backgroundPosition: 'center bottom',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(13, 27, 42, 0.88)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.78)' }} />
         <div className="container relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -444,7 +444,7 @@ export default function Home() {
                 className="px-10 py-4 font-bold text-lg rounded transition-all duration-200 hover:scale-105"
                 style={{
                   backgroundColor: '#F59E0B',
-                  color: '#0D1B2A',
+                  color: '#112744',
                   fontFamily: 'Barlow Condensed, sans-serif',
                   letterSpacing: '0.05em',
                   boxShadow: '0 0 40px rgba(245, 158, 11, 0.4)',
@@ -458,7 +458,7 @@ export default function Home() {
       </section>
 
       {/* ── PARTNER ECOSYSTEM ── */}
-      <section className="py-24">
+      <section className="py-24" style={{ backgroundColor: '#112744' }}>
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -505,8 +505,8 @@ export default function Home() {
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-xl"
                 style={{
-                  backgroundColor: '#0F2336',
-                  border: `1px solid ${partner.color}25`,
+                  backgroundColor: '#1E3A5F',
+                  border: `1px solid ${partner.color}35`,
                 }}
               >
                 <div className="text-xs font-semibold tracking-widest mb-2" style={{ color: partner.color }}>
@@ -515,7 +515,7 @@ export default function Home() {
                 <h3 className="text-2xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                   {partner.name}
                 </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{partner.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{partner.desc}</p>
               </motion.div>
             ))}
           </div>

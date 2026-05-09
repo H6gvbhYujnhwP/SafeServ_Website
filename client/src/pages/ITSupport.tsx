@@ -13,7 +13,7 @@ const services = [
 
 export default function ITSupport() {
   return (
-    <div style={{ backgroundColor: '#0D1B2A', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
       {/* Hero */}
       <section
         className="relative py-24 overflow-hidden"
@@ -23,7 +23,7 @@ export default function ITSupport() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(13, 27, 42, 0.82)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.70)' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>IT SUPPORT — IN PARTNERSHIP WITH SWEETBYTE</p>
@@ -38,7 +38,7 @@ export default function ITSupport() {
             <Link href="/contact">
               <button
                 className="flex items-center gap-2 px-8 py-4 font-bold rounded transition-all hover:scale-105"
-                style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem' }}
+                style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem' }}
               >
                 GET IT SUPPORT <ArrowRight size={16} />
               </button>
@@ -78,7 +78,7 @@ export default function ITSupport() {
               <div
                 className="p-10 rounded-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #0F2336 0%, #0D1B2A 100%)',
+                  background: 'linear-gradient(135deg, #1A3352 0%, #112744 100%)',
                   border: '1px solid rgba(45, 212, 191, 0.3)',
                   boxShadow: '0 0 60px rgba(45, 212, 191, 0.08)',
                 }}
@@ -93,10 +93,10 @@ export default function ITSupport() {
                   </div>
                 </div>
                 <p className="text-sm font-semibold mb-2 text-white">Managing Operating Agents</p>
-                <p className="text-sm leading-relaxed mb-6" style={{ color: '#64748B' }}>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: '#7A8FA6' }}>
                   Sweetbyte is one of the first IT companies in the UK to introduce MOA — an intelligent layer of AI-powered management agents that monitor, maintain, and optimise your IT infrastructure automatically.
                 </p>
-                <p className="text-sm leading-relaxed mb-6" style={{ color: '#64748B' }}>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: '#7A8FA6' }}>
                   This isn't just AI for AI's sake. MOA means fewer outages, faster resolution times, and a proactive approach to IT that traditional support simply can't match. And it's included as standard with every IT support contract.
                 </p>
                 <div className="pt-6" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
@@ -115,7 +115,7 @@ export default function ITSupport() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24" style={{ backgroundColor: '#0F2336' }}>
+      <section className="py-24" style={{ backgroundColor: '#1E3A5F' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>WHAT'S INCLUDED</p>
@@ -132,13 +132,13 @@ export default function ITSupport() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(45, 212, 191, 0.12)' }}
+                style={{ backgroundColor: '#1A3352', border: '1px solid rgba(45, 212, 191, 0.12)' }}
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(45, 212, 191, 0.12)' }}>
                   <svc.icon size={18} style={{ color: '#2DD4BF' }} />
                 </div>
                 <h3 className="text-xl font-black mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{svc.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{svc.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{svc.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -151,11 +151,11 @@ export default function ITSupport() {
           <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
             READY FOR IT SUPPORT THAT ACTUALLY WORKS?
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#64748B' }}>No contracts. No lock-in. Just exceptional IT support from day one.</p>
+          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>No contracts. No lock-in. Just exceptional IT support from day one.</p>
           <Link href="/contact">
             <button
               className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"
-              style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
+              style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
             >
               GET A FREE IT AUDIT
             </button>

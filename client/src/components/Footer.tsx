@@ -3,7 +3,7 @@ import { Phone, Mail, Globe, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: '#060E18', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}>
+    <footer style={{ backgroundColor: '#0D2040', borderTop: '1px solid rgba(45, 212, 191, 0.2)' }}>
       <div className="container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
@@ -13,7 +13,7 @@ export default function Footer() {
               alt="SafeServ"
               className="h-10 object-contain mb-4"
             />
-            <p className="text-sm leading-relaxed mb-6" style={{ color: '#64748B' }}>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: '#7A8FA6' }}>
               Your complete technology partner for UK SMEs. VoIP, IT support, connectivity, AI solutions, and digital services — all under one roof, with no lock-in contracts.
             </p>
             <p className="text-xs font-semibold tracking-widest" style={{ color: '#2DD4BF' }}>
@@ -36,7 +36,7 @@ export default function Footer() {
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href}>
-                    <span className="text-sm transition-colors hover:text-white" style={{ color: '#64748B' }}>
+                    <span className="text-sm transition-colors hover:text-white" style={{ color: '#7A8FA6' }}>
                       {item.label}
                     </span>
                   </Link>
@@ -59,7 +59,7 @@ export default function Footer() {
               ].map((item, i) => (
                 <li key={i}>
                   <Link href={item.href}>
-                    <span className="text-sm transition-colors hover:text-white" style={{ color: '#64748B' }}>
+                    <span className="text-sm transition-colors hover:text-white" style={{ color: '#7A8FA6' }}>
                       {item.label}
                     </span>
                   </Link>
@@ -75,25 +75,25 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:01245850140" className="flex items-center gap-3 text-sm transition-colors hover:text-white" style={{ color: '#64748B' }}>
+                <a href="tel:01245850140" className="flex items-center gap-3 text-sm transition-colors hover:text-white" style={{ color: '#7A8FA6' }}>
                   <Phone size={14} style={{ color: '#2DD4BF', flexShrink: 0 }} />
                   01245 850140
                 </a>
               </li>
               <li>
-                <a href="mailto:hello@safeserv.co.uk" className="flex items-center gap-3 text-sm transition-colors hover:text-white" style={{ color: '#64748B' }}>
+                <a href="mailto:hello@safeserv.co.uk" className="flex items-center gap-3 text-sm transition-colors hover:text-white" style={{ color: '#7A8FA6' }}>
                   <Mail size={14} style={{ color: '#2DD4BF', flexShrink: 0 }} />
                   hello@safeserv.co.uk
                 </a>
               </li>
               <li>
-                <a href="https://www.safeserv.co.uk" className="flex items-center gap-3 text-sm transition-colors hover:text-white" style={{ color: '#64748B' }}>
+                <a href="https://www.safeserv.co.uk" className="flex items-center gap-3 text-sm transition-colors hover:text-white" style={{ color: '#7A8FA6' }}>
                   <Globe size={14} style={{ color: '#2DD4BF', flexShrink: 0 }} />
                   www.safeserv.co.uk
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-sm" style={{ color: '#64748B' }}>
+                <div className="flex items-start gap-3 text-sm" style={{ color: '#7A8FA6' }}>
                   <MapPin size={14} style={{ color: '#2DD4BF', flexShrink: 0, marginTop: 2 }} />
                   Essex, United Kingdom
                 </div>
@@ -104,14 +104,14 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-12 pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <p className="text-xs" style={{ color: '#334155' }}>
+          <p className="text-xs" style={{ color: '#4A6080' }}>
             © {new Date().getFullYear()} SafeServ Ltd. All rights reserved. Registered in England & Wales.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-xs" style={{ color: '#334155' }}>Partners:</span>
-            <span className="text-xs" style={{ color: '#475569' }}>Sweetbyte</span>
-            <span className="text-xs" style={{ color: '#475569' }}>TheGreenAgents</span>
-            <span className="text-xs" style={{ color: '#475569' }}>ClearerPaths</span>
+            <span className="text-xs" style={{ color: '#4A6080' }}>Partners:</span>
+            <span className="text-xs" style={{ color: '#5A7090' }}>Sweetbyte</span>
+            <span className="text-xs" style={{ color: '#5A7090' }}>TheGreenAgents</span>
+            <span className="text-xs" style={{ color: '#5A7090' }}>ClearerPaths</span>
           </div>
         </div>
       </div>

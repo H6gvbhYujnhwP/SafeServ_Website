@@ -4,13 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
-   SAFESERV — CINEMATIC DEEP SPACE DESIGN SYSTEM
-   Background: #0D1B2A (Deep Navy)
+   SAFESERV — CINEMATIC DEEP SPACE DESIGN SYSTEM v2
+   Background: #112744 (Rich Mid-Navy — not black)
+   Section Alt BG: #1A3352 (Lighter Navy — creates real contrast)
+   Elevated Surface: #1E3A5F (Cards & callout boxes)
+   Hero Overlay: #0A1628 (Deep navy — used sparingly)
    Primary Accent: #2DD4BF (Vibrant Teal)
    Secondary Accent: #F59E0B (Warm Gold — CTAs)
    Text Primary: #FFFFFF
    Text Secondary: #94A3B8 (Slate)
-   Section Alt BG: #0F2336
    ============================================================ */
 
 @theme inline {
@@ -54,9 +56,9 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.12 0.025 230);
+  --background: oklch(0.18 0.04 230);
   --foreground: oklch(0.98 0 0);
-  --card: oklch(0.16 0.025 230);
+  --card: oklch(0.22 0.045 230);
   --card-foreground: oklch(0.98 0 0);
   --popover: oklch(0.16 0.025 230);
   --popover-foreground: oklch(0.98 0 0);

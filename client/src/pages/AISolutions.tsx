@@ -24,7 +24,7 @@ const translateFeatures = [
 
 export default function AISolutions() {
   return (
-    <div style={{ backgroundColor: '#0D1B2A', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
       {/* Hero */}
       <section
         className="relative py-24 overflow-hidden"
@@ -49,7 +49,7 @@ export default function AISolutions() {
             <Link href="/contact">
               <button
                 className="flex items-center gap-2 px-8 py-4 font-bold rounded transition-all hover:scale-105"
-                style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem', boxShadow: '0 0 30px rgba(245, 158, 11, 0.35)' }}
+                style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem', boxShadow: '0 0 30px rgba(245, 158, 11, 0.35)' }}
               >
                 EXPLORE AI SOLUTIONS <ArrowRight size={16} />
               </button>
@@ -90,7 +90,7 @@ export default function AISolutions() {
               <div
                 className="p-8 rounded-2xl"
                 style={{
-                  background: 'linear-gradient(135deg, #1a1200 0%, #0D1B2A 100%)',
+                  background: 'linear-gradient(135deg, #1a1200 0%, #112744 100%)',
                   border: '1px solid rgba(245, 158, 11, 0.3)',
                   boxShadow: '0 0 60px rgba(245, 158, 11, 0.08)',
                 }}
@@ -126,7 +126,7 @@ export default function AISolutions() {
       </section>
 
       {/* AI Tools Grid */}
-      <section className="py-24" style={{ backgroundColor: '#0F2336' }}>
+      <section className="py-24" style={{ backgroundColor: '#1E3A5F' }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#F59E0B' }}>IN PARTNERSHIP WITH THEGREENAGENTS</p>
@@ -145,7 +145,7 @@ export default function AISolutions() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(245, 158, 11, 0.12)' }}
+                style={{ backgroundColor: '#1A3352', border: '1px solid rgba(245, 158, 11, 0.12)' }}
               >
                 <div className="flex items-start justify-between mb-4">
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: 'rgba(245, 158, 11, 0.12)' }}>
@@ -156,7 +156,7 @@ export default function AISolutions() {
                   </span>
                 </div>
                 <h3 className="text-xl font-black mb-3 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>{tool.title}</h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{tool.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: '#7A8FA6' }}>{tool.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -179,10 +179,10 @@ export default function AISolutions() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="p-8 rounded-xl"
-                style={{ backgroundColor: '#0F2336', border: '1px solid rgba(245, 158, 11, 0.2)' }}
+                style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(245, 158, 11, 0.2)' }}
               >
                 <div className="text-5xl font-black mb-2" style={{ fontFamily: 'Barlow Condensed, sans-serif', color: '#F59E0B' }}>{stat.value}</div>
-                <p className="text-sm" style={{ color: '#64748B' }}>{stat.label}</p>
+                <p className="text-sm" style={{ color: '#7A8FA6' }}>{stat.label}</p>
               </motion.div>
             ))}
           </div>
@@ -190,16 +190,16 @@ export default function AISolutions() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: '#0F2336', borderTop: '1px solid rgba(245, 158, 11, 0.15)' }}>
+      <section className="py-20" style={{ backgroundColor: '#1E3A5F', borderTop: '1px solid rgba(245, 158, 11, 0.15)' }}>
         <div className="container text-center">
           <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
             READY TO BUILD YOUR AI WORKFORCE?
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#64748B' }}>Book a free AI consultation and discover what's possible for your business.</p>
+          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>Book a free AI consultation and discover what's possible for your business.</p>
           <Link href="/contact">
             <button
               className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"
-              style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
+              style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
             >
               BOOK FREE AI CONSULTATION
             </button>

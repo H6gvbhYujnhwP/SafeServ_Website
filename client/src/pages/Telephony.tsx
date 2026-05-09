@@ -67,7 +67,7 @@ const phones = [
 
 export default function Telephony() {
   return (
-    <div style={{ backgroundColor: '#0D1B2A', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#112744', paddingTop: '80px' }}>
       {/* Hero */}
       <section
         className="relative py-24 overflow-hidden"
@@ -77,7 +77,7 @@ export default function Telephony() {
           backgroundPosition: 'center',
         }}
       >
-        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(13, 27, 42, 0.82)' }} />
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(10, 22, 40, 0.70)' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>VOIP TELEPHONY</p>
@@ -92,7 +92,7 @@ export default function Telephony() {
             <Link href="/contact">
               <button
                 className="flex items-center gap-2 px-8 py-4 font-bold rounded transition-all hover:scale-105"
-                style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem' }}
+                style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', fontSize: '1.05rem' }}
               >
                 GET A QUOTE <ArrowRight size={16} />
               </button>
@@ -118,7 +118,7 @@ export default function Telephony() {
                 <div className={`${i % 2 === 1 ? 'lg:order-2' : ''}`}>
                   <div
                     className="rounded-2xl overflow-hidden relative"
-                    style={{ backgroundColor: '#060E18', border: `1px solid ${phone.color}25` }}
+                    style={{ backgroundColor: '#0A1628', border: `1px solid ${phone.color}25` }}
                   >
                     <div className="absolute top-6 left-6 z-10">
                       <span
@@ -127,7 +127,7 @@ export default function Telephony() {
                       >
                         {phone.model}
                       </span>
-                      <p className="text-xs tracking-widest mt-1" style={{ color: '#64748B' }}>{phone.subtitle.toUpperCase()}</p>
+                      <p className="text-xs tracking-widest mt-1" style={{ color: '#7A8FA6' }}>{phone.subtitle.toUpperCase()}</p>
                     </div>
                     <img
                       src={phone.img}
@@ -161,10 +161,10 @@ export default function Telephony() {
                       { label: "Networking", items: phone.networking },
                       { label: "Advanced", items: phone.advanced.slice(0, 3) },
                     ].map((col, k) => (
-                      <div key={k} className="p-4 rounded-lg" style={{ backgroundColor: '#0F2336', border: '1px solid rgba(255,255,255,0.06)' }}>
+                      <div key={k} className="p-4 rounded-lg" style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.06)' }}>
                         <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: phone.color }}>{col.label.toUpperCase()}</p>
                         {col.items.map((item, l) => (
-                          <p key={l} className="text-xs mb-1" style={{ color: '#64748B' }}>{item}</p>
+                          <p key={l} className="text-xs mb-1" style={{ color: '#7A8FA6' }}>{item}</p>
                         ))}
                       </div>
                     ))}
@@ -191,18 +191,18 @@ export default function Telephony() {
       </section>
 
       {/* CTA */}
-      <section className="py-20" style={{ backgroundColor: '#0F2336', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}>
+      <section className="py-20" style={{ backgroundColor: '#1A3352', borderTop: '1px solid rgba(45, 212, 191, 0.15)' }}>
         <div className="container text-center">
           <h2 className="text-5xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
             NOT SURE WHICH PHONE IS RIGHT FOR YOU?
           </h2>
-          <p className="text-lg mb-8" style={{ color: '#64748B' }}>
+          <p className="text-lg mb-8" style={{ color: '#7A8FA6' }}>
             Talk to James. He'll recommend the perfect setup for your team — with no pressure and no lock-in.
           </p>
           <Link href="/contact">
             <button
               className="px-10 py-4 font-bold text-lg rounded transition-all hover:scale-105"
-              style={{ backgroundColor: '#F59E0B', color: '#0D1B2A', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
+              style={{ backgroundColor: '#F59E0B', color: '#112744', fontFamily: 'Barlow Condensed, sans-serif', letterSpacing: '0.05em', boxShadow: '0 0 30px rgba(245, 158, 11, 0.3)' }}
             >
               BOOK A FREE CONSULTATION
             </button>

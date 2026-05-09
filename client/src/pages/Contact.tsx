@@ -29,9 +29,9 @@ export default function Contact() {
   };
 
   return (
-    <div style={{ backgroundColor: '#0D1B2A', paddingTop: '80px' }}>
+    <div style={{ backgroundColor: '#1A3352', paddingTop: '80px' }}>
       {/* Hero */}
-      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #0D1B2A 0%, #0F2336 100%)' }}>
+      <section className="relative py-20 overflow-hidden" style={{ background: 'linear-gradient(135deg, #112744 0%, #1A3352 100%)' }}>
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url('/manus-storage/hero_bg_b8439bb6.jpg')`, backgroundSize: 'cover' }} />
         <div className="container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -105,7 +105,7 @@ export default function Contact() {
               </div>
 
               {/* Promise */}
-              <div className="p-6 rounded-xl" style={{ backgroundColor: '#0F2336', border: '1px solid rgba(45, 212, 191, 0.15)' }}>
+              <div className="p-6 rounded-xl" style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}>
                 <p className="text-xs font-semibold tracking-widest mb-3" style={{ color: '#2DD4BF' }}>THE SAFESERV PROMISE</p>
                 {["No lock-in contracts", "No obligation consultations", "Fast response times", "Honest, plain-speaking advice"].map((item, i) => (
                   <div key={i} className="flex items-center gap-2 mb-2">
@@ -126,7 +126,7 @@ export default function Contact() {
               {submitted ? (
                 <div
                   className="p-12 rounded-2xl text-center"
-                  style={{ backgroundColor: '#0F2336', border: '1px solid rgba(45, 212, 191, 0.3)' }}
+                  style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.3)' }}
                 >
                   <CheckCircle2 size={48} style={{ color: '#2DD4BF', margin: '0 auto 24px' }} />
                   <h3 className="text-3xl font-black mb-4 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
@@ -143,7 +143,7 @@ export default function Contact() {
                 <form
                   onSubmit={handleSubmit}
                   className="p-10 rounded-2xl"
-                  style={{ backgroundColor: '#0F2336', border: '1px solid rgba(45, 212, 191, 0.15)' }}
+                  style={{ backgroundColor: '#1E3A5F', border: '1px solid rgba(45, 212, 191, 0.15)' }}
                 >
                   <h3 className="text-2xl font-black mb-8 text-white" style={{ fontFamily: 'Barlow Condensed, sans-serif' }}>
                     SEND US A MESSAGE
@@ -151,27 +151,27 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748B' }}>YOUR NAME *</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>YOUR NAME *</label>
                       <input
                         type="text"
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm text-white outline-none transition-all"
-                        style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
                         onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                         placeholder="John Smith"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748B' }}>COMPANY</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>COMPANY</label>
                       <input
                         type="text"
                         value={form.company}
                         onChange={(e) => setForm({ ...form, company: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all"
-                        style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
                         onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                         placeholder="Your Company Ltd"
@@ -181,27 +181,27 @@ export default function Contact() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748B' }}>EMAIL ADDRESS *</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>EMAIL ADDRESS *</label>
                       <input
                         type="email"
                         required
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all"
-                        style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
                         onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                         placeholder="john@company.co.uk"
                       />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748B' }}>PHONE NUMBER</label>
+                      <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>PHONE NUMBER</label>
                       <input
                         type="tel"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all"
-                        style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                        style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
                         onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
                         onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                         placeholder="07700 900000"
@@ -210,31 +210,31 @@ export default function Contact() {
                   </div>
 
                   <div className="mb-5">
-                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748B' }}>I'M INTERESTED IN</label>
+                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>I'M INTERESTED IN</label>
                     <select
                       value={form.service}
                       onChange={(e) => setForm({ ...form, service: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all appearance-none"
-                      style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(255,255,255,0.08)', color: form.service ? '#FFFFFF' : '#475569' }}
+                      style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: form.service ? '#FFFFFF' : '#475569' }}
                       onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
                       onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                     >
-                      <option value="" style={{ backgroundColor: '#0D1B2A' }}>Select a service...</option>
+                      <option value="" style={{ backgroundColor: '#1A3352' }}>Select a service...</option>
                       {services.map((s) => (
-                        <option key={s} value={s} style={{ backgroundColor: '#0D1B2A' }}>{s}</option>
+                        <option key={s} value={s} style={{ backgroundColor: '#1A3352' }}>{s}</option>
                       ))}
                     </select>
                   </div>
 
                   <div className="mb-8">
-                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#64748B' }}>YOUR MESSAGE *</label>
+                    <label className="block text-xs font-semibold tracking-widest mb-2" style={{ color: '#7A8FA6' }}>YOUR MESSAGE *</label>
                     <textarea
                       required
                       rows={5}
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-all resize-none"
-                      style={{ backgroundColor: '#0D1B2A', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
+                      style={{ backgroundColor: '#1A3352', border: '1px solid rgba(255,255,255,0.08)', color: '#FFFFFF' }}
                       onFocus={(e) => (e.target.style.borderColor = 'rgba(45, 212, 191, 0.5)')}
                       onBlur={(e) => (e.target.style.borderColor = 'rgba(255,255,255,0.08)')}
                       placeholder="Tell us about your business and what you're looking for..."
@@ -246,7 +246,7 @@ export default function Contact() {
                     className="w-full flex items-center justify-center gap-3 py-4 font-bold text-base rounded transition-all hover:scale-105"
                     style={{
                       backgroundColor: '#F59E0B',
-                      color: '#0D1B2A',
+                      color: '#112744',
                       fontFamily: 'Barlow Condensed, sans-serif',
                       letterSpacing: '0.05em',
                       fontSize: '1.05rem',
