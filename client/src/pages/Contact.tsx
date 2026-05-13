@@ -65,7 +65,7 @@ function ContactGraphic() {
 
 const services = [
   "VoIP Telephony",
-  "IT Support (Sweetbyte)",
+  "IT Support",
   "Connectivity",
   "AI Solutions",
   "Website / Digital",

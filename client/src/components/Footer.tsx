@@ -53,7 +53,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { href: '/about', label: 'About James' },
-                { href: '/about', label: 'Our Partners' },
+                { href: '/about', label: 'About Us' },
                 { href: '/contact', label: 'Contact Us' },
                 { href: '/contact', label: 'Get a Quote' },
               ].map((item, i) => (
@@ -108,10 +108,10 @@ export default function Footer() {
             © {new Date().getFullYear()} SafeServ Ltd. All rights reserved. Registered in England & Wales.
           </p>
           <div className="flex items-center gap-6">
-            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>Partners:</span>
-            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>Sweetbyte</span>
-            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>TheGreenAgents</span>
-            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>ClearerPaths</span>
+            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.35)' }}>Network:</span>
+            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>DWS</span>
+            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>Gamma</span>
+            <span className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>NTA</span>
           </div>
         </div>
       </div>

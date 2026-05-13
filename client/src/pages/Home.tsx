@@ -42,7 +42,7 @@ const services = [
   {
     icon: Monitor,
     title: "IT Support",
-    desc: "Managed IT services via our Sweetbyte partnership. Proactive monitoring, helpdesk, and on-site support.",
+    desc: "Fully managed IT services from SafeServ. Proactive monitoring, helpdesk, and on-site support from UK engineers.",
     href: "/it-support",
     color: "#0D9488",
     bg: "#F0FDFB",
@@ -58,7 +58,7 @@ const services = [
   {
     icon: Brain,
     title: "AI Solutions",
-    desc: "SafeServ Translate+ for live call transcription. TheGreenAgents AI workforce tools for modern teams.",
+    desc: "SafeServ Translate+ for live call transcription. AI workforce tools and automation built for modern UK businesses.",
     href: "/ai-solutions",
     color: "#0D9488",
     bg: "#F0FDFB",
@@ -66,7 +66,7 @@ const services = [
   {
     icon: Globe,
     title: "Digital & Web",
-    desc: "Professional websites from £799 in 48 hours via ClearerPaths. Apps, SEO, and social media management.",
+    desc: "Professional websites delivered in 48 hours by SafeServ. Apps, SEO, and social media management included.",
     href: "/digital",
     color: "#2DD4BF",
     bg: "#F0FDFB",
@@ -98,9 +98,9 @@ const phones = [
 ];
 
 const partners = [
-  { name: "Sweetbyte", role: "IT Support Partner", color: "#2DD4BF" },
-  { name: "TheGreenAgents", role: "AI Workforce Tools", color: "#0D9488" },
-  { name: "ClearerPaths", role: "Web & Digital", color: "#2DD4BF" },
+  { name: "UK Engineers", role: "IT Support", color: "#2DD4BF" },
+  { name: "AI Automation", role: "Smart Workflows", color: "#0D9488" },
+  { name: "Web & Digital", role: "Design & Build", color: "#2DD4BF" },
   { name: "DWS", role: "Connectivity", color: "#0D9488" },
   { name: "Gamma", role: "Voice & Data", color: "#2DD4BF" },
 ];

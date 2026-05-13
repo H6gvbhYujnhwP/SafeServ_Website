@@ -5,9 +5,9 @@ import { ArrowRight, Quote, Users, Shield, Wifi, Globe } from "lucide-react";
 function PartnershipGraphic() {
   const nodes = [
     { id: 0, x: 220, y: 200, label: "SafeServ", r: 36, primary: true },
-    { id: 1, x: 100, y: 90, label: "Sweetbyte", r: 26 },
-    { id: 2, x: 340, y: 90, label: "GreenAgents", r: 26 },
-    { id: 3, x: 100, y: 310, label: "ClearerPaths", r: 26 },
+    { id: 1, x: 100, y: 90, label: "IT & Cyber", r: 26 },
+    { id: 2, x: 340, y: 90, label: "AI Tools", r: 26 },
+    { id: 3, x: 100, y: 310, label: "Web & Apps", r: 26 },
     { id: 4, x: 340, y: 310, label: "DWS/NTA", r: 26 },
     { id: 5, x: 220, y: 60, label: "IT", r: 18 },
     { id: 6, x: 380, y: 200, label: "AI", r: 18 },
@@ -65,10 +65,10 @@ function PartnershipGraphic() {
 }
 
 const partners = [
-  { icon: Shield, name: "Sweetbyte", role: "IT Support & Cyber Security", desc: "25+ years of IT expertise. One of the first UK companies to introduce MOA (Managing Operating Agents) as standard. No lock-in contracts, no jargon — just great IT support.", url: "https://sweetbyte.co.uk" },
-  { icon: Users, name: "TheGreenAgents", role: "AI Automation & Web Development", desc: "The UK's leading AI business automation agency. From AI voice receptionists to full business workforces, custom websites to mobile apps.", url: "https://thegreenagents.com" },
-  { icon: Globe, name: "ClearerPaths", role: "Rapid Website Delivery", desc: "Specialists in rapid, commercially sharp website delivery. 7 pages, 48 hours, from £799. Serving businesses across Finance, Legal, Healthcare, Construction, and more.", url: "https://clearerpaths.co.uk" },
-  { icon: Wifi, name: "DWS / NTA / Gamma", role: "Connectivity Partners", desc: "SafeServ's network of trusted connectivity providers, delivering superfast broadband, leased lines, and SOGEA solutions across the UK with guaranteed SLAs.", url: "#" },
+  { icon: Shield, name: "IT Support & Cyber Security", role: "Managed IT Services", desc: "Fully managed IT support including proactive monitoring, helpdesk, cloud services, and enterprise-grade cyber security. MOA as standard — the UK's first AI-powered IT management layer.", url: "/it-support" },
+  { icon: Users, name: "AI Solutions", role: "Automation & Intelligence", desc: "SafeServ AI tools including Translate+, AI Voice Receptionist, Email Automation, and bespoke AI workflow development. Practical AI that delivers measurable ROI for UK businesses.", url: "/ai-solutions" },
+  { icon: Globe, name: "Digital & Web", role: "Websites, Apps & E-Commerce", desc: "Professional websites delivered in 48 hours, bespoke app development, e-commerce stores, and customer portal solutions. Everything built and supported in-house by SafeServ.", url: "/digital" },
+  { icon: Wifi, name: "DWS / NTA / Gamma", role: "Connectivity Network", desc: "SafeServ's network of trusted connectivity providers, delivering superfast broadband, leased lines, and SOGEA solutions across the UK with guaranteed SLAs.", url: "/connectivity" },
 ];
 
 export default function About() {

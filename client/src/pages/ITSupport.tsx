@@ -372,13 +372,13 @@ export default function ITSupport() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
               <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em", fontFamily: "Space Grotesk, sans-serif" }}>
-                <Shield size={12} /> IT SUPPORT — IN PARTNERSHIP WITH SWEETBYTE
+                <Shield size={12} /> IT SUPPORT — MANAGED SERVICES
               </div>
               <h1 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 800, color: "#111827", lineHeight: 1.1, marginBottom: "20px" }}>
                 Managed IT.<br /><span style={{ color: "#0D9488" }}>No Headaches.</span>
               </h1>
               <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px", marginBottom: "32px" }}>
-                SafeServ partners with <strong style={{ color: "#0D9488" }}>Sweetbyte</strong> to deliver fully managed IT support for UK businesses — including the UK's first MOA service as standard.
+                SafeServ delivers fully managed IT support for UK businesses — including the UK's first MOA service as standard.
               </p>
               <Link href="/contact">
                 <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>

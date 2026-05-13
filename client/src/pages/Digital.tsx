@@ -88,12 +88,12 @@ const portfolioImages = [
 ];
 
 const webServices = [
-  { icon: Globe, title: "Rapid Website Delivery", partner: "ClearerPaths", desc: "Professional websites delivered in under 48 hours. Copywriting, images, and hosting included.", tag: "48 HOURS" },
-  { icon: Code2, title: "Custom Website Development", partner: "TheGreenAgents", desc: "Bespoke website design and development for businesses that need a fully custom digital solution.", tag: "BESPOKE" },
-  { icon: Smartphone, title: "Mobile App Development", partner: "TheGreenAgents", desc: "iOS and Android app development for businesses ready to go mobile. From concept to App Store launch.", tag: "iOS & ANDROID" },
-  { icon: ShoppingCart, title: "E-commerce Solutions", partner: "TheGreenAgents", desc: "Fully integrated online stores with payment processing, inventory management, and customer portals.", tag: "SELL ONLINE" },
-  { icon: Search, title: "SEO and Digital Marketing", partner: "TheGreenAgents", desc: "Get found on Google. Technical SEO, content strategy, and paid search campaigns that drive real leads.", tag: "GROW TRAFFIC" },
-  { icon: Share2, title: "Social Media Management", partner: "TheGreenAgents", desc: "Consistent, on-brand social media presence managed for you by TheGreenAgents AI tools.", tag: "MANAGED" },
+  { icon: Globe, title: "Rapid Website Delivery", partner: "SAFESERV", desc: "Professional websites delivered in under 48 hours. Copywriting, images, and hosting included.", tag: "48 HOURS" },
+  { icon: Code2, title: "Custom Website Development", partner: "SAFESERV", desc: "Bespoke website design and development for businesses that need a fully custom digital solution.", tag: "BESPOKE" },
+  { icon: Smartphone, title: "Mobile App Development", partner: "SAFESERV", desc: "iOS and Android app development for businesses ready to go mobile. From concept to App Store launch.", tag: "iOS & ANDROID" },
+  { icon: ShoppingCart, title: "E-commerce Solutions", partner: "SAFESERV", desc: "Fully integrated online stores with payment processing, inventory management, and customer portals.", tag: "SELL ONLINE" },
+  { icon: Search, title: "SEO and Digital Marketing", partner: "SAFESERV", desc: "Get found on Google. Technical SEO, content strategy, and paid search campaigns that drive real leads.", tag: "GROW TRAFFIC" },
+  { icon: Share2, title: "Social Media Management", partner: "SAFESERV", desc: "Consistent, on-brand social media presence managed for you by SafeServ digital team.", tag: "MANAGED" },
 ];
 
 const sectors = ["Finance", "Legal", "Manufacturing", "Creative", "Property", "Healthcare", "Recruitment", "Construction", "Hospitality", "Technology", "Retail", "Education"];
@@ -218,7 +218,7 @@ export default function Digital() {
                 Your Website.<br /><span style={{ color: "#0D9488" }}>Built Fast.</span>
               </h1>
               <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "480px", marginBottom: "32px" }}>
-                From a professional website in 48 hours to full digital marketing — SafeServ and our <strong style={{ color: "#0D9488" }}>ClearerPaths</strong> partnership handle your entire digital presence.
+                From a professional website in 48 hours to full digital marketing — SafeServ handles your entire digital presence.
               </p>
               <Link href="/contact">
                 <motion.button whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(45,212,191,0.45)" }} whileTap={{ scale: 0.97 }} className="flex items-center gap-2 font-semibold" style={{ backgroundColor: "#2DD4BF", color: "#0D2A25", padding: "14px 28px", borderRadius: "8px", fontSize: "0.95rem", fontFamily: "Space Grotesk, sans-serif", border: "none", cursor: "pointer" }}>
@@ -243,19 +243,19 @@ export default function Digital() {
       {/* Scrolling Portfolio Strip */}
       <ScrollingStrip />
 
-      {/* ClearerPaths Feature — no pricing card */}
+      {/* Rapid Delivery Feature */}
       <section style={{ backgroundColor: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
               <div className="inline-flex items-center gap-2 mb-5" style={{ background: "rgba(45,212,191,0.12)", border: "1px solid rgba(45,212,191,0.3)", borderRadius: "100px", padding: "6px 16px", color: "#0D9488", fontSize: "0.7rem", fontWeight: 700, letterSpacing: "0.12em" }}>
-                <Clock size={12} /> CLEARERPATHS PARTNERSHIP
+                <Clock size={12} /> RAPID DELIVERY
               </div>
               <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(2rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#111827", lineHeight: 1.2, marginBottom: "16px" }}>
                 Professional Website.<br /><span style={{ color: "#0D9488" }}>Delivered in 48 Hours.</span>
               </h2>
               <p style={{ color: "#4B5563", lineHeight: 1.75, marginBottom: "24px" }}>
-                Through our ClearerPaths partnership, we deliver a fully professional, mobile-first website in just 48 hours — no lengthy agency processes, no months of waiting. Just a great website, fast.
+                SafeServ delivers a fully professional, mobile-first website in just 48 hours — no lengthy agency processes, no months of waiting. Just a great website, fast.
               </p>
               {["Professional 7-page website", "Delivered in 48 hours from brief to live", "Mobile-first, SEO-optimised design", "Professional copywriting included", "Google Analytics and Search Console setup", "30-day post-launch support included"].map((item, i) => (
                 <div key={i} className="flex items-start gap-3 mb-3" style={{ fontSize: "0.88rem", color: "#374151" }}>

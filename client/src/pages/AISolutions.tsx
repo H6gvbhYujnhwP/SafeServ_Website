@@ -205,11 +205,11 @@ const aiTools: AITool[] = [
     icon: Users,
     title: "AI Business Workforce",
     desc: "A complete team of AI agents handling customer service, data analysis, and admin.",
-    tag: "THEGREENAGENTS",
+    tag: "AI WORKFORCE",
     gradient: "linear-gradient(135deg, #115E59 0%, #0D9488 100%)",
     image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
     backTitle: "AI Business Workforce",
-    backDesc: "Deploy a full AI team via TheGreenAgents — agents that handle customer service, social media, admin, and data, working in parallel around the clock.",
+    backDesc: "Deploy a full AI workforce from SafeServ — agents that handle customer service, social media, admin, and data, working in parallel around the clock.",
     features: ["Customer service & live chat agents", "Social media management agents", "Admin & scheduling automation", "Data entry & CRM population", "Scales instantly — no hiring needed"],
     BackSVG: WorkforceSVG,
   },
@@ -396,7 +396,7 @@ export default function AISolutions() {
                 AI That Works<br /><span style={{ color: "#0D9488" }}>For Your Business.</span>
               </h1>
               <p style={{ fontSize: "1.05rem", color: "#4B5563", lineHeight: 1.75, maxWidth: "520px", marginBottom: "32px" }}>
-                Two powerful AI platforms — <strong style={{ color: "#0D9488" }}>SafeServ Translate+</strong> for live call transcription and <strong style={{ color: "#0D9488" }}>TheGreenAgents</strong> for AI workforce tools. Practical AI that delivers real results.
+                Two powerful AI platforms — <strong style={{ color: "#0D9488" }}>SafeServ Translate+</strong> for live call transcription and <strong style={{ color: "#0D9488" }}>SafeServ AI Workforce</strong> for intelligent business automation. Practical AI that delivers real results.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/contact">
@@ -479,7 +479,7 @@ export default function AISolutions() {
       <section style={{ backgroundColor: "#FFFFFF", paddingTop: "80px", paddingBottom: "80px" }}>
         <div className="container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>IN PARTNERSHIP WITH THEGREENAGENTS</div>
+            <div className="inline-block mb-4 px-4 py-1 text-xs font-bold tracking-widest rounded-full" style={{ backgroundColor: "rgba(45,212,191,0.12)", color: "#0D9488" }}>AI SOLUTIONS BY SAFESERV</div>
             <h2 style={{ fontFamily: "Space Grotesk, sans-serif", fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 700, color: "#111827", marginBottom: "12px" }}>Your Complete AI Workforce.</h2>
             <p style={{ color: "#6B7280", maxWidth: "500px", margin: "0 auto", fontSize: "1rem", lineHeight: 1.7 }}>Tap any card to explore what each AI tool does for your business.</p>
           </motion.div>
